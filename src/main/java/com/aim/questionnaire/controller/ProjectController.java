@@ -38,7 +38,7 @@ public class ProjectController {
     public HttpResponseEntity queryProjectList(@RequestBody(required = false) ProjectEntity projectEntity) {
         HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
         PageInfo<Map<String,Object>> pageInfo = projectService.queryProjectList(projectEntity);
-//        httpResponseEntity.setMessage(Constans.SUCCESS_CODE);
+        httpResponseEntity.setMessage(Constans.SUCCESS_CODE);
         httpResponseEntity.setData(pageInfo);
         return httpResponseEntity;
     }

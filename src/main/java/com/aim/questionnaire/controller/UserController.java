@@ -53,20 +53,15 @@ public class UserController {
     public HttpResponseEntity userLogin(@RequestBody UserEntity userEntity) {
         HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
         try {
+                UserEntity finduserEntity = userService.queryProjectByUser(userEntity);
 
-            List<UserEntity> hasUser = userEntityMapper.selectUserInfo(userEntity);
-            boolean istrue = false;
-            for(UserEntity u: hasUser){
-                if(u.getPassword().equals(userEntity.getPassword()))
-                    istrue = true;
-            }
-            if(CollectionUtils.isEmpty(hasUser) || !istrue) {
+            if(finduserEntity==null) {
                 httpResponseEntity.setCode(Constans.EXIST_CODE);
                 httpResponseEntity.setData(null);
                 httpResponseEntity.setMessage(Constans.LOGIN_USERNAME_PASSWORD_MESSAGE);
             }else {
                 httpResponseEntity.setCode(Constans.SUCCESS_CODE);
-                httpResponseEntity.setData(hasUser);
+                httpResponseEntity.setData(finduserEntity);
                 httpResponseEntity.setMessage(Constans.LOGIN_MESSAGE);
             }
 

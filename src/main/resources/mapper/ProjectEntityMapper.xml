@@ -48,6 +48,7 @@
     select *
     from project_info
     where project_name LIKE concat('%',#{projectName,jdbcType=VARCHAR},'%')
+
   </select>
 
   <!--查询全部项目的名字接口-->

@@ -52,6 +52,7 @@ public class QuestionnaireController {
      * 根据id删除问卷
      * @param QuestionnaireEntity
      * @return
+     * 1
      */
     @RequestMapping(value = "/deleteQuestionnaireById",method = RequestMethod.POST, headers = "Accept=application/json")
     public HttpResponseEntity deleteProjectById(String id) {

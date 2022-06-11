@@ -50,7 +50,6 @@ public class UserService {
         pageInfo.setList(resultList);
         int total = userEntityMapper.getTotalCount((String) map.get("userName"));
         pageInfo.setTotal(total);
-
         return pageInfo;
     }
 

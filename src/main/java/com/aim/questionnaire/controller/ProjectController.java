@@ -40,7 +40,6 @@ public class ProjectController {
         PageInfo<Map<String,Object>> pageInfo = projectService.queryProjectList(projectEntity);
         httpResponseEntity.setMessage(Constans.SUCCESS_CODE);
         httpResponseEntity.setData(pageInfo);
-
         return httpResponseEntity;
     }
 

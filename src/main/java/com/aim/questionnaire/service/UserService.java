@@ -17,10 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.xml.ws.Action;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by wln on 2018\8\9 0009.
@@ -126,5 +123,19 @@ public class UserService {
     public int deteleUserInfoById(UserEntity userEntity) {
 
         return 0;
+    }
+
+    /**
+     * 验证账号密码是否正确
+     * @param userEntity
+     * @return
+     */
+    public UserEntity queryProjectByUser(UserEntity userEntity){
+        List<UserEntity> hasUser = userEntityMapper.selectUserInfo(userEntity);
+        for(UserEntity u: hasUser){
+            if(u.getPassword().equals(userEntity.getPassword()))
+                return u;
+        }
+        return null;
     }
 }

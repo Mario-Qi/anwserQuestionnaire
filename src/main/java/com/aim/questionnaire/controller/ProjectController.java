@@ -5,6 +5,7 @@ import com.aim.questionnaire.common.Constans;
 import com.aim.questionnaire.dao.entity.ProjectEntity;
 import com.aim.questionnaire.service.ProjectService;
 
+import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,9 @@ public class ProjectController {
     @RequestMapping(value = "/queryProjectList",method = RequestMethod.POST, headers = "Accept=application/json")
     public HttpResponseEntity queryProjectList(@RequestBody(required = false) ProjectEntity projectEntity) {
         HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
-       
+        PageInfo<Map<String,Object>> pageInfo = projectService.queryProjectList(projectEntity);
+        httpResponseEntity.setMessage(Constans.SUCCESS_CODE);
+        httpResponseEntity.setData(pageInfo);
         return httpResponseEntity;
     }
 

@@ -27,7 +27,7 @@
          "projectName": keyWord,
          "createdBy": userName
      };
-     //commonAjaxPost(true, url, data, getProjectQuestSuccess);
+     commonAjaxPost(true, url, data, getProjectQuestSuccess);
      var rr = JSON.parse('{"code":"666","data":[{"projectContent":"项目名","id":"708a580ce83c49c0a0cfc65b151d690e","projectName":"静态测试数据","createDate":"2022-05-13T15:05:40"}],"message":null}')
      getProjectQuestSuccess(rr)
  }

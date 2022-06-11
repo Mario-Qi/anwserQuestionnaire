@@ -4,6 +4,7 @@ import com.aim.questionnaire.common.utils.DateUtil;
 import com.aim.questionnaire.common.utils.UUIDUtil;
 import com.aim.questionnaire.dao.ProjectEntityMapper;
 import com.aim.questionnaire.dao.entity.ProjectEntity;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -54,10 +55,10 @@ public class ProjectService {
      * @param projectEntity
      * @return
      */
-    public List<Object> queryProjectList(ProjectEntity projectEntity) {
-        List<Object> resultList = new ArrayList<Object>();
-        
-        return resultList;
+    public PageInfo<Map<String, Object>> queryProjectList(ProjectEntity projectEntity) {
+        List<Map<String,Object>> projectemapList = projectEntityMapper.queryProjectList(projectEntity);
+        PageInfo<Map<String,Object>> pageInfo = new PageInfo<>(projectemapList);
+        return pageInfo;
     }
 
     /**

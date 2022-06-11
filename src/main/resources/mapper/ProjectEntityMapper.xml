@@ -14,7 +14,7 @@
 
   </resultMap>
   <sql id="Base_Column_List">
-
+    id, user_id, project_name, created_by, creation_date, last_updated_by, last_update_date
   </sql>
   <sql id="Blob_Column_List">
 

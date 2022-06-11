@@ -55,13 +55,18 @@ public class UserController {
         try {
 
             List<UserEntity> hasUser = userEntityMapper.selectUserInfo(userEntity);
-            if (CollectionUtils.isEmpty(hasUser)) {
+            boolean istrue = false;
+            for(UserEntity u: hasUser){
+                if(u.getPassword().equals(userEntity.getPassword()))
+                    istrue = true;
+            }
+            if(CollectionUtils.isEmpty(hasUser) || !istrue) {
                 httpResponseEntity.setCode(Constans.EXIST_CODE);
                 httpResponseEntity.setData(null);
                 httpResponseEntity.setMessage(Constans.LOGIN_USERNAME_PASSWORD_MESSAGE);
-            } else {
+            }else {
                 httpResponseEntity.setCode(Constans.SUCCESS_CODE);
-                httpResponseEntity.setData(userEntity);
+                httpResponseEntity.setData(hasUser);
                 httpResponseEntity.setMessage(Constans.LOGIN_MESSAGE);
             }
 

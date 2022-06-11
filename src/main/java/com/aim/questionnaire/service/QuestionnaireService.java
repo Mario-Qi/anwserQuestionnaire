@@ -14,6 +14,7 @@ public class QuestionnaireService {
 
     public int addQuestionnaire(HashMap<String, Object> map){
         questionnaireEntityMapper.addQuestionnaire(map);
+
         return 1;
     }
 

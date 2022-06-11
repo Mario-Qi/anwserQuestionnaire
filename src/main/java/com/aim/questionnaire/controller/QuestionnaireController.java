@@ -33,6 +33,7 @@ public class QuestionnaireController {
         try {
             int result = questionnaireservice.addQuestionnaire((HashMap<String, Object>) map);
             if(result == 3) {
+
                 httpResponseEntity.setCode(Constans.USER_USERNAME_CODE);
                 httpResponseEntity.setMessage(Constans.NAME_EXIT_MESSAGE);
             }else {

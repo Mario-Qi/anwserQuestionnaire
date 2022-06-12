@@ -50,9 +50,24 @@ public class ProjectController {
      * @return
      */
     @RequestMapping(value = "/deleteProjectById",method = RequestMethod.POST, headers = "Accept=application/json")
-    public HttpResponseEntity deleteProjectById(ProjectEntity projectEntity) {
+    public HttpResponseEntity deleteProjectById(@RequestBody ProjectEntity projectEntity) {
         HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
-           
+        try {
+            int result = projectService.deleteProjectById(projectEntity);
+            if(result == 3) {
+
+                httpResponseEntity.setCode(Constans.USER_USERNAME_CODE);
+                httpResponseEntity.setMessage(Constans.USER_USERNAME_MESSAGE);
+            }else {
+                httpResponseEntity.setMessage(Constans.DELETE_MESSAGE);
+                httpResponseEntity.setCode(Constans.SUCCESS_CODE);
+            }
+        } catch (Exception e) {
+            httpResponseEntity.setMessage(Constans.EXIST_MESSAGE);
+            logger.info("deleteProjectInfo 删除项目>>>>>>>>>" + e.getLocalizedMessage());
+            httpResponseEntity.setCode(Constans.EXIST_CODE);
+        }
+
         return httpResponseEntity;
     }
 
@@ -62,9 +77,26 @@ public class ProjectController {
      * @return
      */
     @RequestMapping(value = "/addProjectInfo",method = RequestMethod.POST, headers = "Accept=application/json")
-    public HttpResponseEntity addProjectInfo(@RequestBody ProjectEntity projectEntity) {
+    public HttpResponseEntity addProjectInfo(@RequestBody Map<String,Object> map) {
         HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
-            
+        try {
+            String user = (String) map.get("createdBy");
+            ProjectEntity projectEntity = new ProjectEntity();
+            projectEntity.setProjectName((String) map.get("projectName"));
+            projectEntity.setProjectContent((String) map.get("projectContent"));
+            int result = projectService.addProjectInfo(projectEntity,user);
+            if(result==3){
+                httpResponseEntity.setCode(Constans.EXIST_CODE);
+                httpResponseEntity.setMessage(Constans.LOGIN_USERNAME_MESSAGE);
+            }else{
+                httpResponseEntity.setCode(Constans.SUCCESS_CODE);
+                httpResponseEntity.setMessage(Constans.ADD_MESSAGE);
+            }
+        }catch (Exception e) {
+            logger.info("addProjectInfo 创建项目>>>>>>>>>>>" + e.getLocalizedMessage());
+            httpResponseEntity.setCode(Constans.EXIST_CODE);
+            httpResponseEntity.setMessage(Constans.EXIST_MESSAGE);
+        }
         return httpResponseEntity;
     }
 

@@ -23,10 +23,14 @@
 
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-
+    DELETE from project_info
+    WHERE id = #{id,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.aim.questionnaire.dao.entity.ProjectEntity">
-
+    INSERT INTO project_info
+    (id, user_id, project_name, project_content, created_by, creation_date, last_updated_by, last_update_date)
+    VALUES
+      (#{id},#{userId},#{projectName},#{projectContent},#{createdBy},#{creationDate},#{lastUpdatedBy},#{lastUpdateDate})
   </insert>
   <insert id="insertSelective" parameterType="com.aim.questionnaire.dao.entity.ProjectEntity">
 
@@ -40,7 +44,8 @@
 
   <!--根据项目id删除项目-->
   <delete id="deleteProjectById" parameterType="java.lang.String">
-
+    DELETE from project_info
+    WHERE id = #{id,jdbcType=VARCHAR}
   </delete>
 
   <!--查询项目列表-->

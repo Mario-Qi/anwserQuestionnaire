@@ -3,10 +3,12 @@ package com.aim.questionnaire.service;
 import com.aim.questionnaire.common.utils.DateUtil;
 import com.aim.questionnaire.common.utils.UUIDUtil;
 import com.aim.questionnaire.dao.ProjectEntityMapper;
+import com.aim.questionnaire.dao.UserEntityMapper;
 import com.aim.questionnaire.dao.entity.ProjectEntity;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.*;
 
@@ -18,6 +20,9 @@ public class ProjectService {
 
     @Autowired
     private ProjectEntityMapper projectEntityMapper;
+    @Autowired
+    private UserEntityMapper userEntityMapper;
+
 
 
     /**
@@ -25,9 +30,30 @@ public class ProjectService {
      * @param projectEntity
      * @return
      */
-    public int addProjectInfo(ProjectEntity projectEntity,String user) {
-        
-        return 0;
+    public int addProjectInfo(ProjectEntity projectEntity,String username) {
+        String userId = userEntityMapper.selectIdByName(username);
+        if(userId.isEmpty()){
+            //用户不存在或用户id为空
+            System.out.println("333");
+            return 3;
+        }
+
+        String id = UUIDUtil.getOneUUID();
+        projectEntity.setId(id);
+        //创建时间
+        Date date = DateUtil.getCreateTime();
+        projectEntity.setCreationDate(date);
+        projectEntity.setLastUpdateDate(date);
+        //创建人
+        projectEntity.setCreatedBy(username);
+        projectEntity.setLastUpdatedBy(username);
+        //创建人ID
+        projectEntity.setUserId(userId);
+
+       // System.out.println("123");
+        int result = projectEntityMapper.insert(projectEntity);
+
+        return result;
     }
 
     /**
@@ -36,7 +62,7 @@ public class ProjectService {
      * @return
      */
     public int modifyProjectInfo(ProjectEntity projectEntity,String user) {
-       
+
         return 0;
     }
 
@@ -46,8 +72,10 @@ public class ProjectService {
      * @return
      */
     public int deleteProjectById(ProjectEntity projectEntity) {
-       
-        return 0;
+
+        String id=projectEntity.getId();//null
+        int result=projectEntityMapper.deleteProjectById(id);
+        return result;
     }
 
     /**

@@ -24,7 +24,7 @@ function header() {
         '            <div class="user-wrapper pull-right" id="userbutton">\n' +
         '                <dl class="my-question pull-left">\n' +
         '                    <dt class="box user-info">\n' +
-        '                        <a class="user-name" href="myQuestionnaires.html"><i class="icon questions-icon"><em></em></i><span>我的项目</span></a>\n' +
+        '                        <a class="user-name" href="myProjects.html"><i class="icon questions-icon"><em></em></i><span>我的项目</span></a>\n' +
         '                    </dt>\n' +
         '                    <dd class="line"></dd>\n' +
         '                </dl>\n' +

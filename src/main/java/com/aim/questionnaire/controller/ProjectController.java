@@ -35,11 +35,12 @@ public class ProjectController {
      * @return
      */
     @RequestMapping(value = "/queryProjectList",method = RequestMethod.POST, headers = "Accept=application/json")
-    public HttpResponseEntity queryProjectList(@RequestBody(required = false) ProjectEntity projectEntity) {
+    public HttpResponseEntity queryProjectList(@RequestBody(required = false) Map<String,Object> map) {
         HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
-        PageInfo<Map<String,Object>> pageInfo = projectService.queryProjectList(projectEntity);
+        PageInfo<Map<String,Object>> pageInfo = projectService.queryProjectList(map);
         httpResponseEntity.setMessage(Constans.SUCCESS_CODE);
         httpResponseEntity.setData(pageInfo);
+        httpResponseEntity.setCode(Constans.SUCCESS_CODE);
         return httpResponseEntity;
     }
 

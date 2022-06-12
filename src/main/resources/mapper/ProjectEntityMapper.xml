@@ -44,10 +44,14 @@
   </delete>
 
   <!--查询项目列表-->
-  <select id="queryProjectList" parameterType="com.aim.questionnaire.dao.entity.ProjectEntity" resultType="map">
+  <select id="queryProjectList" parameterType="map" resultType="java.util.Map">
     select *
     from project_info
-    where project_name LIKE concat('%',#{projectName,jdbcType=VARCHAR},'%')
+    where (project_name LIKE "%"#{projectName}"%" )AND user_id =
+    (SELECT id
+    FROM user_info
+    WHERE username = #{userName})
+
   </select>
 
   <!--查询全部项目的名字接口-->

@@ -52,12 +52,13 @@ public class ProjectService {
 
     /**
      * 查询项目列表
-     * @param projectEntity
+     * @param map
      * @return
      */
-    public PageInfo<Map<String, Object>> queryProjectList(ProjectEntity projectEntity) {
-        List<Map<String,Object>> projectemapList = projectEntityMapper.queryProjectList(projectEntity);
-        PageInfo<Map<String,Object>> pageInfo = new PageInfo<>(projectemapList);
+    public PageInfo<Map<String, Object>> queryProjectList(Map<String,Object> map) {
+        List<Map<String,Object>> projectemapList = projectEntityMapper.queryProjectList(map);
+        PageInfo pageInfo = new PageInfo();
+        pageInfo.setList(projectemapList);
         return pageInfo;
     }
 

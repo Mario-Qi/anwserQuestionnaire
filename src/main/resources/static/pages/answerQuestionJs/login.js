@@ -36,7 +36,7 @@ function loginSuccess(result){
         setCookie('userName',UserNameText);
         setCookie('power',result.data.role);
         setCookie('modelId',result.data.modelId)
-        window.location.href = "myQuestionnaires.html"
+        window.location.href = "myProjects.html"
     }else{
         //layer.msg("此用户不存在",{icon:2});
         $('#errorMsgBox').show()

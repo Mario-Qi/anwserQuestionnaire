@@ -106,9 +106,26 @@ public class ProjectController {
      * @return
      */
     @RequestMapping(value = "/modifyProjectInfo",method = RequestMethod.POST, headers = "Accept=application/json")
-    public HttpResponseEntity modifyProjectInfo(@RequestBody ProjectEntity projectEntity) {
+    public HttpResponseEntity modifyProjectInfo(@RequestBody Map<String,Object> map) {
         HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
-            
+        try {
+            String user = (String) map.get("createdBy");
+            ProjectEntity projectEntity = new ProjectEntity();
+            projectEntity.setProjectName((String) map.get("projectName"));
+            projectEntity.setProjectContent((String) map.get("projectContent"));
+            int result = projectService.modifyProjectInfo(projectEntity,user);
+            if(result==3){
+                httpResponseEntity.setCode(Constans.EXIST_CODE);
+                httpResponseEntity.setMessage(Constans.LOGIN_USERNAME_MESSAGE);
+            }else{
+                httpResponseEntity.setCode(Constans.SUCCESS_CODE);
+                httpResponseEntity.setMessage(Constans.ADD_MESSAGE);
+            }
+        }catch (Exception e) {
+            logger.info("addProjectInfo 更新项目>>>>>>>>>>>" + e.getLocalizedMessage());
+            httpResponseEntity.setCode(Constans.EXIST_CODE);
+            httpResponseEntity.setMessage(Constans.EXIST_MESSAGE);
+        }
         return httpResponseEntity;
     }
 

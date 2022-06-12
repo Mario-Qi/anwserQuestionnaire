@@ -61,9 +61,31 @@ public class ProjectService {
      * @param projectEntity
      * @return
      */
-    public int modifyProjectInfo(ProjectEntity projectEntity,String user) {
+    public int modifyProjectInfo(ProjectEntity projectEntity,String username) {
 
-        return 0;
+        String userId = userEntityMapper.selectIdByName(username);
+        if(userId.isEmpty()){
+            //用户不存在或用户id为空
+            System.out.println("333");
+            return 3;
+        }
+
+        String id = UUIDUtil.getOneUUID();
+        projectEntity.setId(id);
+        //创建时间
+        Date date = DateUtil.getCreateTime();
+        //projectEntity.setCreationDate(date);
+        projectEntity.setLastUpdateDate(date);
+        //创建人
+       // projectEntity.setCreatedBy(username);
+        projectEntity.setLastUpdatedBy(username);
+        //创建人ID
+       // projectEntity.setUserId(userId);
+
+        // System.out.println("123");
+        int result = projectEntityMapper.updateByPrimaryKeySelective(projectEntity);
+
+        return result;
     }
 
     /**

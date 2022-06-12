@@ -50,7 +50,7 @@
     where project_name LIKE concat('%',#{projectName,jdbcType=VARCHAR},'%') AND user_id =
     (SELECT user_id
     FROM user_info
-    WHERE user_name = #{userName jbdcType=VARCHAR})
+    WHERE username = #{userName jbdcType=VARCHAR})
 
   </select>
 

@@ -44,10 +44,10 @@ public interface ProjectEntityMapper {
 
     /**
      * 查询项目列表
-     * @param projectEntity
+     * @param
      * @return
      */
-    List<Map<String,Object>> queryProjectList(ProjectEntity projectEntity);
+    List<Map<String,Object>> queryProjectList(Map<String,Object> map);
 
     /**
      * 查询全部项目的名字接口

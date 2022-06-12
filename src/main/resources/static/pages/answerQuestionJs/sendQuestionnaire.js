@@ -1,4 +1,5 @@
-var persons = []; //传入调查人员信息
+var students = []; //传入调查人员信息
+var teachers = [];
 var sendTime = "";
 var questionId = getCookie("questionId");
 var dataId = getCookie("dataId");  // 在校生：2；毕业生：3；教师：4；用人单位：5
@@ -18,14 +19,15 @@ window.operateEvents = {
         layer.confirm('您确认要删除此条人员信息吗？', {
             btn: ['确定', '取消'] //按钮
         }, function () {
-            _$("#userInfoTable").bootstrapTable('removeByUniqueId', row.no);
+            _$("#userInfoTable1").bootstrapTable('removeByUniqueId', row.no);
+            _$("#userInfoTable2").bootstrapTable('removeByUniqueId', row.no);
             layer.msg("删除成功", {icon: 1});
         });
     }
 };
 
 //不是用人单位的列名
-var columnsForCompany =[{
+var columnsForStudents =[{
     checkbox: true,
     visible: false
 }, {
@@ -33,26 +35,52 @@ var columnsForCompany =[{
     title: '序号',
     align: 'center',
 }, {
-    field: 'answerNum',
-    title: '答题人编号',
+    field: 'studentNum',
+    title: '学号',
     align: 'center',
     width: '200px'
 },
     {
-        field: 'answerName',
+        field: 'studentName',
         title: '姓名',
         align: 'center'
     }, {
-        field: 'answerBelong',
-        title: '学校',
-        align: 'center'
-    }, {
-        field: 'answerPhone',
-        title: '手机号码',
+        field: 'studentBelong',
+        title: '所属学校',
         align: 'center'
     },
     {
-        field: 'answerEmail',
+        field: 'studentSubject',
+        title: '专业',
+        align: 'center'
+    },
+    {
+        field: 'studentClass',
+        title: '班级',
+        align: 'center'
+    },
+    {
+        field: 'studentSex',
+        title: '性别',
+        align: 'center'
+    },
+    {
+        field: 'studentWeiNum',
+        title: '微信号',
+        align: 'center'
+    },
+    {
+        field: 'studentQQNum',
+        title: 'QQ号',
+        align: 'center'
+    },
+    {
+        field: 'studentPhone',
+        title: '手机号',
+        align: 'center'
+    },
+    {
+        field: 'studentEmail',
         title: '邮箱',
         align: 'center'
     }, {
@@ -62,6 +90,49 @@ var columnsForCompany =[{
         events: operateEvents,//给按钮注册事件
         formatter: addFunctionAlty//表格中增加按钮
     }]
+columnsForTeachers = [{
+    checkbox: true,
+    visible: false
+}, {
+    field: 'no',
+    title: '序号',
+    align: 'center',
+}, {
+    field: 'teacherNum',
+    title: '教师号',
+    align: 'center',
+    width: '200px'
+}, {
+        field: 'teacherName',
+        title: '姓名',
+        align: 'center'
+}, {
+        field: 'teacherBelong',
+        title: '所属院校',
+        align: 'center'
+}, {
+        field: 'teacherSex',
+        title: '性别',
+        align: 'center'
+}, {
+        field: 'WeiNum',
+        title: '微信号',
+        align: 'center'
+}, {
+        field: 'QQNum',
+        title: 'QQ号',
+        align: 'center'
+}, {
+        field: 'teacherEmail',
+        title: '电子邮箱',
+        align: 'center'
+}, {
+        field: 'operation',
+        title: '操作',
+        align: 'center',
+        events: operateEvents,//给按钮注册事件
+        formatter: addFunctionAlty//表格中增加按钮
+}]
 
 
 if (dataId == "2") {
@@ -72,7 +143,7 @@ if (dataId == "2") {
     $("#getDownLoadBtn").prepend("<a style=\"margin-right: 20px;\" href=\"../教师上传数据模板.xlsx\" class=\"add__batches pull-left\">下载模板</a>");
 } else if (dataId == "5") {
     $("#getDownLoadBtn").prepend("<a style=\"margin-right: 20px;\" href=\"../用人单位上传数据模板.xlsx\" class=\"add__batches pull-left\">下载模板</a>");
-    columnsForCompany = [{
+    var columnsForStudents =[{
         checkbox: true,
         visible: false
     }, {
@@ -80,35 +151,53 @@ if (dataId == "2") {
         title: '序号',
         align: 'center',
     }, {
-        field: 'answerNum',
-        title: '答题人编号',
+        field: 'studentNum',
+        title: '学号',
         align: 'center',
         width: '200px'
-    },
-        {
-            field: 'answerName',
-            title: '用人单位',
+    }, {
+            field: 'studentName',
+            title: '姓名',
             align: 'center'
-        }, {
-            field: 'answerBelong',
-            title: '学校',
+    }, {
+            field: 'studentBelong',
+            title: '所属学校',
             align: 'center'
-        }, {
-            field: 'answerPhone',
-            title: '手机号码',
+    }, {
+            field: 'studentSubject',
+            title: '专业',
             align: 'center'
-        },
-        {
-            field: 'answerEmail',
+    }, {
+            field: 'studentClass',
+            title: '班级',
+            align: 'center'
+    }, {
+            field: 'studentSex',
+            title: '性别',
+            align: 'center'
+    }, {
+            field: 'studentWeiNum',
+            title: '微信号',
+            align: 'center'
+    }, {
+            field: 'studentQQNum',
+            title: 'QQ号',
+            align: 'center'
+    }, {
+            field: 'studentPhone',
+            title: '手机号',
+            align: 'center'
+    }, {
+            field: 'studentEmail',
             title: '邮箱',
             align: 'center'
-        }, {
+    }, {
             field: 'operation',
             title: '操作',
             align: 'center',
             events: operateEvents,//给按钮注册事件
             formatter: addFunctionAlty//表格中增加按钮
-        }]
+    }]
 }
 
 // 发送方式，短信：0； 邮件：1； 链接：2；
@@ -156,7 +245,7 @@ function TableInit() {
     var oTableInit = new Object();
     //初始化Table
     oTableInit.Init = function () {
-        $('#userInfoTable').bootstrapTable({
+        $('#userInfoTable1').bootstrapTable({
             url: '',         //请求后台的URL（*）
             striped: true,                      //是否显示行间隔色
             pagination: true,                   //是否显示分页（*）
@@ -176,8 +265,32 @@ function TableInit() {
             showToggle: false,
             minimumCountColumns: 2,             //最少允许的列数
             uniqueId: "no",                     //每一行的唯一标识，一般为主键列
-            columns: columnsForCompany
+            columns: columnsForStudents
         });
+
+        $('#userInfoTable2').bootstrapTable({
+            url: '',         //请求后台的URL（*）
+            striped: true,                      //是否显示行间隔色
+            pagination: true,                   //是否显示分页（*）
+            sortOrder: "asc",                   //排序方式
+            queryParamsType: '',
+            dataType: 'json',
+            paginationShowPageGo: true,
+            showJumpto: true,
+            pageNumber: 1, //初始化加载第一页，默认第一页
+            queryParams: queryParams,//请求服务器时所传的参数
+            sidePagination: 'client',
+            pageSize: 10,//单页记录数
+            pageList: [10, 20, 30, 40],//分页步进值
+            search: false, //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
+            silent: true,
+            showRefresh: false,                  //是否显示刷新按钮
+            showToggle: false,
+            minimumCountColumns: 2,             //最少允许的列数
+            uniqueId: "no",                     //每一行的唯一标识，一般为主键列
+            columns: columnsForTeachers
+        });
+
     };
 
     // 得到查询的参数
@@ -231,6 +344,51 @@ function changeTab(id) {
             var msg = document.getElementById('msg');
             wordStatic(msg);
         }
+    }
+}
+
+function changeIdentity(id) {
+    if (id == 'importStudentsBoxA') {
+        // document.getElementById('linkSendA').style.backgroundColor = "#1ea0fa";
+        // document.getElementById('linkSendA').removeAttribute("class", "inside-wrapper nav-show nav-items linkCode-icon");
+        // document.getElementById('linkSendA').setAttribute("class", "inside-wrapper nav-show nav-items clicked linkCode-icon");
+
+        // document.getElementById('shortMessageSendA').style.backgroundColor = "#fff";
+        // document.getElementById('shortMessageSendA').removeAttribute("class", "inside-wrapper nav-show nav-items clicked sms-icon");
+        // document.getElementById('shortMessageSendA').setAttribute("class", "inside-wrapper nav-show nav-items sms-icon");
+
+        console.log(document.getElementById('linkSend').style);
+        console.log(document.getElementById('importStudentsBox'));
+
+        document.getElementById("importStudentsBoxA").removeAttribute("class","my-nav-unselect");
+        document.getElementById("importStudentsBoxA").setAttribute("class","nav-items pull-left my-nav-select");
+        document.getElementById("importTeachersBoxA").removeAttribute("class","my-nav-select");
+        document.getElementById("importTeachersBoxA").setAttribute("class","nav-items pull-left my-nav-unselect");
+        document.getElementById('onloadFile1').style.display = "block";
+        document.getElementById('onloadFile2').style.display = "none";
+        document.getElementById("importStudentsBox").style.display = "block";
+        document.getElementById("importTeachersBox").style.display = "none";
+    } else if (id == 'importTeachersBoxA') {
+        // document.getElementById('linkSendA').style.backgroundColor = "#fff";
+        // document.getElementById('linkSendA').removeAttribute("class", "inside-wrapper nav-show nav-items clicked sms-icon");
+        // document.getElementById('linkSendA').setAttribute("class", "inside-wrapper nav-show nav-items sms-icon");
+        //
+        // document.getElementById('shortMessageSendA').style.backgroundColor = "#1ea0fa";
+        // document.getElementById('shortMessageSendA').removeAttribute("class", "inside-wrapper nav-show nav-items sms-icon");
+        // document.getElementById('shortMessageSendA').setAttribute("class", "inside-wrapper nav-show nav-items clicked sms-icon");
+
+        document.getElementById("importStudentsBoxA").removeAttribute("class","my-nav-select");
+        document.getElementById("importStudentsBoxA").setAttribute("class","nav-items pull-left my-nav-unselect");
+        document.getElementById("importTeachersBoxA").removeAttribute("class","my-nav-unselect");
+        document.getElementById("importTeachersBoxA").setAttribute("class","nav-items pull-left my-nav-select");
+        document.getElementById('onloadFile1').style.display = "none";
+        document.getElementById('onloadFile2').style.display = "block";
+        document.getElementById('importStudentsBox').style.display = "none";
+        document.getElementById('importTeachersBox').style.display = "block";
+        // if (document.getElementById('msg').value != "") {
+        //     var msg = document.getElementById('msg');
+        //     wordStatic(msg);
+        // }
     }
 }
 
@@ -304,8 +462,11 @@ function test(value) {
 }
 
 //上传文件
-function addFile() {
-    document.getElementById("image").click();
+function addFile(id) {
+    if(id=="image1")
+        document.getElementById("image1").click();
+    if(id=="image2")
+        document.getElementById("image2").click();
 }
 
 //获取答题结束提示语、和短信内容
@@ -339,7 +500,7 @@ function getQuestionInfo() {
 }
 
 //读取上传的excel表格中的内容
-$('#image').change(function (e) {
+$('#image1').change(function (e) {
     debugger;
     var files = e.target.files;
     var fileReader = new FileReader();
@@ -349,7 +510,7 @@ $('#image').change(function (e) {
                 workbook = XLSX.read(data, {
                     type: 'binary'
                 })// 以二进制流方式读取得到整份excel表格对象
-            persons = []; // 存储获取到的数据
+            students = []; // 存储获取到的数据
         } catch (e) {
             layer.msg('文件类型不正确');
             return;
@@ -360,23 +521,71 @@ $('#image').change(function (e) {
         for (var sheet in workbook.Sheets) {
             if (workbook.Sheets.hasOwnProperty(sheet)) {
                 fromTo = workbook.Sheets[sheet]['!ref'];
-                persons = persons.concat(XLSX.utils.sheet_to_json(workbook.Sheets[sheet]));
+                students = students.concat(XLSX.utils.sheet_to_json(workbook.Sheets[sheet]));
                 break; // 如果只取第一张表，就取消注释这行
             }
         }
-        if (persons.length != 0) {
-            if (!persons[0].no || !persons[0].answerNum || !persons[0].answerName || !persons[0].answerBelong || !persons[0].answerPhone || !persons[0].answerEmail) {
+        if (students.length != 0) {
+            if (!students[0].no || !students[0].studentNum || !students[0].studentName || !students[0].studentBelong || !students[0].studentSubject || !students[0].studentClass || !students[0].studentSex || !students[0].studentWeiNum || !students[0].studentQQNum || !students[0].studentPhone || !students[0].studentEmail) {
                 layer.msg('数据模板不正确');
 
                 return
             }
-            _$("#userInfoTable").bootstrapTable('removeAll');
+            _$("#userInfoTable1").bootstrapTable('removeAll');
+            _$("#userInfoTable2").bootstrapTable('removeAll');
             //传入参数
-            for (var i = 0; i < persons.length; i++) {
-                _$("#userInfoTable").bootstrapTable('insertRow', {index: i, row: persons[i]});
-                if (i == persons.length - 1) {
+            for (var i = 0; i < students.length; i++) {
+                _$("#userInfoTable1").bootstrapTable('insertRow', {index: i, row: students[i]});
+                if (i == students.length - 1) {
                     if (files) {
-                        document.getElementById('image').value = '';
+                        document.getElementById('image1').value = '';
+                    }
+                }
+            }
+        }
+    };
+    // 以二进制方式打开文件
+    fileReader.readAsBinaryString(files[0]);
+});
+
+$('#image2').change(function (e) {
+    debugger;
+    var files = e.target.files;
+    var fileReader = new FileReader();
+    fileReader.onload = function (ev) {
+        try {
+            var data = ev.target.result,
+                workbook = XLSX.read(data, {
+                    type: 'binary'
+                })// 以二进制流方式读取得到整份excel表格对象
+            teachers = []; // 存储获取到的数据
+        } catch (e) {
+            layer.msg('文件类型不正确');
+            return;
+        }
+        // 表格的表格范围，可用于判断表头是否数量是否正确
+        var fromTo = '';
+        // 遍历每张表读取
+        for (var sheet in workbook.Sheets) {
+            if (workbook.Sheets.hasOwnProperty(sheet)) {
+                fromTo = workbook.Sheets[sheet]['!ref'];
+                teachers = teachers.concat(XLSX.utils.sheet_to_json(workbook.Sheets[sheet]));
+                break; // 如果只取第一张表，就取消注释这行
+            }
+        }
+        if (teachers.length != 0) {
+            if (!teachers[0].no || !teachers[0].teacherNum || !teachers[0].teacherName || !teachers[0].teacherBelong || !teachers[0].teacherSex || !teachers[0].WeiNum || !teachers[0].QQNum || !teachers[0].teacherEmail) {
+                layer.msg('数据模板不正确');
+
+                return
+            }
+            _$("#userInfoTable2").bootstrapTable('removeAll');
+            //传入参数
+            for (var i = 0; i < teachers.length; i++) {
+                _$("#userInfoTable2").bootstrapTable('insertRow', {index: i, row: teachers[i]});
+                if (i == teachers.length - 1) {
+                    if (files) {
+                        document.getElementById('image2').value = '';
                     }
                 }
             }
@@ -404,7 +613,7 @@ function layOutSend() {
         //发送问卷答题结束语
         var endContent = document.getElementById("tipT").value;
 
-        if (persons.length == 0) {
+        if (students.length == 0) {
             layer.msg("请添加调查人员信息", {icon: 2});
         } else if (endContent == "") {
             layer.msg("请添加答题结束语", {icon: 2});
@@ -420,12 +629,12 @@ function layOutSend() {
                 success: function (result) {
                     //console.log(result);
                     //判断短信条数和上传的人数
-                    if (persons > result) {
+                    if (students > result) {
                         layer.msg("余额不足，无法发布", {icon: 2});
                         layer.closeAll('loading');
                     } else {
                         var url = '/addSendQuestionnaire';
-                        var personsData = _$('#userInfoTable').bootstrapTable('getData');
+                        var studentsData = _$('#userInfoTable1').bootstrapTable('getData');
                         //短信发送问卷
                         var data = {
                             "questionId": questionId,           //问卷id
@@ -434,7 +643,7 @@ function layOutSend() {
                             "sendType": sendType,                //发送类别，0短信，1邮件
                             "context": sendContent,                 //短信内容
                             "questionEndContent": endContent,        //答卷结束语
-                            "sendInfo": personsData                     //人员信息
+                            "sendInfo": studentsData                     //人员信息
                         };
                         setTimeout(function () {
                             layer.msg("发送成功", {icon: 1});
@@ -471,7 +680,7 @@ function layOutSend() {
         var endContent = document.getElementById("tipT").value;
         // //console.log(endContent);
 
-        if (persons.length == 0) {
+        if (students.length == 0) {
             layer.msg("请添加调查人员信息", {
                 icon: 2
             });
@@ -486,7 +695,7 @@ function layOutSend() {
         } else {
             layer.load(2, {time: 2 * 1000});
             var url = '/addSendQuestionnaire';
-            var personsData = _$('#userInfoTable').bootstrapTable('getData');
+            var studentsData = _$('#userInfoTable1').bootstrapTable('getData');
             //邮件发送问卷
             var data = {
                 "questionId": questionId,           //问卷id
@@ -496,7 +705,7 @@ function layOutSend() {
                 "emailTitle": emailTitle,                //邮件标题
                 "context": emailContent,                 //邮件内容
                 "questionEndContent": endContent,        //答卷结束语
-                "sendInfo": personsData                     //人员信息
+                "sendInfo": studentsData                     //人员信息
             };
             // layer.closeAll('loading');
             setTimeout(function () {

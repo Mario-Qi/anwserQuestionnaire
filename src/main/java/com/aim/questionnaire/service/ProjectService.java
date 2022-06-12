@@ -57,7 +57,8 @@ public class ProjectService {
      */
     public PageInfo<Map<String, Object>> queryProjectList(Map<String,Object> map) {
         List<Map<String,Object>> projectemapList = projectEntityMapper.queryProjectList(map);
-        PageInfo<Map<String,Object>> pageInfo = new PageInfo<>(projectemapList);
+        PageInfo pageInfo = new PageInfo();
+        pageInfo.setList(projectemapList);
         return pageInfo;
     }
 

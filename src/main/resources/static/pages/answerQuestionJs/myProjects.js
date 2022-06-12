@@ -27,9 +27,7 @@ function getProjectQuest() {
         "projectName": keyWord,
         "userName": userName
     };
-    console.log("ahfsdhoi")
     commonAjaxPost(true, url, data, getProjectQuestSuccess);
-    console.log("foawfieh")
     //var rr = JSON.parse('{"code":"666","data":[{"projectContent":"项目名","id":"708a580ce83c49c0a0cfc65b151d690e","projectName":"静态测试数据","createDate":"2022-05-13T15:05:40"}],"message":null}')
     //getProjectQuestSuccess(rr)
 }
@@ -38,8 +36,8 @@ function getProjectQuest() {
 responseHandler: function getProjectQuestSuccess(result) {
     console.log(result);
     if (result.code == "666") {
-        var data = result.data;
-      //  $("#panel-23802").empty();
+        var data = result.data.list;
+        $("#panel-23802").empty();
 
         //遍历多个项目
         var text = "";
@@ -47,7 +45,7 @@ responseHandler: function getProjectQuestSuccess(result) {
         if (data.length) {
             for (var i = 0; i < data.length; i++) {
                 var projectInfo = data[i];
-                var projectName = projectInfo.projectName;
+                var projectName = projectInfo.project_name;
                 if (projectName.length >= 25) {
                     projectName = projectName.substring(0, 26) + "...";
                 }

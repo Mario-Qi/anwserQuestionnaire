@@ -73,7 +73,7 @@ public class ProjectService {
      */
     public int deleteProjectById(ProjectEntity projectEntity) {
 
-        String id=projectEntity.getId();//null
+        String id=projectEntity.getId();
         int result=projectEntityMapper.deleteProjectById(id);
         return result;
     }

@@ -6,7 +6,7 @@ var dataId = getCookie("dataId");  // 在校生：2；毕业生：3；教师：4
 var nameOfQuestionnaire = getCookie("nameOfQuestionnaire");
 
 document.getElementById("questPeople").innerText = "调查人员信息 — " + nameOfQuestionnaire;
-document.getElementById("ctl02_ContentPlaceHolder1_InviteEmail1_hrefSend").innerText = "批量发送问卷 — " + nameOfQuestionnaire;
+// document.getElementById("ctl02_ContentPlaceHolder1_InviteEmail1_hrefSend").innerText = "批量发送问卷 — " + nameOfQuestionnaire;
 var shortMessageGetTime = '0';
 
 
@@ -397,6 +397,10 @@ function send(value) {
     if (value == 0) {
         sendType = '0';
         //短信内容显示
+
+        document.getElementById('QQwayhand').style.display = 'block'
+        document.getElementById('WXwayhand').style.display = 'none'
+        document.getElementById('emailwayhand').style.display = 'none'
         document.getElementById('sendKind').style.display = 'block'
         document.getElementById('sendContent').style.display = 'block'
         if (document.getElementsByName('sendTime')[0].checked == true) {
@@ -414,9 +418,33 @@ function send(value) {
         document.getElementById('myLittleTip').style.display = 'none';
         document.getElementById('ctl02_ContentPlaceHolder1_btnSend').style.display = '';
     } else if (value == 1) {
+
+        sendType = '2';
+        //短信内容隐藏
+        document.getElementById('QQwayhand').style.display = 'none'
+        document.getElementById('WXwayhand').style.display = 'block'
+        // document.getElementById('sendKind').style.display = 'none'
+        document.getElementById('emailwayhand').style.display = 'none'
+        document.getElementById('sendContent').style.display = 'block'
+        document.getElementById('sendTimeChoose').style.display = 'none'
+        //    邮箱方式隐藏
+        document.getElementById('sendMailContent').style.display = 'none'
+        //    链接方式显示
+        // document.getElementById('sendUrlContent').style.display = 'block'
+        //调用生成二维码方法
+        getQrcode();
+        //    发送按钮
+        document.getElementById('sendButton').style.display = 'block'
+        document.getElementById('myLittleTip').style.display = '';
+        document.getElementById('ctl02_ContentPlaceHolder1_btnSend').style.display = 'none';
+    } else {
         sendType = '1';
         //短信内容隐藏
-        document.getElementById('sendKind').style.display = 'none'
+        document.getElementById('QQwayhand').style.display = 'none'
+        document.getElementById('WXwayhand').style.display = 'none'
+        document.getElementById('emailwayhand').style.display = 'block'
+
+        document.getElementById('sendKind').style.display = 'block'
         document.getElementById('sendContent').style.display = 'none'
         document.getElementById('sendTimeChoose').style.display = 'none'
         //    邮箱方式显示
@@ -427,23 +455,6 @@ function send(value) {
         document.getElementById('sendButton').style.display = 'block'
         document.getElementById('myLittleTip').style.display = 'none';
         document.getElementById('ctl02_ContentPlaceHolder1_btnSend').style.display = '';
-    } else {
-        sendType = '2';
-        //短信内容隐藏
-        document.getElementById('sendKind').style.display = 'none'
-        document.getElementById('sendContent').style.display = 'none'
-        document.getElementById('sendTimeChoose').style.display = 'none'
-        //    邮箱方式隐藏
-        document.getElementById('sendMailContent').style.display = 'none'
-        //    链接方式显示
-        document.getElementById('sendUrlContent').style.display = 'block'
-        //调用生成二维码方法
-        getQrcode();
-        //    发送按钮
-        document.getElementById('sendButton').style.display = 'block'
-        document.getElementById('myLittleTip').style.display = '';
-        document.getElementById('ctl02_ContentPlaceHolder1_btnSend').style.display = 'none';
-
     }
 }
 
@@ -460,6 +471,19 @@ function test(value) {
         document.getElementById('sendTimeChoose').style.display = 'none'
     }
 }
+
+function setEndtime(value) {
+    if (value == 1) {
+        shortMessageGetTime = '1';
+        document.getElementById('chooseEndTime').style.display = 'block'
+        document.getElementById("scheduledEndTime2").value = getendTime(3);
+        tendTime = document.getElementById("scheduledEndTime").valueOf()
+    } else {
+        shortMessageGetTime = '0';
+        document.getElementById('chooseEndTime').style.display = 'none'
+    }
+}
+
 
 //上传文件
 function addFile(id) {
@@ -929,9 +953,20 @@ function checkNum() {
 }
 
 function copyUrl2() {
-    var Url2 = document.getElementById("ctl02_ContentPlaceHolder1_txtLink");
+    var Url2 = document.getElementById("quesLinkID");
     Url2.select(); // 选择对象
     document.execCommand("Copy"); // 执行浏览器复制命令
     layer.msg("已复制好，可贴粘。", {icon: 1, time: 1000});
 }
 
+function getendTime(it) {
+    var nowDate = new Date();
+    nowDate.setDate(nowDate.getDate()+it);
+    var year = nowDate.getFullYear();
+    var month = nowDate.getMonth() + 1 < 10 ? "0" + (nowDate.getMonth() + 1) : nowDate.getMonth() + 1;
+    var date = nowDate.getDate() < 10 ? "0" + nowDate.getDate() : nowDate.getDate();
+    var hour = nowDate.getHours() < 10 ? "0" + nowDate.getHours() : nowDate.getHours();
+    var minute = nowDate.getMinutes() < 10 ? "0" + nowDate.getMinutes() : nowDate.getMinutes();
+    var second = nowDate.getSeconds() < 10 ? "0" + nowDate.getSeconds() : nowDate.getSeconds();
+    return year + "-" + month + "-" + date + " " + hour + ":" + minute+ ":" + second;
+}

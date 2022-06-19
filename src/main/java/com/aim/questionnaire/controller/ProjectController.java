@@ -109,10 +109,14 @@ public class ProjectController {
     public HttpResponseEntity modifyProjectInfo(@RequestBody Map<String,Object> map) {
         HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
         try {
-            String user = (String) map.get("createdBy");
-            ProjectEntity projectEntity = new ProjectEntity();
-            projectEntity.setProjectName((String) map.get("projectName"));
+
+            ProjectEntity projectEntity=projectService.queryProjectNameById(map);
+            String user=projectEntity.getCreatedBy();
+            //System.out.println(user);
+           projectEntity.setProjectName((String) map.get("projectName"));
+           // System.out.println((String) map.get("projectName"));
             projectEntity.setProjectContent((String) map.get("projectContent"));
+            //System.out.println((String) map.get("projectContent"));
             int result = projectService.modifyProjectInfo(projectEntity,user);
             if(result==3){
                 httpResponseEntity.setCode(Constans.EXIST_CODE);
@@ -122,7 +126,7 @@ public class ProjectController {
                 httpResponseEntity.setMessage(Constans.ADD_MESSAGE);
             }
         }catch (Exception e) {
-            logger.info("addProjectInfo 更新项目>>>>>>>>>>>" + e.getLocalizedMessage());
+            logger.info("-modifyProjectInfo更新项目>>>>>>>>>>>" + e.getLocalizedMessage());
             httpResponseEntity.setCode(Constans.EXIST_CODE);
             httpResponseEntity.setMessage(Constans.EXIST_MESSAGE);
         }

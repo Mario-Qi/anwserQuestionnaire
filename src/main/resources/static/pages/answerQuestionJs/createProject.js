@@ -27,6 +27,7 @@ function createProjectRight() {
         } else {
             var userName = getCookie("userName");
             var url = '/addProjectInfo';
+
             var data = {
                 "projectName": projectName,
                 "projectContent": projectContent,
@@ -38,7 +39,7 @@ function createProjectRight() {
                 if (result.code == "666") {
                     layer.msg('创建成功');
                     setTimeout(function () {
-                        window.location.href = "myQuestionnaires.html";
+                        window.location.href = "myProjects.html";//myQuestionnaires.html
                     }, 700)
                 } else if (result.code == "333") {
                     layer.msg(result.message, {icon: 2});

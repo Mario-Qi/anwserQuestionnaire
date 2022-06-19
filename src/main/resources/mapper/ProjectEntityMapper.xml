@@ -20,7 +20,9 @@
 
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-
+    SELECT id, user_id, project_name, project_content, created_by, creation_date, last_updated_by, last_update_date
+    FROM LATERAL project_info
+    WHERE  id=#{id,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     DELETE from project_info
@@ -38,26 +40,27 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.aim.questionnaire.dao.entity.ProjectEntity">
     update project_info
     <set>
-      <if test="user_id != null">
-        user_id = #{userId,jdbcType=VARCHAR},
-      </if>
       <if test="projectName != null">
         project_name = #{projectName,jdbcType=VARCHAR},
       </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="creationDate != null">
+        creation_date = #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null">
+        created_by = #{createdBy,jdbcType=VARCHAR},
+      </if>
+
       <if test="projectContent != null">
         project_content = #{projectContent,jdbcType=VARCHAR},
       </if>
-      <if test="created_by != null">
-        created_by = #{created_by,jdbcType=VARCHAR},
+      <if test="lastUpdatedBy != null">
+        last_updated_by = #{lastUpdatedBy,jdbcType=VARCHAR},
       </if>
-      <if test="creation_date != null">
-        creation_date  = #{creation_date ,jdbcType=TIMESTAMP},
-      </if>
-      <if test="last_updated_by != null">
-        last_updated_by = #{last_updated_by,jdbcType=VARCHAR},
-      </if>
-      <if test="last_update_date != null">
-        last_update_date = #{last_update_date,jdbcType=TIMESTAMP},
+      <if test="lastUpdateDate != null">
+        last_update_date = #{lastUpdateDate,jdbcType=TIMESTAMP},
       </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
@@ -89,7 +92,9 @@
   </select>
 
   <!--根据项目id查询项目名称-->
-  <select id="queryProjectNameById" parameterType="java.lang.String" resultType="java.lang.String">
-
+  <select id="queryProjectNameById" parameterType="java.lang.String" resultType="com.aim.questionnaire.dao.entity.ProjectEntity">
+    SELECT id, user_id, project_name, project_content, created_by, creation_date, last_updated_by, last_update_date
+    FROM  project_info
+    WHERE  id=#{id,jdbcType=VARCHAR}
   </select>
 </mapper>

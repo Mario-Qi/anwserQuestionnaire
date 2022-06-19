@@ -38,6 +38,7 @@ public class ProjectService {
             return 3;
         }
 
+
         String id = UUIDUtil.getOneUUID();
         projectEntity.setId(id);
         //创建时间
@@ -69,9 +70,13 @@ public class ProjectService {
             System.out.println("333");
             return 3;
         }
-
-        String id = UUIDUtil.getOneUUID();
-        projectEntity.setId(id);
+        if(projectEntity.getProjectName().isEmpty()||projectEntity.getProjectContent().isEmpty()){
+            //项目名称或者项目说明为空
+            System.out.println("3331");
+            return 3;
+        }
+        // String id = UUIDUtil.getOneUUID();
+        //projectEntity.setId(id);
         //创建时间
         Date date = DateUtil.getCreateTime();
         //projectEntity.setCreationDate(date);
@@ -79,6 +84,7 @@ public class ProjectService {
         //创建人
        // projectEntity.setCreatedBy(username);
         projectEntity.setLastUpdatedBy(username);
+        System.out.println(username);
         //创建人ID
        // projectEntity.setUserId(userId);
 
@@ -110,6 +116,19 @@ public class ProjectService {
         PageInfo pageInfo = new PageInfo();
         pageInfo.setList(projectemapList);
         return pageInfo;
+    }
+
+    /**
+     * 查询项目通过id
+     * @param map
+     * @return
+     */
+    public ProjectEntity queryProjectNameById(Map<String,Object> map) {
+       // System.out.println(map);
+      ProjectEntity projectEntity=projectEntityMapper.queryProjectNameById(map);
+      System.out.println(projectEntity.getId());
+      return  projectEntity;
+
     }
 
     /**

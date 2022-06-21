@@ -3,6 +3,7 @@ package com.aim.questionnaire.service;
 import com.aim.questionnaire.common.utils.DateUtil;
 import com.aim.questionnaire.common.utils.UUIDUtil;
 import com.aim.questionnaire.dao.ProjectEntityMapper;
+import com.aim.questionnaire.dao.QuestionnaireEntityMapper;
 import com.aim.questionnaire.dao.UserEntityMapper;
 import com.aim.questionnaire.dao.entity.ProjectEntity;
 import com.github.pagehelper.PageInfo;
@@ -22,6 +23,9 @@ public class ProjectService {
     private ProjectEntityMapper projectEntityMapper;
     @Autowired
     private UserEntityMapper userEntityMapper;
+
+    @Autowired
+    private QuestionnaireEntityMapper questionnaireEntityMapper;
 
 
 
@@ -51,7 +55,6 @@ public class ProjectService {
         //创建人ID
         projectEntity.setUserId(userId);
 
-       // System.out.println("123");
         int result = projectEntityMapper.insert(projectEntity);
 
         return result;
@@ -113,8 +116,20 @@ public class ProjectService {
      */
     public PageInfo<Map<String, Object>> queryProjectList(Map<String,Object> map) {
         List<Map<String,Object>> projectemapList = projectEntityMapper.queryProjectList(map);
+        List<Map<String,Object>> projectList = new ArrayList<>();
+        for(Map<String,Object> m : projectemapList){
+            String id = String.valueOf(m.get("id"));
+            List<Map<String,Object>> questionnaireList =  questionnaireEntityMapper.queryQuestionnaireByProjectID(id);
+            Map<String,Object> returnmap = new HashMap<>();
+            Set<String> keySet = m.keySet();
+            for(String key : keySet){
+                returnmap.put(key,m.get(key));
+            }
+            returnmap.put("questionnaireList",questionnaireList);
+            projectList.add(returnmap);
+        }
         PageInfo pageInfo = new PageInfo();
-        pageInfo.setList(projectemapList);
+        pageInfo.setList(projectList);
         return pageInfo;
     }
 

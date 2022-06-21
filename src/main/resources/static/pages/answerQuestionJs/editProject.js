@@ -33,6 +33,7 @@ function editProjectRight(projectNameInt, projectContentInt) {
             layer.msg('请完整填写项目描述')
         } else {
             var url = '/modifyProjectInfo';
+            console.log(document.cookie)
             var data = {
                 "id": projectId,
                 "projectName": projectNameInt,

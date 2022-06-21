@@ -6,7 +6,7 @@ var dataId = getCookie("dataId");  // 在校生：2；毕业生：3；教师：4
 var nameOfQuestionnaire = getCookie("nameOfQuestionnaire");
 
 document.getElementById("questPeople").innerText = "调查人员信息 — " + nameOfQuestionnaire;
-document.getElementById("ctl02_ContentPlaceHolder1_InviteEmail1_hrefSend").innerText = "批量发送问卷 — " + nameOfQuestionnaire;
+// document.getElementById("ctl02_ContentPlaceHolder1_InviteEmail1_hrefSend").innerText = "批量发送问卷 — " + nameOfQuestionnaire;
 var shortMessageGetTime = '0';
 
 
@@ -397,6 +397,10 @@ function send(value) {
     if (value == 0) {
         sendType = '0';
         //短信内容显示
+
+        document.getElementById('QQwayhand').style.display = 'block'
+        document.getElementById('WXwayhand').style.display = 'none'
+        document.getElementById('emailwayhand').style.display = 'none'
         document.getElementById('sendKind').style.display = 'block'
         document.getElementById('sendContent').style.display = 'block'
         if (document.getElementsByName('sendTime')[0].checked == true) {
@@ -414,9 +418,33 @@ function send(value) {
         document.getElementById('myLittleTip').style.display = 'none';
         document.getElementById('ctl02_ContentPlaceHolder1_btnSend').style.display = '';
     } else if (value == 1) {
+
         sendType = '1';
         //短信内容隐藏
-        document.getElementById('sendKind').style.display = 'none'
+        document.getElementById('QQwayhand').style.display = 'none'
+        document.getElementById('WXwayhand').style.display = 'block'
+        // document.getElementById('sendKind').style.display = 'none'
+        document.getElementById('emailwayhand').style.display = 'none'
+        document.getElementById('sendContent').style.display = 'block'
+        document.getElementById('sendTimeChoose').style.display = 'none'
+        //    邮箱方式隐藏
+        document.getElementById('sendMailContent').style.display = 'none'
+        //    链接方式显示
+        // document.getElementById('sendUrlContent').style.display = 'block'
+        //调用生成二维码方法
+        getQrcode();
+        //    发送按钮
+        document.getElementById('sendButton').style.display = 'block'
+        document.getElementById('myLittleTip').style.display = '';
+        document.getElementById('ctl02_ContentPlaceHolder1_btnSend').style.display = '';
+    } else {
+        sendType = '2';
+        //短信内容隐藏
+        document.getElementById('QQwayhand').style.display = 'none'
+        document.getElementById('WXwayhand').style.display = 'none'
+        document.getElementById('emailwayhand').style.display = 'block'
+
+        document.getElementById('sendKind').style.display = 'block'
         document.getElementById('sendContent').style.display = 'none'
         document.getElementById('sendTimeChoose').style.display = 'none'
         //    邮箱方式显示
@@ -427,23 +455,6 @@ function send(value) {
         document.getElementById('sendButton').style.display = 'block'
         document.getElementById('myLittleTip').style.display = 'none';
         document.getElementById('ctl02_ContentPlaceHolder1_btnSend').style.display = '';
-    } else {
-        sendType = '2';
-        //短信内容隐藏
-        document.getElementById('sendKind').style.display = 'none'
-        document.getElementById('sendContent').style.display = 'none'
-        document.getElementById('sendTimeChoose').style.display = 'none'
-        //    邮箱方式隐藏
-        document.getElementById('sendMailContent').style.display = 'none'
-        //    链接方式显示
-        document.getElementById('sendUrlContent').style.display = 'block'
-        //调用生成二维码方法
-        getQrcode();
-        //    发送按钮
-        document.getElementById('sendButton').style.display = 'block'
-        document.getElementById('myLittleTip').style.display = '';
-        document.getElementById('ctl02_ContentPlaceHolder1_btnSend').style.display = 'none';
-
     }
 }
 
@@ -460,6 +471,19 @@ function test(value) {
         document.getElementById('sendTimeChoose').style.display = 'none'
     }
 }
+
+function setEndtime(value) {
+    if (value == 1) {
+        shortMessageGetTime = '1';
+        document.getElementById('chooseEndTime').style.display = 'block'
+        document.getElementById("scheduledEndTime2").value = getendTime(3);
+        tendTime = document.getElementById("scheduledEndTime").valueOf()
+    } else {
+        shortMessageGetTime = '0';
+        document.getElementById('chooseEndTime').style.display = 'none'
+    }
+}
+
 
 //上传文件
 function addFile(id) {
@@ -598,9 +622,8 @@ $('#image2').change(function (e) {
 //发布问卷
 function layOutSend() {
 
-    //短信发送方式
+    //QQ发送方式
     if (sendType == '0') {
-
         if (shortMessageGetTime == '0') {
             sendTime = "";
         } else if (shortMessageGetTime == '1') {
@@ -608,7 +631,7 @@ function layOutSend() {
             sendTime = document.getElementById("scheduledEndTime").value;
             sendTime = dateChange(sendTime);
         }
-        //发送短信内容
+        //发送QQ消息内容
         var sendContent = document.getElementById("msg").value;
         //发送问卷答题结束语
         var endContent = document.getElementById("tipT").value;
@@ -618,58 +641,76 @@ function layOutSend() {
         } else if (endContent == "") {
             layer.msg("请添加答题结束语", {icon: 2});
         } else if (sendContent == "") {
-            layer.msg("请添加短信内容", {icon: 2});
+            layer.msg("请添加QQ消息内容", {icon: 2});
         } else {
             layer.load(2, {time: 2 * 1000});
+            var url = '/addSendQuestionnaire';
+            var studentsData = _$('#userInfoTable1').bootstrapTable('getData');
+            var teachersData = _$('#userInfoTable2').bootstrapTable('getData');
+            //短信发送问卷
+            var data = {
+                "questionId": questionId,           //问卷id
+                "releaseTime": sendTime,            //发送时间
+                "sendType": 0,                //发送类别，0QQ，1微信，2邮件
+                "context": sendContent,                 //消息内容
+                "questionEndContent": endContent,        //答卷结束语
+                "studentsData": studentsData,                     //人员信息
+                "teachersData":teachersData
+            };
+            setTimeout(function () {
+                layer.msg("发送成功", {icon: 1});
+            }, 2000);
             jQuery.ajax({
-                type: "POST",
-                url: httpRequestUrl + "/selSum",    //查短信条数
-                dataType: 'json',
-                contentType: "application/json",
+                "async": true,
+                "url": httpRequestUrl + url,
+                "type": "POST",
+                "data": JSON.stringify(data),
+                "dataType": "json",
+                "contentType": "application/json",
                 success: function (result) {
                     //console.log(result);
-                    //判断短信条数和上传的人数
-                    if (students > result) {
-                        layer.msg("余额不足，无法发布", {icon: 2});
-                        layer.closeAll('loading');
-                    } else {
-                        var url = '/addSendQuestionnaire';
-                        var studentsData = _$('#userInfoTable1').bootstrapTable('getData');
-                        //短信发送问卷
-                        var data = {
-                            "questionId": questionId,           //问卷id
-                            "dataId": dataId,                    //问卷类型
-                            "releaseTime": sendTime,            //发送时间
-                            "sendType": sendType,                //发送类别，0短信，1邮件
-                            "context": sendContent,                 //短信内容
-                            "questionEndContent": endContent,        //答卷结束语
-                            "sendInfo": studentsData                     //人员信息
-                        };
-                        setTimeout(function () {
-                            layer.msg("发送成功", {icon: 1});
-                        }, 2000);
-                        jQuery.ajax({
-                            "async": true,
-                            "url": httpRequestUrl + url,
-                            "type": "POST",
-                            "data": JSON.stringify(data),
-                            "dataType": "json",
-                            "contentType": "application/json",
-                            success: function (result) {
-                                //console.log(result);
-                            },
-                            error: function (jqXHR, textStatus, errorThrown) {
-                                //console.log(jqXHR);
-                                //console.log(textStatus);
-                                //console.log(errorThrown);
-                            }
-                        })
-
-                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    //console.log(jqXHR);
+                    //console.log(textStatus);
+                    //console.log(errorThrown);
                 }
-            });
+            })
         }
-    } else if (sendType == '1') {   //邮箱发送方式
+    } else if (sendType == "1") {
+        layer.load(2, {time: 2 * 1000});
+        var url = '/addSendQuestionnaire';
+        var studentsData = _$('#userInfoTable1').bootstrapTable('getData');
+        var teachersData = _$('#userInfoTable2').bootstrapTable('getData');
+        //短信发送问卷
+        var data = {
+            "questionId": questionId,           //问卷id
+            "releaseTime": sendTime,            //发送时间
+            "sendType": 1,                //发送类别，0QQ，1微信，2邮件
+            "context": sendContent,                 //消息内容
+            "questionEndContent": endContent,        //答卷结束语
+            "studentsData": studentsData,                     //人员信息
+            "teachersData":teachersData
+        };
+        setTimeout(function () {
+            layer.msg("发送成功", {icon: 1});
+        }, 2000);
+        jQuery.ajax({
+            "async": true,
+            "url": httpRequestUrl + url,
+            "type": "POST",
+            "data": JSON.stringify(data),
+            "dataType": "json",
+            "contentType": "application/json",
+            success: function (result) {
+                //console.log(result);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+
+            }
+        })
+    }
+    else if (sendType == '2') {   //邮箱发送方式
         //邮件标题
         var emailTitle = document.getElementById("ctl02_ContentPlaceHolder1_txtEmailTitle").value;
         //邮件发送富文本内容
@@ -699,15 +740,14 @@ function layOutSend() {
             //邮件发送问卷
             var data = {
                 "questionId": questionId,           //问卷id
-                "dataId": dataId,                    //问卷类型
                 "releaseTime": "",            //发送时间
-                "sendType": sendType,                //发送类别，0短信，1邮件
+                "sendType": 2,                //发送类别，0短信，1邮件
                 "emailTitle": emailTitle,                //邮件标题
                 "context": emailContent,                 //邮件内容
                 "questionEndContent": endContent,        //答卷结束语
-                "sendInfo": studentsData                     //人员信息
+                "studentsData": studentsData,                     //人员信息
+                "teachersData":teachersData
             };
-            // layer.closeAll('loading');
             setTimeout(function () {
                 layer.msg("发送成功", {icon: 1});
             }, 2000);
@@ -719,7 +759,6 @@ function layOutSend() {
                 "dataType": "json",
                 "contentType": "application/json",
                 success: function (result) {
-                    //console.log(result);
                    if (result.code == "333") {
                         layer.closeAll('loading');
                         layer.msg(result.message, {icon: 2});
@@ -729,9 +768,7 @@ function layOutSend() {
                     }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    //console.log(jqXHR);
-                    //console.log(textStatus);
-                    //console.log(errorThrown);
+
                 }
             });
         }
@@ -748,9 +785,8 @@ function layOutHold(falg) {
 
     //短信
     if (sendType == "0") {
-        //发送短信内容
+        //发送QQ内容
         var sendContent = document.getElementById("msg").value;
-
         data = {
             "questionId": questionId,           //问卷id
             "dataId": dataId,                    //问卷类型
@@ -758,10 +794,24 @@ function layOutHold(falg) {
             "sendType": sendType,                //发送类别，0短信，1邮件
             "context": sendContent,                 //短信内容
             "questionEndContent": endContent,        //答卷结束语
-            "sendInfo": null                     //人员信息
+            "student": students,                      //人员信息
+            "teacher": teachers
         };
 
-    } else if (sendType == "1") {     //邮件
+    }else if (sendType == "1") {
+        var sendContent = document.getElementById("msg").value;
+        data = {
+            "questionId": questionId,           //问卷id
+            "dataId": dataId,                    //问卷类型
+            "releaseTime": "",            //发送时间
+            "sendType": sendType,                //发送类别，0短信，1邮件
+            "context": sendContent,                 //短信内容
+            "questionEndContent": endContent,        //答卷结束语
+            "student": students,                      //人员信息
+            "teacher": teachers
+        };
+
+    }else if (sendType == "2") {     //邮件
         //邮件标题
         var emailTitle = document.getElementById("ctl02_ContentPlaceHolder1_txtEmailTitle").value;
         //邮件发送富文本内容
@@ -770,22 +820,13 @@ function layOutHold(falg) {
         //发送问卷答题结束语
         data = {
             "questionId": questionId,           //问卷id
-            "dataId": dataId,                    //问卷类型
-            "releaseTime": "",            //发送时间
-            "sendType": sendType,                //发送类别，0短信，1邮件
+            "releaseTime": sendTime,            //发送时间
+            "sendType": sendType,                //发送类别，0QQ，1微信，2邮箱
             "emailTitle": emailTitle,                //邮件标题
-            // "context": emailContent,                 //邮件内容
+            "context": emailContent,                 //邮件内容
             "questionEndContent": endContent,        //答卷结束语
-            "sendInfo": null                     //人员信息
-        };
-
-    } else if (sendType == "2") {
-        data = {
-            "questionId": questionId,           //问卷id
-            "releaseTime": "",            //发送时间
-            "sendType": sendType,                //发送类别，0短信，1邮件
-            "questionEndContent": endContent,        //答卷结束语
-            "sendInfo": null                     //人员信息
+            "student": students,                      //人员信息
+            "teacher": teachers
         };
 
     }
@@ -856,7 +897,6 @@ function gotoPreview() {
 function createDtePicker() {
     var beginTimeTake;
     var nowTime = getFormatDateSecond();
-
     $('#scheduledEndTime').daterangepicker({
         minDate: nowTime,
         singleDatePicker: true,
@@ -881,6 +921,10 @@ function createDtePicker() {
         }
     }, function (start, end, label) {
         // //console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+        // sendTime = document.getElementById("scheduledEndTime").value;
+        // console.log(sendTime);
+        // var myDate= new Date(Date.parse(document.getElementById("scheduledEndTime").value.replace(/-/g,"/")));
+        // console.log(("date"+myDate));
     });
 }
 
@@ -929,9 +973,20 @@ function checkNum() {
 }
 
 function copyUrl2() {
-    var Url2 = document.getElementById("ctl02_ContentPlaceHolder1_txtLink");
+    var Url2 = document.getElementById("quesLinkID");
     Url2.select(); // 选择对象
     document.execCommand("Copy"); // 执行浏览器复制命令
     layer.msg("已复制好，可贴粘。", {icon: 1, time: 1000});
 }
 
+function getendTime(it) {
+    var nowDate = new Date();
+    nowDate.setDate(nowDate.getDate()+it);
+    var year = nowDate.getFullYear();
+    var month = nowDate.getMonth() + 1 < 10 ? "0" + (nowDate.getMonth() + 1) : nowDate.getMonth() + 1;
+    var date = nowDate.getDate() < 10 ? "0" + nowDate.getDate() : nowDate.getDate();
+    var hour = nowDate.getHours() < 10 ? "0" + nowDate.getHours() : nowDate.getHours();
+    var minute = nowDate.getMinutes() < 10 ? "0" + nowDate.getMinutes() : nowDate.getMinutes();
+    var second = nowDate.getSeconds() < 10 ? "0" + nowDate.getSeconds() : nowDate.getSeconds();
+    return year + "-" + month + "-" + date + " " + hour + ":" + minute+ ":" + second;
+}

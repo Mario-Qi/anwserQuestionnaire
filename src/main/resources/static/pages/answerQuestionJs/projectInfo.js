@@ -13,29 +13,28 @@ $(function () {
 function getProjectInfo() {
     var projectId = getCookie('projectId');
 
-    var url = '/queryProjectList';
-    var data = {
-        "id": projectId
-    };
+    var url = '/getProjectInfo';
+    var data = projectId
     commonAjaxPost(true, url, data, getProjectInfoSuccess);
 
 }
 
 // 查看项目详细信息成功
 function getProjectInfoSuccess(result) {
-    // //console.log(result)
+    console.log(result)
     if (result.code == "666") {
-        var projectInfo = result.data[0];
+        var projectInfo = result.data.list;
         $("#projectNameSpan").text(projectInfo.projectName);
         $("#createTimeSpan").text(projectInfo.createDate.replace(/-/g,'/'));
         $("#adminSpan").text(projectInfo.createdBy);
         $("#projectContentSpan").text(projectInfo.projectContent);
 
+        $("#questTableBody").empty();
         var text = "";
             text += "<tr>";
             text += "    <td style=\"text-align: center;color: #d9534f\" colspan=\"4\">暂无调查问卷</td>";
             text += "</tr>";
-        $("#questTableBody").empty();
+
         $("#questTableBody").append(text)
 
     } else if (result.code == "333") {

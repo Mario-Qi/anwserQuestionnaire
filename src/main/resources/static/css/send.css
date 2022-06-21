@@ -610,7 +610,10 @@ body{
     height: 800px;
     width: 1400px;
 }
-
+#shortMessageSend{
+    background-color: #f7f8f9;
+    text-align: center;
+}
 
 .add__batches:hover {
     color: #fff;
@@ -626,10 +629,43 @@ body{
     border-radius: 4px;
     background-color: transparent;
 }
+.linkofquestionblok{
+    background-color: #FFFFFF;
+    width: 800px;
+    height: 160px;
+    margin: 0 auto;
+}
+
+.waybutton{
+    width: 40px;
+    height: 40px;
+}
+.iconway{
+    width: 250px;
+    height: 40px;
+    top: 0px;
+}
+.vjuzhong{
+    position: relative;
+    top: 65px;
+    left: 50px;
+    vertical-align: middle;
+}
+
+#sendwaydiv{
+    position: relative;
+    top: 50px;
+    left: 10px;
+    vertical-align: middle;
+}
 
 #liSet .finishBtn {
     color: #4b84bd;
     border: 1px solid #4b84bd;
+}
+.image-box{
+    text-align:center;
+    font-size:14px
 }
 
 #liSet .finishBtn:hover {

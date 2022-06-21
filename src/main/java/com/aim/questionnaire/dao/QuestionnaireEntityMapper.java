@@ -164,6 +164,10 @@ public interface QuestionnaireEntityMapper {
      * @return
      */
     int modifyQuestionnaire(HashMap<String, Object> map);
+    /**
+     *根据项目id查询问卷
+     */
+    List<Map<String,Object>> queryQuestionnaireByProjectID(@Param("id") String id);
 
     /**
      * 修改问卷状态

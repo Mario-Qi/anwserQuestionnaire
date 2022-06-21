@@ -780,21 +780,21 @@
                                                 </span>
                                                 </div>
 
-                                                <div class="pull-left" style="margin-bottom: 20px">
-                                                    <label style="font-weight: bold;font-size: 16px">问卷关闭时间：</label>
-                                                    <span style="padding-bottom: 23px;">
-                                                  <input type="radio" style="font-size: 16px" name="endTime" value="0" onclick="setEndtime('0')"
-                                                         checked>不限&nbsp;&nbsp;&nbsp;&nbsp;
-                                                    <input type="radio" style="font-size: 16px" name="endTime" value="1" onclick="setEndtime('1')">定时关闭
-                                                </span>
-                                                </div>
-                                                <div class="pull-left" id="chooseEndTime" style="display: none;margin-bottom: 20px">
-                                                    <label style="font-weight: bold;font-size: 16px">截止时间</label>
-                                                    <span style="padding-left: 23px;">
-                                                    <input id="scheduledEndTime2" class="time-g"
-                                                           style="height:32px;padding-left: 20px;border-radius: 4px;border: 1px solid #abafb2">
-                                                </span>
-                                                </div>
+<!--                                                <div class="pull-left" style="margin-bottom: 20px">-->
+<!--                                                    <label style="font-weight: bold;font-size: 16px">问卷关闭时间：</label>-->
+<!--                                                    <span style="padding-bottom: 23px;">-->
+<!--                                                  <input type="radio" style="font-size: 16px" name="endTime" value="0" onclick="setEndtime('0')"-->
+<!--                                                         checked>不限&nbsp;&nbsp;&nbsp;&nbsp;-->
+<!--                                                    <input type="radio" style="font-size: 16px" name="endTime" value="1" onclick="setEndtime('1')">定时关闭-->
+<!--                                                </span>-->
+<!--                                                </div>-->
+<!--                                                <div class="pull-left" id="chooseEndTime" style="display: none;margin-bottom: 20px">-->
+<!--                                                    <label style="font-weight: bold;font-size: 16px">截止时间</label>-->
+<!--                                                    <span style="padding-left: 23px;">-->
+<!--                                                    <input id="scheduledEndTime2" class="time-g"-->
+<!--                                                           style="height:32px;padding-left: 20px;border-radius: 4px;border: 1px solid #abafb2">-->
+<!--                                                </span>-->
+<!--                                                </div>-->
 
                                                 <div class="pull-left" style="margin-bottom: 20px">
                                                     <label style="font-weight: bold;font-size: 16px">单个用户最大答题次数：</label>
@@ -883,9 +883,11 @@
                                                     <span id="myLittleTip" style="display: none" class="must">注意：请在分享链接前点击保存内容按钮，否则答卷结束可能没有答卷结束提示语</span>
                                                     <p>在这里填入该问卷提交时对答题者的提示语</p>
                                                     <div>
-                                                <textarea id="tipT" placeholder="不能超过30字"
-                                                          style="height:50px;width: 750px;border-radius: 4px;border: 1px solid #abafb2;resize:none;padding:6px 12px;margin-top: 15px">
-                                                </textarea>
+<!--                                                <textarea id="tipT" placeholder="不能超过30字" style="height:50px;width: 750px;border-radius: 4px;border: 1px solid #abafb2;resize:none;padding:6px 12px;margin-top: 15px">-->
+<!--                                                </textarea>-->
+                                                        <textarea class="form-control-t" id="tipT" onkeyup="wordStatic(this);"
+                                                                  maxlength="38" placeholder="不能超过30字"
+                                                                  style="width: 750px;height:50px;border-radius: 4px;border: 1px solid #abafb2;resize:none;padding:6px 12px;margin-top: 15px"></textarea>
                                                     </div>
                                                 </div>
 

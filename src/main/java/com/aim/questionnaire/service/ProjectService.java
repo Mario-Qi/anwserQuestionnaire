@@ -28,15 +28,15 @@ public class ProjectService {
     private QuestionnaireEntityMapper questionnaireEntityMapper;
 
 
-
     /**
      * 添加项目
+     *
      * @param projectEntity
      * @return
      */
-    public int addProjectInfo(ProjectEntity projectEntity,String username) {
+    public int addProjectInfo(ProjectEntity projectEntity, String username) {
         String userId = userEntityMapper.selectIdByName(username);
-        if(userId.isEmpty()){
+        if (userId.isEmpty()) {
             //用户不存在或用户id为空
             System.out.println("333");
             return 3;
@@ -62,13 +62,14 @@ public class ProjectService {
 
     /**
      * 修改项目
+     *
      * @param projectEntity
      * @return
      */
-    public int modifyProjectInfo(ProjectEntity projectEntity,String username) {
+    public int modifyProjectInfo(ProjectEntity projectEntity, String username) {
 
         String userId = userEntityMapper.selectIdByName(username);
-        if(userId.isEmpty()){
+        if (userId.isEmpty()) {
             //用户不存在或用户id为空
             System.out.println("333");
             return 3;
@@ -85,11 +86,11 @@ public class ProjectService {
         //projectEntity.setCreationDate(date);
         projectEntity.setLastUpdateDate(date);
         //创建人
-       // projectEntity.setCreatedBy(username);
+        // projectEntity.setCreatedBy(username);
         projectEntity.setLastUpdatedBy(username);
         System.out.println(username);
         //创建人ID
-       // projectEntity.setUserId(userId);
+        // projectEntity.setUserId(userId);
 
         // System.out.println("123");
         int result = projectEntityMapper.updateByPrimaryKeySelective(projectEntity);
@@ -99,23 +100,25 @@ public class ProjectService {
 
     /**
      * 删除项目
+     *
      * @param projectEntity
      * @return
      */
     public int deleteProjectById(ProjectEntity projectEntity) {
 
-        String id=projectEntity.getId();
-        int result=projectEntityMapper.deleteProjectById(id);
+        String id = projectEntity.getId();
+        int result = projectEntityMapper.deleteProjectById(id);
         return result;
     }
 
     /**
      * 查询项目列表
+     *
      * @param map
      * @return
      */
-    public PageInfo<Map<String, Object>> queryProjectList(Map<String,Object> map) {
-        List<Map<String,Object>> projectemapList = projectEntityMapper.queryProjectList(map);
+    public PageInfo<Map<String, Object>> queryProjectList(Map<String, Object> map) {
+        List<Map<String, Object>> projectemapList = projectEntityMapper.queryProjectList(map);
         List<Map<String,Object>> projectList = new ArrayList<>();
         for(Map<String,Object> m : projectemapList){
             String id = String.valueOf(m.get("id"));
@@ -148,9 +151,30 @@ public class ProjectService {
 
     /**
      * 查询全部项目的名字接口
+     *
      * @return
      */
-    public List<Map<String,Object>> queryAllProjectName() {
+    public List<Map<String, Object>> queryAllProjectName() {
         return null;
+    }
+    /**
+     * 根据项目id获得项目信息
+     *
+     * @return
+     */
+    public PageInfo getProjectInfo(String projectId) {
+        Map<String, Object> projectMap = projectEntityMapper.getProjectInfo(projectId);
+        List<Map<String,Object>> questionnaireList =  questionnaireEntityMapper.queryQuestionnaireByProjectID(projectId);
+        Map<String,Object> returnMap = new HashMap<>();
+        Set<String> keySet = projectMap.keySet();
+        for(String key : keySet){
+                returnMap.put(key,projectMap.get(key));
+            }
+            returnMap.put("questionnaireList",questionnaireList);
+        PageInfo pageInfo = new PageInfo();
+        List<Object> list = new ArrayList<>();
+        list.add(returnMap);
+        pageInfo.setList(list);
+        return pageInfo;
     }
 }

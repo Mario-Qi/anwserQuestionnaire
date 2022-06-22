@@ -1,6 +1,7 @@
 package com.aim.questionnaire.dao;
 
 import com.aim.questionnaire.dao.entity.ProjectEntity;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -61,5 +62,9 @@ public interface ProjectEntityMapper {
      * @return
      */
     List<Map<String,Object>> queryAllProjectName();
-
+    /**
+     * 获取项目信息
+     * @return
+     */
+    Map<String,Object> getProjectInfo(@Param("id") String projectId);
 }

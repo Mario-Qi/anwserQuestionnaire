@@ -85,6 +85,13 @@
     WHERE username = #{userName})
 
   </select>
+  <!--根据项目id查询项目信息-->
+  <select id="getProjectInfo" parameterType="java.lang.String" resultType="map">
+    SELECT id, user_id AS userId, project_name AS projectName, project_content AS projectContent, created_by AS createdBy, creation_date AS creationDate, last_updated_by AS lastUpdatedBy, last_update_date AS lastUpdatedDate
+    FROM  project_info
+    WHERE  id = #{id,jdbcType=VARCHAR}
+  </select>
+
 
   <!--查询全部项目的名字接口-->
   <select id="queryAllProjectName" resultType="map">

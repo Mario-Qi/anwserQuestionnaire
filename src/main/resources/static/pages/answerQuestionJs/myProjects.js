@@ -90,20 +90,20 @@ responseHandler: function getProjectQuestSuccess(result) {
             let count = 0;
             for(let j = 0;j < data.length;j++){
                 for(let k = 0;k < data[j].questionnaireList.length;k++){
-                    count++;
-                    let name = data[j].questionnaireList[k].question_name;
-                    // let start = data[j].questionnaireList[k].start_time;
-                    // let end = data[j].questionnaireList[k].end_time;
-                    if(k === (data[j].questionnaireList.length - 1)){
-                        text1 += "<div style='color: black;font-size: 18px;text-align: left;text-decoration: underline'>"+"问卷"+(k+1)+"："+name+"</div>"
-                    }
-                    else {
-                        text1 += "<div style='color: black;font-size: 18px;text-align: left;text-decoration: underline'>"+"问卷"+(k+1)+"："+name+"</div>"+"</br>"
-                    }
+                        count++;
+                        let name = data[j].questionnaireList[k].question_name;
+                        // let start = data[j].questionnaireList[k].start_time;
+                        // let end = data[j].questionnaireList[k].end_time;
+                        if(k === (data[j].questionnaireList.length - 1)){
+                            text1 += "<div style='color: black;font-size: 18px;text-align: left;text-decoration: underline'>"+"问卷"+(k+1)+"："+name+"</div>"
+                        }
+                        else {
+                            text1 += "<div style='color: black;font-size: 18px;text-align: left;text-decoration: underline'>"+"问卷"+(k+1)+"："+name+"</div>"+"</br>"
+                        }
 
                 }
                 if(count === 0){
-                    tableDivList.item(j).innerHTML = "<div style='color: red;font-size: 18px;text-align: left'>暂无调查问卷或问卷已过期</div>"
+                    tableDivList.item(j).innerHTML = "<div style='color: red;font-size: 18px;text-align: left'>暂无调查问卷</div>"
                 }
                 else {
                     tableDivList.item(j).innerHTML = text1;

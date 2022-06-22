@@ -165,6 +165,7 @@ function closeAction(id, status) {//关闭问卷
             layer.msg(result.message, {icon: 2});
         }
     });
+    // getProjectInfo();
 }
 
 function openAction(id, status, startTime) {

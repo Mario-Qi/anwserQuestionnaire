@@ -58,7 +58,7 @@ responseHandler: function getProjectQuestSuccess(result) {
                 text += "         <div class=\"operation-box pull-right\" style=\"font-size: 16px;\">";
                 text += "             <a href=\"javascript:void(0)\" class=\"pull-left release-items\" title=\"创建问卷\" onclick=\"createGetProjectInfo(" + "'" + projectInfo.id + "'" + "," + "'" + projectName + "'" + ")\">";
                 text += "                 <i class=\"icon release-icon\"></i>加入问卷</a>";
-                text += "             <a href=\"javascript:void(0)\" id=\"projectShow" + i + "\" class=\"pull-left copy-items\" onclick=\"getProjectInfo(" + "'" + projectInfo.id + "'" + ")\"><i class=\"icon copy-icon\"></i>详情</a>";
+                text += "             <a href=\"javascript:void(0)\" id=\"projectShow" + i + "\" class=\"pull-left copy-items\" onclick=\"getProjectInfo(" + "'" + projectInfo.id + "'"+"," + "'" + projectName + "'"+" )\"><i class=\"icon copy-icon\"></i>详情</a>";
                 text += "             <a class=\"pull-left item-remind\" id=\"projectUpdate" + i + "\" href=\"javascript:void(0)\" onclick=\"editProject(" + "'" + projectInfo.id + "'" + "," + "'" + projectName + "'" + "," + "'" + projectInfo.project_content + "'" + ")\"><i class=\"icon remind-icon\"></i>编辑</a>";
                 text += "             <a href=\"javascript:void(0)\" class=\"pull-left cutout-items\" title=\"删除此项目\" onclick=\"deleteProject(" + "'" + projectInfo.id + "'" + ")\"><i class=\"icon cutout-icon\"></i>删除 </a>";
                 text += "         </div>";
@@ -169,9 +169,11 @@ function editProject(id, name, content) {
 }
 
 // 查看项目详细信息
-function getProjectInfo(id) {
+function getProjectInfo(id,name) {
     deleteCookie("projectId");
     setCookie("projectId", id);
+    deleteCookie("projectName");
+    setCookie("projectName",name);
     window.location.href = 'projectInfo.html'
 }
 

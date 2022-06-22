@@ -75,6 +75,18 @@
     WHERE id = #{id,jdbcType=VARCHAR}
   </delete>
 
+  <!--判断项目名是否存在-->
+  <select id="queryExistProject" parameterType="java.lang.String" resultType="java.lang.Integer">
+    SELECT count(1)
+    FROM project_info
+    where project_name = #{projectName,jdbcType=VARCHAR}
+    <if test="id != null">
+      and id != #{id,jdbcType=VARCHAR}
+    </if>
+  </select>
+
+
+
   <!--查询项目列表-->
   <select id="queryProjectList" parameterType="map" resultType="java.util.Map">
     select *

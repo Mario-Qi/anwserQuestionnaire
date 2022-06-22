@@ -67,4 +67,11 @@ public interface ProjectEntityMapper {
      * @return
      */
     Map<String,Object> getProjectInfo(@Param("id") String projectId);
+
+    /**
+     * 查询项目是否重名
+     * @return
+     */
+
+    int queryExistProject(String projectName);
 }

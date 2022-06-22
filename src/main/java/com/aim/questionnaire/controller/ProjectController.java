@@ -110,7 +110,7 @@ public class ProjectController {
             int result = projectService.addProjectInfo(projectEntity,user);
             if(result==3){
                 httpResponseEntity.setCode(Constans.EXIST_CODE);
-                httpResponseEntity.setMessage(Constans.LOGIN_USERNAME_MESSAGE);
+                httpResponseEntity.setMessage(Constans.PROJECST_STATUS_EXIST);
             }else{
                 httpResponseEntity.setCode(Constans.SUCCESS_CODE);
                 httpResponseEntity.setMessage(Constans.ADD_MESSAGE);
@@ -143,7 +143,7 @@ public class ProjectController {
             int result = projectService.modifyProjectInfo(projectEntity,user);
             if(result==3){
                 httpResponseEntity.setCode(Constans.EXIST_CODE);
-                httpResponseEntity.setMessage(Constans.LOGIN_USERNAME_MESSAGE);
+                httpResponseEntity.setMessage(Constans.PROJECST_STATUS_EXIST);
             }else{
                 httpResponseEntity.setCode(Constans.SUCCESS_CODE);
                 httpResponseEntity.setMessage(Constans.ADD_MESSAGE);

@@ -36,12 +36,18 @@ public class ProjectService {
      */
     public int addProjectInfo(ProjectEntity projectEntity, String username) {
         String userId = userEntityMapper.selectIdByName(username);
-        if (userId.isEmpty()) {
-            //用户不存在或用户id为空
-            System.out.println("333");
+        String name=projectEntity.getProjectName();
+       // System.out.println(name);
+       if(projectEntityMapper.queryExistProject(name)!=0){
+            System.out.println("3331");
+            return 3;
+
+        }
+        if(projectEntity.getProjectName().isEmpty()||projectEntity.getProjectContent().isEmpty()){
+            //项目名称或者项目说明为空
+            System.out.println("3331");
             return 3;
         }
-
 
         String id = UUIDUtil.getOneUUID();
         projectEntity.setId(id);
@@ -69,11 +75,13 @@ public class ProjectService {
     public int modifyProjectInfo(ProjectEntity projectEntity, String username) {
 
         String userId = userEntityMapper.selectIdByName(username);
-        if (userId.isEmpty()) {
-            //用户不存在或用户id为空
-            System.out.println("333");
+        String name=projectEntity.getProjectName();
+        if(projectEntityMapper.queryExistProject(name)!=0){
+            System.out.println("3331");
             return 3;
+
         }
+
         if(projectEntity.getProjectName().isEmpty()||projectEntity.getProjectContent().isEmpty()){
             //项目名称或者项目说明为空
             System.out.println("3331");

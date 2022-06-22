@@ -103,6 +103,11 @@ public class QuestionnaireService {
         return questionnaireEntityMapper.queryReleaseQuestionnaireCount(projectId);
     }
 
+    public int modifyHistoryQuestionnaireStatus(HashMap<String, Object> map){
+        questionnaireEntityMapper.modifyHistoryQuestionnaireStatus(map);
+        return 1;
+
+    }
 
 
 }

@@ -45,6 +45,29 @@ public class ProjectController {
     }
 
     /**
+     * 根据项目id查询单个项目的信息
+     * @param projectId
+     * @return
+     */
+    @RequestMapping(value = "/getProjectInfo",method = RequestMethod.POST, headers = "Accept=application/json")
+    public HttpResponseEntity getProjectInfo(@RequestBody(required = false) Map<String,Object> map) {
+        String projectId = (String) map.get("projectId");
+        HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
+        try {
+            PageInfo pageInfo = projectService.getProjectInfo(projectId);
+            httpResponseEntity.setMessage(Constans.SUCCESS_CODE);
+            httpResponseEntity.setData(pageInfo);
+            httpResponseEntity.setCode(Constans.SUCCESS_CODE);
+        }
+        catch (Exception e) {
+            logger.info("addProjectInfo 获取项目信息>>>>>>>>>>>" + e.getLocalizedMessage());
+            httpResponseEntity.setCode(Constans.EXIST_CODE);
+            httpResponseEntity.setMessage(Constans.EXIST_MESSAGE);
+        }
+        return httpResponseEntity;
+    }
+
+    /**
      * 根据id删除项目
      * @param projectEntity
      * @return

@@ -119,4 +119,8 @@ public class Constans {
     public static final String MODEL_DELETE_FAIL="删除失败";
     public static final String MODEL_NO_PATH_PERMISSION="权限管理找不到模块的路径";
     public static final String MODEL_NO_PATH="找不到模块信息";
+
+    public static final String QUEST_MOTIFY_CODE = "111";
+    public static final String QUEST_MOTIFY_SUCCESS = "修改成功";
+    public static final String QUEST_MOTIFY_FAIL = "修改失败";
 }

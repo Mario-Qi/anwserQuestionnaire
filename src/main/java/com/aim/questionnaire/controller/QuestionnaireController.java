@@ -109,11 +109,13 @@ public class QuestionnaireController {
     public HttpResponseEntity motifyTime(@RequestBody Map<String,Object> map){
         HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
         int count = questionnaireservice.mofityTimebyQuestionnaireId((HashMap<String, Object>) map);
-        System.out.println(count);
-        System.out.println(map.get("questionnaireId"));
-        httpResponseEntity.setCode("666");
+        if(count==1) {
+            httpResponseEntity.setCode(Constans.SUCCESS_CODE);
+            httpResponseEntity.setMessage(Constans.QUEST_MOTIFY_SUCCESS);
+        }else
+            httpResponseEntity.setCode(Constans.QUEST_MOTIFY_CODE);
+        httpResponseEntity.setMessage(Constans.QUEST_MOTIFY_FAIL);
         return httpResponseEntity;
     }
-
 }
 

@@ -135,12 +135,32 @@ public class ProjectController {
 
             ProjectEntity projectEntity=projectService.queryProjectNameById(map);
             String user=projectEntity.getCreatedBy();
-            //System.out.println(user);
-           projectEntity.setProjectName((String) map.get("projectName"));
-           // System.out.println((String) map.get("projectName"));
+            String projectname=(String)map.get("projectName");
+            System.out.println("name:"+projectname);
+
+
+           if(projectEntity.getProjectName().equals(projectname)){
+               System.out.println("没改名");
+               projectEntity.setProjectContent((String) map.get("projectContent"));
+               projectService.modifyProjectInfo(projectEntity,user,0);
+
+               httpResponseEntity.setCode(Constans.SUCCESS_CODE);
+               httpResponseEntity.setMessage(Constans.ADD_MESSAGE);
+               return httpResponseEntity;
+           }
+
+
+            System.out.println("改名");
+
+            projectEntity.setProjectName(projectname);
+
+
             projectEntity.setProjectContent((String) map.get("projectContent"));
-            //System.out.println((String) map.get("projectContent"));
-            int result = projectService.modifyProjectInfo(projectEntity,user);
+
+            int result = projectService.modifyProjectInfo(projectEntity,user,1);
+
+
+
             if(result==3){
                 httpResponseEntity.setCode(Constans.EXIST_CODE);
                 httpResponseEntity.setMessage(Constans.PROJECST_STATUS_EXIST);

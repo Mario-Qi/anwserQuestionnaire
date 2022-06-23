@@ -80,9 +80,7 @@
     SELECT count(1)
     FROM project_info
     where project_name = #{projectName,jdbcType=VARCHAR}
-    <if test="id != null">
-      and id != #{id,jdbcType=VARCHAR}
-    </if>
+
   </select>
 
 

@@ -72,14 +72,13 @@ public class ProjectService {
      * @param projectEntity
      * @return
      */
-    public int modifyProjectInfo(ProjectEntity projectEntity, String username) {
+    public int modifyProjectInfo(ProjectEntity projectEntity, String username,int a) {
 
-        String userId = userEntityMapper.selectIdByName(username);
+       // String userId = userEntityMapper.selectIdByName(username);
         String name=projectEntity.getProjectName();
-        if(projectEntityMapper.queryExistProject(name)!=0){
+        if(projectEntityMapper.queryExistProject(name)!=0&&a==1){
             System.out.println("3331");
             return 3;
-
         }
 
         if(projectEntity.getProjectName().isEmpty()||projectEntity.getProjectContent().isEmpty()){

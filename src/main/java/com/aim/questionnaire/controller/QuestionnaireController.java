@@ -105,7 +105,15 @@ public class QuestionnaireController {
         return httpResponseEntity;
     }
 
-
+    @RequestMapping(value = "/motifyTimeOfQuestionnaire",method = RequestMethod.POST, headers = "Accept=application/json")
+    public HttpResponseEntity motifyTime(@RequestBody Map<String,Object> map){
+        HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
+        int count = questionnaireservice.mofityTimebyQuestionnaireId((HashMap<String, Object>) map);
+        System.out.println(count);
+        System.out.println(map.get("questionnaireId"));
+        httpResponseEntity.setCode("666");
+        return httpResponseEntity;
+    }
 
 }
 

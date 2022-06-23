@@ -209,6 +209,11 @@ public interface QuestionnaireEntityMapper {
      */
     int modifyQuestionnaireInfo(QuestionnaireEntity questionnaireEntity);
 
+    /**
+     * 根据问卷id修改问卷起止时间
+     */
+    int modifyQuestionnaireTime(HashMap<String, Object> map);
+
 
     /**
      * 查询问卷的发送问卷的人数

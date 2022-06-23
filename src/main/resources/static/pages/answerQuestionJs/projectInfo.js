@@ -137,9 +137,15 @@ function addBtnInTable(row) {
         btnText += "<button type=\"button\" id=\"btn_stop" + row.id + "\" style='width: 50px;height: 30px;' class=\"btn btn-success ajax-link\" onclick=\"openAction(" + "'" + row.id + "'" + "," + "'" + row.question_stop + "'" + "," +"'" + row.start_time + "'" + ")\"><text style='font-size: 15px'>开启</text></button>&nbsp;&nbsp;"
     }
     btnText += "<button type=\"button\" id=\"btn_stop" + row.id + "\" style='width: 50px;height: 30px;' onclick=\"deleteQuestionFromProject(" + "'" + row.id + "'" + ")\" class=\"btn btn-danger ajax-link\"><text style='font-size: 15px'>移除</text></button>&nbsp;&nbsp;";
-    btnText += "<button type=\"button\" id=\"btn_release" + row.id + "\"  style='width: 50px;height: 30px;' class=\"btn btn-success ajax-link\"><text style='font-size: 15px'>发布</text></button>&nbsp;&nbsp;";
+    btnText += "<button type=\"button\" id=\"btn_release" + row.id + "\"  style='width: 50px;height: 30px;' onclick=\"sendQuestionaire(" + "'" + row.id + "'" + ")\" class=\"btn btn-success ajax-link\"><text style='font-size: 15px'>发布</text></button>&nbsp;&nbsp;";
 
     return btnText;
+}
+
+function sendQuestionaire(id){
+    deleteCookie("questionId");
+    setCookie("questionId", id);
+    window.location.href = 'sendQuestionnaire.html';
 }
 
 

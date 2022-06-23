@@ -54,3 +54,29 @@ function createTimePicker() {
         }
     })
 }
+
+function submittime(){
+    var timeRange = $("#config-demo").val();
+    var startTime = dateChange(timeRange.split(' ~ ')[0]);
+    var stopTime = dateChange(timeRange.split(' ~ ')[1]);
+    let questionnaireId = getCookie("questionnaireId");
+
+
+    var url = '/motifyTimeOfQuestionnaire';
+    var data = {
+        "questionnaireId": questionnaireId,
+        "startTime": startTime,
+        "stopTime": stopTime
+    };
+    commonAjaxPost(true, url, data, function (result) {
+        if (result.code == "666") {
+            layer.msg("时间设置成功", {icon: 1});
+            setTimeout(function () {
+                window.location.href = 'projectInfo.html';
+            }, 1000)
+        }else {
+            layer.msg(result.message, {icon: 2});
+            window.location.href = 'projectInfo.html';
+        }
+    })
+}

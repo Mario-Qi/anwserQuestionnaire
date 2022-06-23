@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -114,6 +115,15 @@ public class QuestionnaireService {
         questionnaireEntityMapper.modifyHistoryQuestionnaireStatus(map);
         return 1;
 
+    }
+
+    /**
+     *通过问卷Id修改问卷起止时间
+     */
+    public int mofityTimebyQuestionnaireId(HashMap<String, Object> map){
+        map.put("startTime",new Date(Long.valueOf(String.valueOf(map.get("startTime")))));
+        map.put("stopTime",new Date(Long.valueOf(String.valueOf(map.get("stopTime")))));
+        return questionnaireEntityMapper.modifyQuestionnaireTime(map);
     }
 
 

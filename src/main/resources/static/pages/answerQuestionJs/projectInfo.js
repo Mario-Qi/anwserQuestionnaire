@@ -157,7 +157,7 @@ function closeAction(id, status) {//关闭问卷
         "id": id,
         "action": "close"
     }
-    let url = "xxx";
+    let url = "/modifyQuestionnaireStatus";
     commonAjaxPost(true, url, data, function (result) {
         if (result.code == "666") {
             layer.msg(result.message, {icon: 1});
@@ -187,7 +187,7 @@ function openAction(id, status, startTime) {
             "id": id,
             "action": "open"
         }
-        let url = "xxx";
+        let url = "/modifyQuestionnaireStatus1";
         commonAjaxPost(true, url, data, function (result) {
             if (result.code == "666") {
                 layer.msg(result.message, {icon: 1});

@@ -48,6 +48,7 @@ public interface QuestionnaireEntityMapper {
 
 
 
+
     /**
      * 根据问卷id添加projectid
      * @param map
@@ -88,7 +89,7 @@ public interface QuestionnaireEntityMapper {
      */
     int modifyQuestionnaireStatus(HashMap<String, Object> map);
 
-
+    int modifyQuestionnaireStatus1(HashMap<String, Object> map);
     /**
      * 根据项目id查询发布中问卷数量
      * @return

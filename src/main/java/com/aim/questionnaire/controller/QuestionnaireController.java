@@ -82,18 +82,21 @@ public class QuestionnaireController {
      * @return
      * 1
      */
-    @RequestMapping(value = "/modifyHistoryQuestionnaireStatus",method = RequestMethod.POST, headers = "Accept=application/json")
-    public HttpResponseEntity modifyHistoryQuestionnaireStatus(@RequestBody Map<String,Object> map) {
+
+
+    @RequestMapping(value = "/modifyQuestionnaireStatus",method = RequestMethod.POST, headers = "Accept=application/json")
+    public HttpResponseEntity modifyQuestionnaireStatus(@RequestBody Map<String,Object> map) {
         HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
+        System.out.println("zheliddd ");
 
         try {
-            int result = questionnaireservice.modifyHistoryQuestionnaireStatus((HashMap<String, Object>) map);
+            int result = questionnaireservice.modifyQuestionnaireStatus((HashMap<String, Object>) map);
             if(result == 3) {
 
                 httpResponseEntity.setCode(Constans.USER_USERNAME_CODE);
                 httpResponseEntity.setMessage(Constans.USER_USERNAME_MESSAGE);
             }else {
-                httpResponseEntity.setMessage(Constans.DELETE_MESSAGE);
+                httpResponseEntity.setMessage(Constans.UPDATE_MESSAGE);
                 httpResponseEntity.setCode(Constans.SUCCESS_CODE);
             }
         } catch (Exception e) {
@@ -104,6 +107,43 @@ public class QuestionnaireController {
 
         return httpResponseEntity;
     }
+
+
+
+    /**
+     * 修改问卷状态
+     * @param QuestionnaireEntity
+     * @return
+     * 1
+     */
+
+    @RequestMapping(value = "/modifyQuestionnaireStatus1",method = RequestMethod.POST, headers = "Accept=application/json")
+    public HttpResponseEntity modifyQuestionnaireStatus1(@RequestBody Map<String,Object> map) {
+        HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
+
+
+        try {
+            int result = questionnaireservice.modifyQuestionnaireStatus1((HashMap<String, Object>) map);
+            if (result == 3) {
+
+                httpResponseEntity.setCode(Constans.USER_USERNAME_CODE);
+                httpResponseEntity.setMessage(Constans.USER_USERNAME_MESSAGE);
+            } else {
+                httpResponseEntity.setMessage(Constans.UPDATE_MESSAGE);
+                httpResponseEntity.setCode(Constans.SUCCESS_CODE);
+            }
+        } catch (Exception e) {
+            httpResponseEntity.setMessage(Constans.EXIST_MESSAGE);
+            logger.info("deleteQuestionnaireInfo 更改问卷>>>>>>>>>" + e.getLocalizedMessage());
+            httpResponseEntity.setCode(Constans.EXIST_CODE);
+        }
+
+        return httpResponseEntity;
+
+    }
+
+
+
 
     @RequestMapping(value = "/motifyTimeOfQuestionnaire",method = RequestMethod.POST, headers = "Accept=application/json")
     public HttpResponseEntity motifyTime(@RequestBody Map<String,Object> map){

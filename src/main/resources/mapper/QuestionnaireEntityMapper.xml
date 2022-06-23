@@ -120,13 +120,23 @@
   </select>
 
 
-  <!--修改问卷状态-->
+  <!--修改问卷状态 (guan)-->
   <update id="modifyQuestionnaireStatus" parameterType="map">
     UPDATE questionnaire_info
-    SET question_stop = #{questionStop,jdbcType=VARCHAR}
-<!--    <if test="startTime != null">-->
-<!--      ,start_time = #{startTime,jdbcType=VARCHAR}-->
-<!--    </if>-->
+    SET question_stop = '2'
+    <!--   #{questionStop,jdbcType=VARCHAR} <if test="startTime != null">-->
+    <!--      ,start_time = #{startTime,jdbcType=VARCHAR}-->
+    <!--    </if>-->
+    WHERE id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <!--修改问卷状态  (kai)-->
+  <update id="modifyQuestionnaireStatus1" parameterType="map">
+    UPDATE questionnaire_info
+    SET question_stop = '1'
+    <!--   #{questionStop,jdbcType=VARCHAR} <if test="startTime != null">-->
+    <!--      ,start_time = #{startTime,jdbcType=VARCHAR}-->
+    <!--    </if>-->
     WHERE id = #{id,jdbcType=VARCHAR}
   </update>
 

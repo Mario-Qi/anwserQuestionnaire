@@ -9,7 +9,7 @@ public class Constans {
      * Created by wln on 2018/8/3
      * Descriptions:公用成功失败状态码
      */
-
+    public static final String QUESTIONNAIRE_CHANGE_SUCCES="成功更改状态";
 
     public static final String PROJECST_STATUS_EXIST="项目名称已存在";
     public static final String PROJECST_STATUS_DELETFAIL="项目中有问卷正在进行，删除失败";

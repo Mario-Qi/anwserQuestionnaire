@@ -102,6 +102,11 @@ public class QuestionnaireService {
         return 1;
     }
 
+    public int modifyQuestionnaireStatus1(HashMap<String, Object> map) {
+        questionnaireEntityMapper.modifyQuestionnaireStatus1(map);
+        return 1;
+    }
+
 
     /**
      * 根据项目id查询发布中问卷数量

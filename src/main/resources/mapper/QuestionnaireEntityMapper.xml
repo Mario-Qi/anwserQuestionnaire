@@ -112,6 +112,14 @@
     WHERE project_id = #{id,jdbcType=VARCHAR}
   </select>
 
+  <!--通过项目id查询关联的所有问卷(正在进行)  -->
+  <select id="queryopenedQuestionnaireByProjectID" parameterType="java.lang.String" resultType="java.lang.Integer">
+    SELECT  count(1)
+    FROM questionnaire_info
+    WHERE project_id = #{id,jdbcType=VARCHAR} and question_stop='1'
+  </select>
+
+
   <!--修改问卷状态-->
   <update id="modifyQuestionnaireStatus" parameterType="map">
     UPDATE questionnaire_info

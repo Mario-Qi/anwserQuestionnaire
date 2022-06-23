@@ -46,6 +46,8 @@ public interface QuestionnaireEntityMapper {
     List<Map<String, Object>> queryQuestionnaireList(Map<String, Object> map);
 
 
+
+
     /**
      * 根据问卷id添加projectid
      * @param map
@@ -75,6 +77,10 @@ public interface QuestionnaireEntityMapper {
     List<Map<String,Object>> queryQuestionnaireByProjectID(@Param("id") String id);
 
 
+    /**
+     *根据项目id查询开放问卷
+     */
+    int queryopenedQuestionnaireByProjectID(@Param("id") String id);
     /**
      * 修改问卷状态
      * @param map

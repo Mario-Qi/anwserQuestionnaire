@@ -9,7 +9,6 @@ import com.aim.questionnaire.dao.entity.ProjectEntity;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.*;
 
@@ -112,8 +111,15 @@ public class ProjectService {
      * @return
      */
     public int deleteProjectById(ProjectEntity projectEntity) {
-
         String id = projectEntity.getId();
+        int i= questionnaireEntityMapper.queryopenedQuestionnaireByProjectID(id);
+        //questionnaireEntityMapper.queryQuestionnaireByProjectID(id);
+        if(i!=0){
+            return 3;
+        }else{
+            System.out.println(i);
+        }
+
         int result = projectEntityMapper.deleteProjectById(id);
         return result;
     }

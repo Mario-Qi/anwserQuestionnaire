@@ -83,6 +83,13 @@ public class QuestionnaireService {
         return questionnaireEntityMapper.queryQuestionnaireByProjectID(id);
     }
 
+    /**
+     *根据项目id查询项目下的所有开放问卷
+     */
+    public int queryopenedQuestionnaireByProjectID(@Param("id") String id){
+        return questionnaireEntityMapper.queryopenedQuestionnaireByProjectID(id);
+    }
+
 
     /**
      * 修改问卷状态

@@ -77,10 +77,10 @@ public class ProjectController {
         HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
         try {
             int result = projectService.deleteProjectById(projectEntity);
-            if(result == 3) {
+           if(result == 3) {
 
                 httpResponseEntity.setCode(Constans.USER_USERNAME_CODE);
-                httpResponseEntity.setMessage(Constans.USER_USERNAME_MESSAGE);
+                httpResponseEntity.setMessage(Constans.PROJECST_STATUS_DELETFAIL);
             }else {
                 httpResponseEntity.setMessage(Constans.DELETE_MESSAGE);
                 httpResponseEntity.setCode(Constans.SUCCESS_CODE);

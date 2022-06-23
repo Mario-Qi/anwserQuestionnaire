@@ -12,7 +12,7 @@ public class Constans {
 
 
     public static final String PROJECST_STATUS_EXIST="项目名称已存在";
-
+    public static final String PROJECST_STATUS_DELETFAIL="项目中有问卷正在进行，删除失败";
     public static final String SUCCESS_CODE = "666"; //成功状态码
     public static final String EXIST_CODE = "20001"; //失败状态码
 

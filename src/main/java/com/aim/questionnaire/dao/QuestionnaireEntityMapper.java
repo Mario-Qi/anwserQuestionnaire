@@ -37,16 +37,6 @@ public interface QuestionnaireEntityMapper {
      */
     Map<String,Object> queryQuestionnaireById(String id);
 
-    /**
-     * 根据问卷id模糊查询问卷 或名称？
-     * @param map
-     * @return
-     */
-
-    List<Map<String, Object>> queryQuestionnaireList(Map<String, Object> map);
-
-
-
 
 
     /**
@@ -78,10 +68,7 @@ public interface QuestionnaireEntityMapper {
     List<Map<String,Object>> queryQuestionnaireByProjectID(@Param("id") String id);
 
 
-    /**
-     *根据项目id查询开放问卷
-     */
-    int queryopenedQuestionnaireByProjectID(@Param("id") String id);
+
     /**
      * 修改问卷状态
      * @param map
@@ -98,10 +85,20 @@ public interface QuestionnaireEntityMapper {
 
 
 
+    /**
+     * 查询问卷列表（模糊搜索）
+     * @param map
+     * @return
+     */
+    List<Map<String,Object>> queryQuestionnaireList(Map<String,Object> map);
 
 
-
-
+    /**
+     * 得到模糊搜索的用户数量
+     * @param map
+     * @return int
+     */
+    int getTotalCount(String questionnairename);
 
 
 
@@ -451,4 +448,10 @@ public interface QuestionnaireEntityMapper {
     int selectByName(String questionName);
 
     int selectByNameId(@Param("questionName") String questionName,@Param("id") String id);
+
+    int queryopenedQuestionnaireByProjectID(String id);
+
+
+
+
 }

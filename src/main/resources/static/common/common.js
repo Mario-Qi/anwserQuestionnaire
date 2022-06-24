@@ -22,12 +22,16 @@ function header() {
     }
     header += '</div>\n' +
         '            <div class="user-wrapper pull-right" id="userbutton">\n' +
+
+
         '                <dl class="my-question pull-left">\n' +
         '                    <dt class="box user-info">\n' +
         '                        <a class="user-name" href="myProjects.html"><i class="icon questions-icon"><em></em></i><span>我的项目</span></a>\n' +
         '                    </dt>\n' +
         '                    <dd class="line"></dd>\n' +
         '                </dl>\n' +
+
+
         '                <dl class="user-info pull-left">\n' +
         '                    <dt class="icon user-icon"><em></em></dt>\n' +
         '                    <dd class="spinner-list">\n' +
@@ -36,6 +40,9 @@ function header() {
         '                        </a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="user-name" href="userManage.html" id="gotoUserManage">用户管理</a>\n' +
         '                    </dd>\n' +
         '                </dl>\n' +
+
+
+
         '                <dl id="ctl01_hrefWjxout" class="user-info pull-left IE-8">\n' +
         '                    <a class="user-name" href="javascript:void(0)" onclick=\'logOut()\'>\n' +
         '                        <dt class="icon out-icon"></dt>\n' +

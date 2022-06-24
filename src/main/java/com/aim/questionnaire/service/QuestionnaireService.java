@@ -131,6 +131,27 @@ public class QuestionnaireService {
         return questionnaireEntityMapper.modifyQuestionnaireTime(map);
     }
 
+    /**
+     * 查询用户列表（模糊搜索）
+     * @param map
+     * @return
+     */
+    public PageInfo queryQuestionnaireList(Map<String,Object> map) {
+        PageInfo pageInfo = new PageInfo();
+        //System.out.println(map.get("pageNum"));
+        pageInfo.setPageNum((Integer) map.get("pageNum"));
+        pageInfo.setPageSize((Integer) map.get("pageSize"));
+        List<Map<String,Object>> resultList = questionnaireEntityMapper.queryQuestionnaireList(map);
+        pageInfo.setList(resultList);
+        int total = questionnaireEntityMapper.getTotalCount((String) map.get("questionName"));//
+
+        pageInfo.setTotal(total);
+        return pageInfo;
+    }
+
+
+
+
 
 }
 

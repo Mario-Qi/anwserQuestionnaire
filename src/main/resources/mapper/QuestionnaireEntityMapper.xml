@@ -64,11 +64,16 @@
 
   <!--查询问卷列表（模糊搜索）-->
   <select id="queryQuestionnaireList" parameterType="map" resultType="java.util.Map">
-    SELECT id, project_id projectId, start_time startTime, end_time endTime, question_name questionName
+    SELECT *
     FROM questionnaire_info
-    WHERE  id LIKE "%"#{id}"%"
+    WHERE  question_name LIKE "%"#{questionName}"%"
   </select>
-
+  <!--模糊查找得到的数量-->
+  <select id="getTotalCount" parameterType="java.lang.String" resultType="java.lang.Integer">
+    SELECT count(*)
+    FROM questionnaire_info
+    WHERE question_name LIKE "%"#{questionName}"%"
+  </select>
   <!--查询此人创建的问卷-->
   <select id="queryAllQuestionnaireByCreated" resultType="java.util.Map">
     SELECT id,question_name as questionName

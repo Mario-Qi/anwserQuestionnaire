@@ -206,7 +206,7 @@ function openAction(id, status, startTime) {
 
 function deleteQuestionFromProject(id) {//从项目中移除问卷
     data = {"id": id}
-    url = "xxx";
+    url = "/removeProjectId";
     commonAjaxPost(true, url, data, function (result) {
         if (result.code == "666") {
             layer.msg(result.message, {icon: 1});

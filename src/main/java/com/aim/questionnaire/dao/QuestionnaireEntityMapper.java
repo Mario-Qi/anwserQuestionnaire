@@ -48,6 +48,14 @@ public interface QuestionnaireEntityMapper {
     void addProjectId(Map<String, Object> map);
 
     /**
+     * 将问卷从项目中删除
+     * @param map
+     * @return
+     */
+
+    void removeProjectId(Map<String, Object> map);
+
+    /**
      * 查询此人创建的问卷
      * @param map
      * @return
@@ -68,6 +76,7 @@ public interface QuestionnaireEntityMapper {
     List<Map<String,Object>> queryQuestionnaireByProjectID(@Param("id") String id);
 
 
+    List<Map<String,Object>> queryQuestionnaireByProjectID1(@Param("id") String id);
 
     /**
      * 修改问卷状态

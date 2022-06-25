@@ -90,6 +90,13 @@
     WHERE id =  #{id,jdbcType=VARCHAR}
   </update>
 
+  <!--问卷与项目关联-->
+  <update id="removeProjectId" parameterType="map">
+    UPDATE questionnaire_info
+    SET project_id = null
+    WHERE id =  #{id,jdbcType=VARCHAR}
+  </update>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     <!--
       WARNING - @mbg.generated
@@ -102,7 +109,7 @@
 
   <!--查询此人创建的并且未关联的问卷-->
   <select id="queryQuestionnaireByCreated" resultType="java.util.Map">
-    SELECT id,question_name as questionName
+    SELECT id,question_name questionName, start_time startTime, end_time endTime, release_time releaseTime
     FROM questionnaire_info que
     WHERE created_by = #{username,jdbcType=VARCHAR}
       AND question_stop != 4
@@ -113,6 +120,12 @@
   <!--通过项目id查询关联的所有问卷  -->
   <select id="queryQuestionnaireByProjectID" parameterType="java.lang.String" resultType="java.util.Map">
     SELECT *
+    FROM questionnaire_info
+    WHERE project_id = #{id,jdbcType=VARCHAR}
+  </select>
+
+  <select id="queryQuestionnaireByProjectID1" parameterType="java.lang.String" resultType="java.util.Map">
+    SELECT id,question_name questionName, start_time startTime, end_time endTime, release_time releaseTime
     FROM questionnaire_info
     WHERE project_id = #{id,jdbcType=VARCHAR}
   </select>

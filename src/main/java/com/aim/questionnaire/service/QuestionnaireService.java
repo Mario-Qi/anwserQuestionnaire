@@ -80,8 +80,16 @@ public class QuestionnaireService {
     /**
      *根据项目id查询项目下的所有问卷
      */
-    public List<Map<String,Object>> queryQuestionnaireByProjectID(@Param("id") String id){
-        return questionnaireEntityMapper.queryQuestionnaireByProjectID(id);
+    public PageInfo queryQuestionnaireByProjectID(Map<String,Object> map){
+        PageInfo pageInfo = new PageInfo();
+        pageInfo.setPageNum((Integer) map.get("pageNum"));
+        pageInfo.setPageSize((Integer) map.get("pageSize"));
+        String projectId = (String) map.get("projectId");
+        List<Map<String,Object>> resultList = questionnaireEntityMapper.queryQuestionnaireByProjectID1(projectId);
+        pageInfo.setList(resultList);
+//        int total = userEntityMapper.getTotalCount((String) map.get("userName"));
+//        pageInfo.setTotal(total);
+        return pageInfo;
     }
 
     /**
@@ -149,7 +157,15 @@ public class QuestionnaireService {
         return pageInfo;
     }
 
-
+    /**
+     * 将问卷从项目中删除
+     * @param map
+     * @return
+     */
+    public int removeProjectId(Map<String, Object> map){
+        questionnaireEntityMapper.removeProjectId(map);
+        return 1;
+    }
 
 
 

@@ -187,7 +187,51 @@ public class QuestionnaireController {
     }
 
 
+    /**
+     *根据项目id查询项目下的所有问卷
+     */
+    @RequestMapping(value = "/queryQuestionnaireByProjectID", method = RequestMethod.POST, headers = "Accept=application/json")
+    public HttpResponseEntity queryQuestionnaireByProjectID(@RequestBody Map<String, Object> map) {
+        HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
+        PageInfo pageInfo = questionnaireservice.queryQuestionnaireByProjectID(map);
+        httpResponseEntity.setCode(Constans.SUCCESS_CODE);
+        httpResponseEntity.setData(pageInfo);
+        httpResponseEntity.setMessage(Constans.STATUS_MESSAGE);
+        return httpResponseEntity;
+    }
 
+    /**
+     *查询此人创建并且未关联项目的问卷
+     */
+    @RequestMapping(value = "/queryQuestionnaireByCreated", method = RequestMethod.POST, headers = "Accept=application/json")
+    public HttpResponseEntity queryQuestionnaireByCreated(@RequestBody Map<String, Object> map) {
+        HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
+        PageInfo pageInfo = questionnaireservice.queryQuestionnaireByCreated(map);
+        httpResponseEntity.setCode(Constans.SUCCESS_CODE);
+        httpResponseEntity.setData(pageInfo);
+        httpResponseEntity.setMessage(Constans.STATUS_MESSAGE);
+        return httpResponseEntity;
+    }
+
+
+    /**
+     *将问卷从项目中删除
+     */
+    @RequestMapping(value = "/removeProjectId", method = RequestMethod.POST, headers = "Accept=application/json")
+    public HttpResponseEntity removeProjectId(@RequestBody Map<String, Object> map) {
+        HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
+
+        int result = questionnaireservice.removeProjectId(map);
+        if(result ==1){
+            httpResponseEntity.setCode(Constans.SUCCESS_CODE);
+            httpResponseEntity.setMessage(Constans.DELETE_MESSAGE);
+        }
+        else {
+            httpResponseEntity.setMessage(Constans.MODEL_DELETE_FAIL);
+        }
+
+        return httpResponseEntity;
+    }
 
 }
 

@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/admin1")
+
 public class QuestionnaireController {
     private final Logger logger = LoggerFactory.getLogger(ProjectController.class);
 

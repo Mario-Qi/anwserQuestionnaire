@@ -34,7 +34,7 @@ function TableInit() {
     //初始化Table
     oTableInit.Init = function () {
         $('#questionnaireTable').bootstrapTable({
-            url: httpRequestUrl + '/admin1/queryQuestionnaireList',         //请求后台的URL（*）
+            url: httpRequestUrl + '/queryQuestionnaireList',         //请求后台的URL（*）
             method: 'POST',                      //请求方式（*）
             striped: true,                      //是否显示行间隔色
             cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）

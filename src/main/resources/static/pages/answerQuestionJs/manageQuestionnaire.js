@@ -73,6 +73,7 @@ function TableInit() {
                     align: 'center',
                     width: '230px'
                 },
+
                 {
                     field: 'answerTotal',
                     title: '回答总量',
@@ -104,6 +105,7 @@ function TableInit() {
                             var dataNewObj = {
                                 'id': '',
                                 "questionName": '',
+
                                 'answerTotal': '',
                                 "startTime": '',
                                 'endTime': '',
@@ -112,10 +114,11 @@ function TableInit() {
 
                             dataNewObj.id =  questionnaireInfo[i].id;
                             dataNewObj.questionName =  questionnaireInfo[i].question_name;
+                           // dataNewObj.projectName =questionnaireInfo[i].project_name;
                             dataNewObj.answerTotal=  questionnaireInfo[i].answer_total;
                             dataNewObj.startTime = timestampToTime(questionnaireInfo[i].start_time);
                             dataNewObj.endTime = timestampToTime(questionnaireInfo[i].stop_time);
-                            dataNewObj.status = questionnaireInfo[i].questionnaire_stop;
+                            dataNewObj.status = questionnaireInfo[i].question_stop;
                             NewData.push(dataNewObj);
                         }
 
@@ -174,6 +177,16 @@ function TableInit() {
 }
 
 
+
+
+
+
+
+
+
+
+
+
 window.operateEvents = {
     //编辑
     'click #btn_count': function (e, value, row, index) {
@@ -191,10 +204,11 @@ function addFunctionAlty(value, row, index) {
 
     btnText += "<button type=\"button\" id=\"btn_look\" onclick=\"editQuestionnairePage(" + "'" + row.id + "')\" class=\"btn btn-default-g ajax-link\">编辑</button>&nbsp;&nbsp;";
 
-    if (row.status == "1") {
-        btnText += "<button type=\"button\" id=\"btn_stop" + row.id + "\" onclick=\"changeStatus(" + "'" + row.id + "'" + ")\" class=\"btn btn-danger-g ajax-link\">关闭</button>&nbsp;&nbsp;";
-    } else if (row.status == "0") {
-        btnText += "<button type=\"button\" id=\"btn_stop" + row.id + "\" onclick=\"changeStatus(" + "'" + row.id + "'" + ")\" class=\"btn btn-success-g ajax-link\">开启</button>&nbsp;&nbsp;"
+    btnText += "<button type=\"button\" id=\"btn_look\" onclick=\"countQuestionnaire(" + "'" + row.questionName + "')\" class=\"btn btn-default-g ajax-link\">统计</button>&nbsp;&nbsp;";
+    if (row.status === "1") {//开启中
+        btnText += "<button type=\"button\" id=\"btn_stop" + row.id + "\" style='width: 50px;height: 30px;' class=\"btn btn-danger ajax-link\" onclick=\"closeAction(" + "'" + row.id + "'" + "," + "'" + row.status + "'" + ")\" ><text style='font-size: 15px'>关闭</text></button>&nbsp;&nbsp;";
+    } else if (row.status === "2" || row.status === "0") {//关闭中或者过期
+        btnText += "<button type=\"button\" id=\"btn_stop" + row.id + "\" style='width: 50px;height: 30px;' class=\"btn btn-success ajax-link\" onclick=\"openAction(" + "'" + row.id + "'" + "," + "'" + row.status + "'" + ")\"><text style='font-size: 15px'>开启</text></button>&nbsp;&nbsp;"
     }
     btnText += "<button type=\"button\" id=\"btn_stop" + row.id + "\" onclick=\"deleteUser(" + "'" + row.id + "'" + ")\" class=\"btn btn-danger-g ajax-link\">删除</button>&nbsp;&nbsp;";
 
@@ -207,7 +221,7 @@ function addFunctionAlty(value, row, index) {
 
 //}
 
-// 打开创建用户页
+// 打开创建问卷页
 function openCreateQuestionnairePage(id, value) {
 
     deleteCookie("userTitle");
@@ -221,8 +235,19 @@ function openCreateQuestionnairePage(id, value) {
 
 function editQuestionnairePage() {
 
+
+
     alert("编辑问卷")
 }
+
+function countQuestionnaire(questionName) {
+
+    setCookie("nameOfQuestionnaire",questionName);
+    window.location.href = 'countQuestionnaire.html';
+}
+
+
+
 // 修改用户状态（禁用、开启）
 function changeStatus(index) {
 
@@ -235,3 +260,54 @@ function deleteUser(id) {
     alert("删除问卷")
 }
 
+function closeAction(id, status) {//关闭问卷
+    console.log(id);
+    console.log(status)
+    let data = {
+        "id": id,
+        "action": "close"
+    }
+    let url = "/modifyQuestionnaireStatus";
+    commonAjaxPost(true, url, data, function (result) {
+        if (result.code == "666") {
+            layer.msg(result.message, {icon: 1});
+           // getProjectInfo();
+            getQuestionnaireList();
+        } else if (result.code == "333") {
+            layer.msg(result.message, {icon: 2});
+            setTimeout(function () {
+                window.location.href = 'login.html';
+            }, 1000);
+        } else {
+            layer.msg(result.message, {icon: 2});
+        }
+    });
+    // getProjectInfo();
+}
+
+function openAction(id, status) {
+  //  console.log(startTime)
+    console.log(id)
+    console.log(status)
+   if (status === "2") {
+        let data = {
+            "id": id,
+            "action": "open"
+        }
+        let url = "/modifyQuestionnaireStatus1";
+        commonAjaxPost(true, url, data, function (result) {
+            if (result.code == "666") {
+                layer.msg(result.message, {icon: 1});
+                //getProjectInfo();
+                getQuestionnaireList();
+            } else if (result.code == "333") {
+                layer.msg(result.message, {icon: 2});
+                setTimeout(function () {
+                    window.location.href = 'login.html';
+                }, 1000);
+            } else {
+                layer.msg(result.message, {icon: 2});
+            }
+        });
+    }
+}

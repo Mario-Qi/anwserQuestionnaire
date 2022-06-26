@@ -4,7 +4,7 @@
 
 $(function () {
     $("#questionNameCount").html( getCookie("nameOfQuestionnaire") + "数量统计");
-    $("#questionNameDetail").html( getCookie("nameOfQuestionnaire") + "学校答题情况明细");
+    $("#questionNameDetail").html( getCookie("nameOfQuestionnaire") + "统计结果报告");
 
     var oTable = new TableInit();
     oTable.Init();
@@ -13,7 +13,7 @@ $(function () {
     var selectContent = ''; //下拉选择内容
     jQuery.ajax({
         type: "POST",
-        url: httpRequestUrl + "/queryAllQuestionnaireByCreated",
+        url: httpRequestUrl + "/queryQuestionnaireList",
         dataType: 'json',
         contentType: "application/json",
         success: function (result) {
@@ -85,7 +85,7 @@ function getQuestionnaireAboutSchool() {
 
 
 
-function TableInit() {
+/*function TableInit() {
 
     var oTableInit = new Object();
     //初始化Table
@@ -213,6 +213,7 @@ function TableInit() {
     return oTableInit;
 }
 
+*/
 
 
 function getReport() {

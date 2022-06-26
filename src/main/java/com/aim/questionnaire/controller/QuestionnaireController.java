@@ -151,9 +151,12 @@ public class QuestionnaireController {
 
     }
 
-
-
-
+    /**
+     * 设置问卷起止时间
+     *
+     * @param map
+     * @return
+     */
     @RequestMapping(value = "/motifyTimeOfQuestionnaire",method = RequestMethod.POST, headers = "Accept=application/json")
     public HttpResponseEntity motifyTime(@RequestBody Map<String,Object> map){
         HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
@@ -224,7 +227,7 @@ public class QuestionnaireController {
         int result = questionnaireservice.removeProjectId(map);
         if(result ==1){
             httpResponseEntity.setCode(Constans.SUCCESS_CODE);
-            httpResponseEntity.setMessage(Constans.DELETE_MESSAGE);
+//            httpResponseEntity.setMessage(Constans.DELETE_MESSAGE);
         }
         else {
             httpResponseEntity.setMessage(Constans.MODEL_DELETE_FAIL);

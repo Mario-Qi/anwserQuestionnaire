@@ -12,6 +12,15 @@
     <link id="ctl01_cssdefault" rel="stylesheet" type="text/css" href="../css/default.css?v=4"/>
     <link id="ctl01_cssmaster" rel="stylesheet" type="text/css" href="../css/wjxmaster.css?v=4"/>
     <link rel="stylesheet" type="text/css" href="../css/choosetype.css?v=4"/>
+    <link rel="stylesheet" href="../plugins/bootstrap-table/css/bootstrap-table.css">
+
+    <script src="../plugins/jQuery/jquery-1.12.4.min.js"></script>
+    <script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../plugins/cookie/jquery.cookie.js"></script>
+    <script src="../plugins/layer/layer.js"></script>
+    <script src="../js/jquery.base64.js"></script>
+    <script src="../common/common.js"></script>
+    <script src="answerQuestionJs/addQuestionnaireInProject.js"></script>
     <style type="text/css">
         .form-control {
             display: inline-block;
@@ -60,13 +69,7 @@
 <div id="BS">
     <div class="header"></div>
     <div class="BS-box" style="text-align:left;">
-        <div>
-            <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE"
-                   value="/wEPDwUKLTY3MDU3Njg2NA9kFgJmD2QWDAICDxYCHgdWaXNpYmxlaGQCAw8WAh8AaGQCBA8WAh8AZ2QCBQ8PFgIeBFRleHQFCzE1ODQwMDY4OTczZGQCBg8WAh8AaGQCCA8WAh8AaGRkIOF/W2JYq+I88lfP3gF6rq014OM="/>
-        </div>
-        <div>
-            <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="4BF947A9"/>
-        </div>
+
         <div class="nav-header">
             <div class="container">
                 <div class="nav-wrapper clearfix">
@@ -74,14 +77,91 @@
                 </div>
             </div>
         </div>
-           <div class="section main-wrapper">
-               <div style="width: 737px;margin-top: 20px">
-                   <label class="control-label fontWeight" style="font-size: 22px;margin-left: 124px;font-weight: 500">当前项目:</label>
-                   <input class="form-control selectpicker" id="belongProject" title='所属项目' data-first-option="false"
-                          data-live-search="true" readonly="readonly" style="margin-left: 16px"/>
-               </div>
+        <div style="width: 737px;margin-top: 20px">
+            <label class="control-label fontWeight" style="font-size: 22px;margin-left: 124px;font-weight: 500">当前项目:</label>
+            <input class="form-control selectpicker" id="belongProject" title='当前项目' data-first-option="false"
+                   data-live-search="true" readonly="readonly" style="margin-left: 16px"/>
+        </div>
+        <div style="display:flex;">
+
+            <div style="padding-left: 50px">
+
+
+                <div class="bootstrap-table" style="width: 670px;text-align:  center;font-size: 14px;margin: auto">
+                    <div class="fixed-table-toolbar"></div>
+                    <div class="fixed-table-container" style="padding-bottom: 0px;">
+                        <div class="fixed-table-body">
+                            <div class="fixed-table-loading" style="top: 41px; display: none;">正在努力地加载数据中，请稍候……
+                            </div>
+                            <table id="questionnaireTable1" class="questionnaire_table table table-hover table-striped"
+                                   style="word-wrap:break-word; word-break:break-all">
+                                <thead>
+                                <tr>
+                                    <th style="text-align: center; " data-field="Number">
+                                        <div class="th-inner ">序号</div>
+                                        <div class="fht-cell"></div>
+                                    </th>
+                                    <th style="text-align: center; " data-field="questionname">
+                                        <div class="th-inner ">试卷名称</div>
+                                        <div class="fht-cell"></div>
+                                    </th>
+                                    <th style="text-align: center; " data-field="operation">
+                                        <div class="th-inner ">操作</div>
+                                        <div class="fht-cell"></div>
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody id="questTableBody1">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
 
             </div>
+
+            <div style="width: 130px"></div>
+
+            <div>
+                <div class="bootstrap-table" style="width: 670px;text-align:  center;font-size: 14px;margin: auto">
+                    <div class="fixed-table-toolbar"></div>
+                    <div class="fixed-table-container" style="padding-bottom: 0px;">
+                        <div class="fixed-table-body">
+                            <div class="fixed-table-loading" style="top: 41px; display: none;">正在努力地加载数据中，请稍候……
+                            </div>
+                            <table id="questionnaireTable2" class="questionnaire_table table table-hover table-striped"
+                                   style="word-wrap:break-word; word-break:break-all">
+                                <thead>
+                                <tr>
+                                    <th style="text-align: center; " data-field="Number">
+                                        <div class="th-inner ">序号</div>
+                                        <div class="fht-cell"></div>
+                                    </th>
+                                    <th style="text-align: center; " data-field="questionname">
+                                        <div class="th-inner ">试卷名称</div>
+                                        <div class="fht-cell"></div>
+                                    </th>
+                                    <th style="text-align: center; " data-field="operation">
+                                        <div class="th-inner ">操作</div>
+                                        <div class="fht-cell"></div>
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody id="questTableBody2">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div><!--        flex-->
+
+
 
 
 
@@ -90,13 +170,7 @@
 
     </div>
 
-<script src="../plugins/jQuery/jquery-1.12.4.min.js"></script>
-<script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
-<script src="../plugins/cookie/jquery.cookie.js"></script>
-<script src="../plugins/layer/layer.js"></script>
-<script src="../js/jquery.base64.js"></script>
-<script src="../common/common.js"></script>
-<script src="answerQuestionJs/createQuestionnaire.js"></script>
+
 </body>
 </html>
 

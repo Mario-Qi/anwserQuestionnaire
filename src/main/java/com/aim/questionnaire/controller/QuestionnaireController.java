@@ -236,5 +236,27 @@ public class QuestionnaireController {
         return httpResponseEntity;
     }
 
+    /**
+     * 将1个问卷与项目关联
+     * @param
+     * @return
+     */
+
+    @RequestMapping(value = "/addProjectId", method = RequestMethod.POST, headers = "Accept=application/json")
+    public HttpResponseEntity addProjectId(@RequestBody Map<String, Object> map) {
+        HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
+
+        int result = questionnaireservice.addProjectId(map);
+        if(result ==1){
+            httpResponseEntity.setCode(Constans.SUCCESS_CODE);
+//            httpResponseEntity.setMessage(Constans.DELETE_MESSAGE);
+        }
+        else {
+            httpResponseEntity.setMessage(Constans.QUEST_MOTIFY_FAIL);
+        }
+
+        return httpResponseEntity;
+    }
+
 }
 

@@ -74,6 +74,7 @@
     FROM questionnaire_info
     WHERE question_name LIKE "%"#{questionName}"%"
   </select>
+
   <!--查询此人创建的问卷-->
   <select id="queryAllQuestionnaireByCreated" resultType="java.util.Map">
     SELECT id,question_name as questionName

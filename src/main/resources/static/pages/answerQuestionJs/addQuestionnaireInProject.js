@@ -128,12 +128,16 @@ function removeQuestionFromProject(id) {//从项目中移除问卷
 }
 
 function addQuestionnaireToProject(id){
-    data = {"id": id}
-    url = "xxx";
+    var projectId = getCookie('projectId');
+    data = {
+        "id": id,
+        "projectId":projectId
+    };
+    url = "/addProjectId";
     commonAjaxPost(true, url, data, function (result) {
         if (result.code == "666") {
-            layer.msg(result.message, {icon: 1});
-            getProjectInfo();
+            // layer.msg(result.message, {icon: 1});
+            initPage();
         } else if (result.code == "333") {
             layer.msg(result.message, {icon: 2});
             setTimeout(function () {

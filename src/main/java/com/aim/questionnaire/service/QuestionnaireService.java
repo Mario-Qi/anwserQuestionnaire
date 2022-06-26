@@ -30,7 +30,7 @@ public class QuestionnaireService {
 
 
     /**
-     * 将问卷与项目关联
+     * 将多个问卷与项目关联
      * @param
      * @return
      */
@@ -41,6 +41,17 @@ public class QuestionnaireService {
             map.put("projectId", projectId);
             questionnaireEntityMapper.addProjectId(map);
         }
+    }
+
+    /**
+     * 将1个问卷与项目关联
+     * @param
+     * @return
+     */
+
+    public int addProjectId(Map<String,Object> map){
+        questionnaireEntityMapper.addProjectId(map);
+        return 1;
     }
 
     /**

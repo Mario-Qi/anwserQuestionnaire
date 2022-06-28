@@ -16,23 +16,26 @@ var aaa = 0;
 var bbb = 0;
 var questionId
 $(function () {
+
     console.log(getCookie("QuestionId"));
     deleteCookie('previewId');
     var urlObj = GetRequest();
     if (Object.keys(urlObj).length == 0) {
-        setCookie('QuestionId', getCookie("QuestionId"));
-        //id =>questionId
-        var da = {'questionId': getCookie("QuestionId")};
-        console.log(getCookie("QuestionId"));
+        deleteCookie("QuestionId");
+        // setCookie('QuestionId', getCookie("QuestionId"));
+        // //id =>questionId
+        // var da = {'questionId': getCookie("QuestionId")};
+        // console.log(getCookie("QuestionId"));
     } else {
+        var isEdit = getCookie("isEdit")
         deleteCookie('QuestionId');
         deleteCookie('isEdit');
         deleteCookie('projectIdForCreate');
         var qId = urlObj.qId;
         console.log(qId);
         var i = urlObj.i;
-        var qIdStr = "";
-        if (qId != undefined) {
+        // var qIdStr = "";
+        if (isEdit == '1') {
             // qIdStr = $.base64.decode(qId);
             setCookie('QuestionId', qId);
             //如果为编辑模板就不清空QuestionId
@@ -45,10 +48,10 @@ $(function () {
         questionId = qId;
         //id =>questionId
         var da = {'questionId': questionId};
+        var url = '/queryQuestionnaireById';
+        commonAjaxPost(true, url, da, queryQuestionnaireAllSuccess);
     }
     //queryQuestionnaireAll
-    var url = '/queryQuestionnaireById';
-    commonAjaxPost(true, url, da, queryQuestionnaireAllSuccess);
 
 });
 
@@ -949,7 +952,7 @@ function editFinish() {
     getQuestion();
     if (questionList.length == 0) {
         layer.msg("没有题不能保存");
-    } else {
+    } else if(getCookie("QuestionId")!=null){
         for (var i = 0; i < questionList.length; i++) {
             if (questionList[i].questionType != "2") {
                 if (questionList[i].questionOption == "") {
@@ -967,13 +970,42 @@ function editFinish() {
         da = {
             'questionList': questionList,
             'questionTitle': questionTitles, //所有的题目
-            'questionId': questionId,
+            'questionId': getCookie("QuestionId"),
             'dataId': dataId,
             'questionName': questionName,
             'questionContent': questionContent,
             // 'endTime': ''
         };
         var urlQ = '/modifyQuestionnaire';
+        commonAjaxPost(true, urlQ, da, addQuestionnaireSuccess)
+    }
+    else{
+        for (var i = 0; i < questionList.length; i++) {
+            if (questionList[i].questionType != "2") {
+                if (questionList[i].questionOption == "") {
+                    alert("存在未编辑的问题，无法保存");
+                    return;
+                }
+            }
+        }
+        //获取问卷名称
+        var questionName = $('.questionTitle').text();
+        //获取问卷说明
+        var questionContent = $('#pater_desc').html();
+        var da = '';
+        var url = '';
+        // if()
+        da = {
+            'questionList': questionList,
+            'questionTitle': questionTitles, //所有的题目
+            // 'questionId': questionId,
+            // 'dataId': dataId,
+            'questionName': questionName,
+            'questionContent': questionContent,
+            // 'endTime': ''
+        };
+        console.log(questionList);
+        var urlQ = '/addQuestionnaire';
         commonAjaxPost(true, urlQ, da, addQuestionnaireSuccess)
     }
 }
@@ -1167,20 +1199,23 @@ function sureChange() {
 
 //完成问卷设计的总按钮 的回掉
 function addQuestionnaireSuccess(res) {
-    // console.log(res);
+    console.log(res);
     if (res.code == '666') {
-        deleteCookie('QuestionId');
+        console.log(1111+res.data);
+        // deleteCookie('QuestionId');
         deleteCookie('previewId');
         layer.msg(res.message, {icon: 1});
         if (res.message == '添加成功') {
+            deleteCookie('QuestionId');
             setCookie('QuestionId', res.data);
-            setCookie('previewId', res.data);
+            console.log(1111+res.data);
+            // setCookie('previewId', res.data);
             judgeQuestionId();
             // console.log(getCookie('QuestionId'));
             questionList = [];
         } else if (res.message == '修改成功') {
             setCookie('QuestionId', res.data);
-            setCookie('previewId', res.data);
+            // setCookie('previewId', res.data);
             judgeQuestionId();
             // console.log(getCookie('QuestionId'));
         }
@@ -1206,19 +1241,20 @@ function queryQuestionnaireAllSuccess(res) {
         console.log(res.data.questionName);
         $('.questionTitle').text(res.data.questionName); //问卷名称
         $('#pater_desc').html(res.data.questionContent);//问卷说明
-        if (res.data.questionStop == '4' || res.data.questionStop == '0') {
-            if (getCookie('isEdit') != '1') {
-                deleteCookie('QuestionId');
-                judgeQuestionId();
-                $('.questionTitle').text(questionInfo.questionName); //问卷名称
-                $('#pater_desc').html(questionInfo.questionContent);//问卷说明
-            }
-        } else if (res.data.questionStop == '5') {
+        // if (res.data.questionStop == '4' || res.data.questionStop == '0') {
+        //     if (getCookie('isEdit') != '1') {
+        //         deleteCookie('QuestionId');
+        //         judgeQuestionId();
+        //         $('.questionTitle').text(questionInfo.questionName); //问卷名称
+        //         $('#pater_desc').html(questionInfo.questionContent);//问卷说明
+        //     }
+        // } else if (res.data.questionStop == '5') {
             endTime = res.data.endTime;
             startTime = res.data.startTime;
             questionStop = res.data.questionStop;
-        }
-        var question = res.data.question;
+        // }
+        var question = res.data.questionList;
+        console.log(question);
         setCookie('questionList', question);
         if (question != null) {
             for (var i = 0; i < question.length; i++) {

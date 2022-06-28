@@ -63,7 +63,11 @@ function createQuestion() {
     deleteCookie('QuestionId');
     dataId = $('#belongType').val();
     setCookie('dataId', dataId);
-    window.location.href = 'namedQuestionnaire.html?i=';
+    // window.location.href = 'designQuestionnaire.html';
+    var url = "designQuestionnaire.html";//此处拼接内容
+    // window.location.href = url;
+    window.open(url)
+
 }
 
 //导入模板 历史模板或类型模板
@@ -259,13 +263,16 @@ function importModal(questionId, questionName, questionContent,projectId) {
     deleteCookie('TQuestionName');
     deleteCookie('TQuestionContent');
     //2为导入
-    setCookie('isEdit', '2');
-    setCookie('QuestionId', questionId);
-    setCookie('TQuestionName', questionName);
-    setCookie('TQuestionContent', questionContent);
-    setCookie('projectIdForCreate', projectId);
+    // setCookie('isEdit', '2');
+    // setCookie('QuestionId', questionId);
+    // setCookie('TQuestionName', questionName);
+    // setCookie('TQuestionContent', questionContent);
+    // setCookie('projectIdForCreate', projectId);
     setCookie('dataId', dataId);
-    window.location.href = 'namedQuestionnaire.html';
+    var url = "designQuestionnaire.html?qId="+questionId;//此处拼接内容
+    // window.location.href = url;
+    window.open(url)
+    // window.location.href = '';
 }
 
 //切换所属的调查类型

@@ -324,13 +324,18 @@ public class QuestionnaireController {
     @RequestMapping(value = "/addQuestionnaire", method = RequestMethod.POST, headers = "Accept=application/json")
     public HttpResponseEntity addQuestionnaire(@RequestBody Map<String, Object> map) {
         HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
-
+        map.put("questionList" , JSON.toJSONString(map.get("questionList")));
         String id = questionnaireservice.addQuestionnaire((HashMap<String, Object>) map);
 
 //        System.out.println(id);
-
-        httpResponseEntity.setCode(Constans.SUCCESS_CODE);
-        httpResponseEntity.setData(id);
+        if(id!=null){
+            httpResponseEntity.setCode(Constans.SUCCESS_CODE);
+            httpResponseEntity.setMessage(Constans.ADD_MESSAGE);
+            httpResponseEntity.setData(id);
+        }
+        else{
+            httpResponseEntity.setMessage(Constans.EXIST_MESSAGE);
+        }
 
         return httpResponseEntity;
     }
@@ -387,6 +392,9 @@ public class QuestionnaireController {
         if(result==1){
             httpResponseEntity.setCode(Constans.SUCCESS_CODE);
             httpResponseEntity.setMessage(Constans.QUEST_MOTIFY_SUCCESS);
+        }
+        else{
+            httpResponseEntity.setMessage(Constans.EXIST_MESSAGE);
         }
 
         return httpResponseEntity;

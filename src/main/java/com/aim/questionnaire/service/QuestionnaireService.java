@@ -51,12 +51,15 @@ public class QuestionnaireService {
         String id = UUIDUtil.getOneUUID();
         map.put("id",id);
 
-        String startTimeStr = map.get("startTime").toString();
-        String endTimeStr = map.get("endTime").toString();
-        Date startTime = DateUtil.getMyTime(startTimeStr);
-        Date endTime = DateUtil.getMyTime(endTimeStr);
-        map.put("startTime",startTime);
-        map.put("endTime",endTime);
+        if(map.get("startTime")!=null){
+            String startTimeStr = map.get("startTime").toString();
+            String endTimeStr = map.get("endTime").toString();
+            Date startTime = DateUtil.getMyTime(startTimeStr);
+            Date endTime = DateUtil.getMyTime(endTimeStr);
+            map.put("startTime",startTime);
+            map.put("endTime",endTime);
+        }
+
         questionnaireEntityMapper.addQuestionnaire(map);
         return id;
     }
@@ -248,7 +251,9 @@ public class QuestionnaireService {
      */
     public Map<String,Object> queryQuestionnaireById(String id){
         Map<String,Object> resultMap = questionnaireEntityMapper.queryQuestionnaireById(id);
+        System.out.println("111111");
         if(resultMap.get("questionList")!=null){
+            System.out.println("111111");
             String json = (String) resultMap.get("questionList");
             List<Map<String,Object>> questionList = JSON.parseObject(json, new TypeReference<List<Map<String, Object>>>() {});
             resultMap.put("questionList",questionList);

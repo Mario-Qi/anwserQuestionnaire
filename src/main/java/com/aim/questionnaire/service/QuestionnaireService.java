@@ -2,10 +2,12 @@ package com.aim.questionnaire.service;
 
 import com.aim.questionnaire.dao.QuestionnaireEntityMapper;
 import com.aim.questionnaire.dao.entity.QuestionnaireEntity;
+import com.alibaba.fastjson.TypeReference;
 import com.github.pagehelper.PageInfo;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.alibaba.fastjson.JSON;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -233,7 +235,11 @@ public class QuestionnaireService {
      * @return
      */
     public Map<String,Object> queryQuestionnaireById(String id){
-        return questionnaireEntityMapper.queryQuestionnaireById(id);
+        Map<String,Object> resultMap = questionnaireEntityMapper.queryQuestionnaireById(id);
+        String json = (String) resultMap.get("questionList");
+        List<Map<String,Object>> questionList = JSON.parseObject(json, new TypeReference<List<Map<String, Object>>>() {});
+        resultMap.put("questionList",questionList);
+        return resultMap;
     }
 
 

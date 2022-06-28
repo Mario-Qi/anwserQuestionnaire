@@ -151,7 +151,7 @@ public class QuestionnaireService {
     }
 
     /**
-     * 查询用户列表（模糊搜索）
+     * 查询问卷列表（模糊搜索）
      * @param map
      * @return
      */

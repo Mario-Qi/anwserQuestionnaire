@@ -58,11 +58,11 @@ function queryAllDataTypeSuccess(res) {
 
 //点击创建问题
 function createQuestion() {
-    //deleteCookie('TQuestionName');
-    //deleteCookie('TQuestionContent');
-    //deleteCookie('QuestionId');
-    //dataId = $('#belongType').val();
-    //setCookie('dataId', dataId);
+    deleteCookie('TQuestionName');
+    deleteCookie('TQuestionContent');
+    deleteCookie('QuestionId');
+    dataId = $('#belongType').val();
+    setCookie('dataId', dataId);
     window.location.href = 'namedQuestionnaire.html?i=';
 }
 
@@ -130,10 +130,10 @@ function queryHistoryQuestionnaireSuccess(res) {
         for (var i = 0; i < res.data.length; i++) {
             var historyModal_div = '   <div class="figure">' +
                 '                    <div class="pic-box icon survey-icon pull-left"></div>' +
-                '                    <div class="details-wrapper pull-left">' +
+                '                    <div class="details-wrapper pull-left" onclick=\'viewModal(' + '"' + res.data[i].id + '"' + ')\'>' +
                 '                        <div class="details-title">' +
-                '                            //<span class="pull-left">' + res.data[i].questionName + '</span>' +
-                // '                            <span class="pull-left">页面测试数据</span>' +
+                '                            <span class="pull-left">' + res.data[i].questionName + '</span>' +
+                 // '                            <span class="pull-left">页面测试数据</span>' +
                 '                        </div>' +
                 '                        <div class="details-info">丰富题型，强大逻辑</div>' +
                 '                        <div class="details-info">问卷密码，红包抽奖</div>' +
@@ -142,21 +142,6 @@ function queryHistoryQuestionnaireSuccess(res) {
                 '                    <a href="#" class="btn btn-blue-frame main__btn--new" onclick=\'importModal(' + '"' + res.data[i].id + '"' + ',' + '"' + res.data[i].questionName + '"' + ',' + '"' + res.data[i].questionContent + '"' +')\'>导入</a>' +
                 '                </div>';
             $("#historyQuestion").append(historyModal_div);
-        //     var questionnaire = res.data.list[i];
-        //     var historyModal_div = '   <div class="figure">' +
-        //     '                    <div class="pic-box icon survey-icon pull-left"></div>' +
-        //     '                    <div class="details-wrapper pull-left">' +
-        //     '                        <div class="details-title">' +
-        //     '                            //<span class="pull-left">测试  questionnaire.qestionName </span>' +
-        //     '                            <span class="pull-left">页面测试数据  questionnaire.questionContent</span>' +
-        //     '                        </div>' +
-        //     '                        <div class="details-info">丰富题型，强大逻辑</div>' +
-        //     '                        <div class="details-info">问卷密码，红包抽奖</div>' +
-        //     '                    </div>' +
-        //     '                    <div class="clear dotted-line--solid"></div>\n' +
-        //     '                    <a href="#" class="btn btn-blue-frame main__btn--new" onclick=\'importModal(' + '"' + 1 + '"' + ',' + '测试' + ',' + '测试' +')\'>导入</a>' +
-        //     '                </div>';
-        // $("#historyQuestion").append(historyModal_div);
         }
    } else if (res.code == "333") {
        layer.msg(res.message, {icon: 2});
@@ -191,7 +176,7 @@ function queryQuestionnaireMouldSuccess(res) {
             '                           style="position:absolute;right:20px;bottom:25px;width:18px;height:18px;display:none;"/>\n' +
             '                </div>';
         $("#typeQuestion").append(createQuestionnaireModal);
-        //console.log(res)
+        console.log(res.data);
         for (var i = 0; i < res.data.length; i++) {
             var questionnaireModal_div = '  <div class="figure">' +
                 '                    <i class="fa fa-close" style="font-size: 1rem; color: #ccc; position: absolute;right: 7px;top:4px"' +
@@ -209,22 +194,6 @@ function queryQuestionnaireMouldSuccess(res) {
                 '                    <a href="javascript:void(0)" class="btn btn-blue-frame main__btn--new" style="left:71%" onclick=\'importModal(' + '"' + res.data[i].id + '"' + ',' + '"' + res.data[i].questionName + '"' + ',' + '"' + res.data[i].questionContent + '"'+','+ '"'+getCookie('projectIdForCreate') +'"' + ')\'>导入</a>' +
                 '                </div>';
             $("#typeQuestion").append(questionnaireModal_div);
-            // var questionnaireModal_div = '  <div class="figure">' +
-            //     '                    <i class="fa fa-close" style="font-size: 1rem; color: #ccc; position: absolute;right: 7px;top:4px"' +
-            //     '                       onclick=\'deleteModal(this' + ',' + '"' + 1 + '"' + ')\'></i>' +
-            //     '                    <div class="pic-box icon survey-icon pull-left"></div>' +
-            //     '                    <div class="details-wrapper pull-left" onclick=\'viewModal(' + '"' + 1 + '"' + ')\'>' +
-            //     '                        <div class="details-title">' +
-            //     '                            <span class="pull-left">测试</span>' +
-            //     '                        </div>' +
-            //     // '                        <div class="details-info">丰富题型，强大逻辑</div>' +
-            //     // '                        <div class="details-info">问卷密码，红包抽奖</div>' +
-            //     '                    </div>' +
-            //     '                    <div class="clear dotted-line--solid"></div>' +
-            //     '                    <a href="javascript:void(0)" class="btn btn-blue-frame editModal" onclick=\'editModal(' + '"' + 1 + '"' + ')\'>编辑</a>' +
-            //     '                    <a href="javascript:void(0)" class="btn btn-blue-frame main__btn--new" style="left:71%" onclick=\'importModal(' + '"' + 1 + '"' + ',' + '测试' + ',' + '测试'+','+ '测试' + ')\'>导入</a>' +
-            //     '                </div>';
-            // $("#typeQuestion").append(questionnaireModal_div);
         }
     } else if (res.code == "333") {
         layer.msg(res.message, {icon: 2});

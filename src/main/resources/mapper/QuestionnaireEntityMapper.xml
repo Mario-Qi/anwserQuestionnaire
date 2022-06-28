@@ -666,7 +666,7 @@
 
   <!--查询问卷模板-->
   <select id="queryQuestionnaireMould" parameterType="java.lang.String" resultMap="BaseResultMap">
-    SELECT id, question_name as questionName,question_content as questionContent
+    SELECT id, question_name questionName,question_content questionContent
     FROM questionnaire_info
     WHERE data_id = #{dataId,jdbcType=VARCHAR}
     AND question_stop = "0"

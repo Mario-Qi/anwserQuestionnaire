@@ -19,6 +19,7 @@ import com.aim.questionnaire.service.QuestionnaireService;
 
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -307,7 +308,9 @@ public class QuestionnaireController {
     public HttpResponseEntity queryQuestionnaireMould(@RequestBody Map<String, Object> map) {
         HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
 
-        httpResponseEntity.setData(questionnaireservice.queryQuestionnaireMould((String) map.get("dataId")));
+        List<Map<String, Object>> list = questionnaireservice.queryQuestionnaireMould((String) map.get("dataId"));
+
+        httpResponseEntity.setData(list);
         httpResponseEntity.setCode(Constans.SUCCESS_CODE);
 
         return httpResponseEntity;
@@ -322,11 +325,12 @@ public class QuestionnaireController {
     public HttpResponseEntity addQuestionnaire(@RequestBody Map<String, Object> map) {
         HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
 
-        int result = questionnaireservice.addQuestionnaire((HashMap<String, Object>) map);
+        String id = questionnaireservice.addQuestionnaire((HashMap<String, Object>) map);
 
-        if(result==1){
-            httpResponseEntity.setCode(Constans.SUCCESS_CODE);
-        }
+//        System.out.println(id);
+
+        httpResponseEntity.setCode(Constans.SUCCESS_CODE);
+        httpResponseEntity.setData(id);
 
         return httpResponseEntity;
     }

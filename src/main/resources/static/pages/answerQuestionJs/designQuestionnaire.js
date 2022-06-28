@@ -29,18 +29,20 @@ $(function () {
         deleteCookie('isEdit');
         deleteCookie('projectIdForCreate');
         var qId = urlObj.qId;
+        console.log(qId);
         var i = urlObj.i;
         var qIdStr = "";
         if (qId != undefined) {
-            qIdStr = $.base64.decode(qId);
-            setCookie('QuestionId', qIdStr);
+            // qIdStr = $.base64.decode(qId);
+            setCookie('QuestionId', qId);
             //如果为编辑模板就不清空QuestionId
             setCookie('isEdit', '1');
-        } else if (i != undefined) {
-            qIdStr = $.base64.decode(i);
-            setCookie('QuestionId', qIdStr);
         }
-        questionId = qIdStr;
+        // else if (i != undefined) {
+        //     qIdStr = $.base64.decode(i);
+        //     setCookie('QuestionId', qIdStr);
+        // }
+        questionId = qId;
         //id =>questionId
         var da = {'questionId': questionId};
     }
@@ -981,6 +983,7 @@ function previewQuestion() {
     //判断有没有问卷id 没有就提示先保存
     // console.log(getCookie('previewId'));
     var idQ = getCookie('QuestionId');
+    console.log(idQ);
     if (idQ == undefined) {
         layer.alert('请保存之后再预览', {
             skin: 'layui-layer-lan'

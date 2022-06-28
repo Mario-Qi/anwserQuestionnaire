@@ -74,7 +74,7 @@ function importQuestion(type) {
     if (type == 1) {
         var url = '/queryHistoryQuestionnaire';
         var da = {
-            'projectId': getCookie('projectIdForCreate'),
+            // 'projectId': getCookie('projectIdForCreate'),
             'dataId': dataId
         };
         //console.log(getCookie('projectIdForCreate'));

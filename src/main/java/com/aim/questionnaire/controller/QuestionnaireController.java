@@ -6,6 +6,7 @@ import com.aim.questionnaire.common.Constans;
 import com.aim.questionnaire.dao.QuestionnaireEntityMapper;
 import com.aim.questionnaire.dao.UserEntityMapper;
 import com.aim.questionnaire.dao.entity.QuestionnaireEntity;
+import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -376,6 +377,7 @@ public class QuestionnaireController {
     public HttpResponseEntity modifyQuestionnaire(@RequestBody Map<String, Object> map) {
         HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
 
+        map.put("questionList" , JSON.toJSONString(map.get("questionList")));
         int result = questionnaireservice.modifyQuestionnaire((HashMap<String, Object>) map);
 
         if(result==1){

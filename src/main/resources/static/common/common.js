@@ -32,6 +32,12 @@ function header() {
         '                    <dd class="line"></dd>\n' +
         '                </dl>\n' +
 
+        '                <dl class="my-question pull-left">\n' +
+        '                    <dt class="box user-info">\n' +
+        '                        <a class="user-name" href="manageQuestionnaire.html"><i class="user-name"><em></em></i><span>我的问卷</span></a>\n' +
+        '                    </dt>\n' +
+        '                    <dd class="line"></dd>\n' +
+        '                </dl>\n' +
 
         '                <dl class="user-info pull-left">\n' +
         '                    <dt class="icon user-icon"><em></em></dt>\n' +

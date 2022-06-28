@@ -373,7 +373,9 @@ function getUrlInfo() {
     var info = infoList[1];
     var paramInfo = info.split('&');      //根据长度判断有几个参数  1 为1个参数    2 为2个参数
     var idBefore = paramInfo[0];
+    console.log(idBefore);
     id = idBefore.split('=')[1];
+    console.log(id);
     if (paramInfo.length <= 1) {
         //console.log('预览状态');
     } else {

@@ -18,16 +18,64 @@ public class QuestionnaireService {
     @Autowired
     private QuestionnaireEntityMapper questionnaireEntityMapper;
 
+    /**
+     * 查询历史问卷
+     * @param map
+     * @return
+     */
+    public List<Map<String,Object>> queryHistoryQuestionnaire(HashMap<String, Object> map){
+        return questionnaireEntityMapper.queryHistoryQuestionnaire(map);
+    }
+
+
+    /**
+     * 查询问卷模板
+     * @param dataId
+     * @return
+     */
+    public List<Map<String,Object>> queryQuestionnaireMould(String dataId){
+        return questionnaireEntityMapper.queryQuestionnaireMould(dataId);
+    }
+
+    /**
+     * 添加问卷
+     * @param map
+     * @return
+     */
     public int addQuestionnaire(HashMap<String, Object> map){
         questionnaireEntityMapper.addQuestionnaire(map);
         return 1;
     }
 
+    /**
+     * 通过id删除问卷
+     * @param
+     * @return
+     */
     public int deleteByPrimaryKey(String id){
         questionnaireEntityMapper.deleteByPrimaryKey(id);
         return 1;
     }
 
+    /**
+     * 根据问卷id修改问卷
+     * @param questionnaireEntity
+     * @return
+     */
+    public int modifyQuestionnaireInfo(QuestionnaireEntity questionnaireEntity){
+        questionnaireEntityMapper.modifyQuestionnaireInfo(questionnaireEntity);
+        return 1;
+    }
+
+    /**
+     * 根据问卷id修改问卷
+     * @param map
+     * @return
+     */
+    public int modifyQuestionnaire(HashMap<String, Object> map){
+        questionnaireEntityMapper.modifyQuestionnaire(map);
+        return 1;
+    }
 
     /**
      * 将多个问卷与项目关联
@@ -178,6 +226,15 @@ public class QuestionnaireService {
         return 1;
     }
 
+
+    /**
+     * 根据问卷id查询问卷的详细信息
+     * @param
+     * @return
+     */
+    public Map<String,Object> queryQuestionnaireById(String id){
+        return questionnaireEntityMapper.queryQuestionnaireById(id);
+    }
 
 
 }

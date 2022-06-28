@@ -21,7 +21,8 @@ $(function () {
     var urlObj = GetRequest();
     if (Object.keys(urlObj).length == 0) {
         setCookie('QuestionId', getCookie("QuestionId"));
-        var da = {'id': getCookie("QuestionId")};
+        //id =>questionId
+        var da = {'questionId': getCookie("QuestionId")};
         console.log(getCookie("QuestionId"));
     } else {
         deleteCookie('QuestionId');
@@ -40,11 +41,12 @@ $(function () {
             setCookie('QuestionId', qIdStr);
         }
         questionId = qIdStr;
-        var da = {'id': questionId};
+        //id =>questionId
+        var da = {'questionId': questionId};
     }
-
-    var url = '/queryQuestionnaireAll';
-    //commonAjaxPost(true, url, da, queryQuestionnaireAllSuccess);
+    //queryQuestionnaireAll
+    var url = '/queryQuestionnaireById';
+    commonAjaxPost(true, url, da, queryQuestionnaireAllSuccess);
 
 });
 
@@ -967,7 +969,7 @@ function editFinish() {
             'dataId': dataId,
             'questionName': questionName,
             'questionContent': questionContent,
-            'endTime': ''
+            // 'endTime': ''
         };
         var urlQ = '/modifyQuestionnaire';
         commonAjaxPost(true, urlQ, da, addQuestionnaireSuccess)

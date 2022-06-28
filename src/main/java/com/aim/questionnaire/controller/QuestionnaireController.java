@@ -269,11 +269,14 @@ public class QuestionnaireController {
     @RequestMapping(value = "/queryQuestionnaireById", method = RequestMethod.POST, headers = "Accept=application/json")
     public HttpResponseEntity queryQuestionnaireById(@RequestBody Map<String, Object> map) {
         HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
-
-        System.out.println(map.get("id"));
-
-        httpResponseEntity.setData(questionnaireservice.queryQuestionnaireById(String.valueOf(map.get("questionId"))));
-        httpResponseEntity.setCode(Constans.SUCCESS_CODE);
+        try {
+            httpResponseEntity.setData(questionnaireservice.queryQuestionnaireById(String.valueOf(map.get("questionId"))));
+            httpResponseEntity.setCode(Constans.SUCCESS_CODE);
+        } catch (Exception e) {
+            httpResponseEntity.setMessage(Constans.EXIST_MESSAGE);
+            logger.info("deleteQuestionnaireInfo 查询问卷信息>>>>>>>>>" + e.getLocalizedMessage());
+            httpResponseEntity.setCode(Constans.EXIST_CODE);
+        }
 
         return httpResponseEntity;
     }

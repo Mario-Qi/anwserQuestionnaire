@@ -3,6 +3,7 @@ package com.aim.questionnaire.controller;
 
 import com.aim.questionnaire.beans.HttpResponseEntity;
 import com.aim.questionnaire.common.Constans;
+import com.aim.questionnaire.common.utils.UUIDUtil;
 import com.aim.questionnaire.dao.QuestionnaireEntityMapper;
 import com.aim.questionnaire.dao.UserEntityMapper;
 import com.aim.questionnaire.dao.entity.QuestionnaireEntity;
@@ -324,17 +325,22 @@ public class QuestionnaireController {
     @RequestMapping(value = "/addQuestionnaire", method = RequestMethod.POST, headers = "Accept=application/json")
     public HttpResponseEntity addQuestionnaire(@RequestBody Map<String, Object> map) {
         HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
-        map.put("questionList" , JSON.toJSONString(map.get("questionList")));
-        String id = questionnaireservice.addQuestionnaire((HashMap<String, Object>) map);
-
-//        System.out.println(id);
-        if(id!=null){
-            httpResponseEntity.setCode(Constans.SUCCESS_CODE);
-            httpResponseEntity.setMessage(Constans.ADD_MESSAGE);
-            httpResponseEntity.setData(id);
-        }
-        else{
+        try {
+            String id = UUIDUtil.getOneUUID();
+            map.put("id",id);
+            int result =  questionnaireservice.addQuestionnaire((HashMap<String, Object>) map);
+            if(result ==1){
+                httpResponseEntity.setData(id);
+                httpResponseEntity.setCode(Constans.SUCCESS_CODE);
+                httpResponseEntity.setMessage(Constans.ADD_MESSAGE);
+            }
+            else {
+                httpResponseEntity.setMessage(Constans.QUEST_MOTIFY_FAIL);
+            }
+        } catch (Exception e) {
             httpResponseEntity.setMessage(Constans.EXIST_MESSAGE);
+            logger.info("deleteQuestionnaireInfo 添加问卷>>>>>>>>>" + e.getLocalizedMessage());
+            httpResponseEntity.setCode(Constans.EXIST_CODE);
         }
 
         return httpResponseEntity;
@@ -392,9 +398,6 @@ public class QuestionnaireController {
         if(result==1){
             httpResponseEntity.setCode(Constans.SUCCESS_CODE);
             httpResponseEntity.setMessage(Constans.QUEST_MOTIFY_SUCCESS);
-        }
-        else{
-            httpResponseEntity.setMessage(Constans.EXIST_MESSAGE);
         }
 
         return httpResponseEntity;

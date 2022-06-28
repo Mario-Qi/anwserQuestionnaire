@@ -230,7 +230,7 @@ function openCreateQuestionnairePage(id, value) {
         deleteCookie("userId");
         setCookie("userId", id);
     }
-    window.location.href = 'createQuestionnaire.html';
+    window.location.href = 'createQuestionnaireOutOfProject.html';
 }
 
 function editQuestionnairePage() {

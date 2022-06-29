@@ -676,14 +676,6 @@
   <select id="queryHistoryQuestionnaire" parameterType="java.util.Map" resultType="map">
     SELECT id, question_name questionName,release_time releaseTime,answer_total answerTotal,question_content questionContent
     FROM questionnaire_info
-    WHERE
-    question_stop = "4"
-    <if test="projectId != null">
-      AND project_id = #{projectId,jdbcType = VARCHAR}
-    </if>
-    <if test="dataId != null">
-      AND data_id = #{dataId,jdbcType = VARCHAR}
-    </if>
   </select>
 
   <!--根据id修改问卷的全部信息-->

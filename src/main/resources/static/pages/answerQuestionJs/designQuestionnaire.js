@@ -27,15 +27,16 @@ $(function () {
         // var da = {'questionId': getCookie("QuestionId")};
         // console.log(getCookie("QuestionId"));
     } else {
-        var isEdit = getCookie("isEdit")
+        var isEdit = getCookie("isEdit");
         deleteCookie('QuestionId');
         deleteCookie('isEdit');
         deleteCookie('projectIdForCreate');
         var qId = urlObj.qId;
         console.log(qId);
-        var i = urlObj.i;
+        var requestType = urlObj.requestType;
+        console.log(requestType);
         // var qIdStr = "";
-        if (isEdit == '1') {
+        if (requestType == '1') {
             // qIdStr = $.base64.decode(qId);
             setCookie('QuestionId', qId);
             //如果为编辑模板就不清空QuestionId
@@ -1214,7 +1215,7 @@ function addQuestionnaireSuccess(res) {
             // console.log(getCookie('QuestionId'));
             questionList = [];
         } else if (res.message == '修改成功') {
-            setCookie('QuestionId', res.data);
+            // setCookie('QuestionId', res.data);
             // setCookie('previewId', res.data);
             judgeQuestionId();
             // console.log(getCookie('QuestionId'));

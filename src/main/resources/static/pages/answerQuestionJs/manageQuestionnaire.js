@@ -248,7 +248,7 @@ function editQuestionnairePage(questionId) {
 
     var url = "designQuestionnaire.html?qId="+questionId + "&requestType=1";//此处拼接内容
     window.open(url);
-    alert("编辑问卷");
+
 }
 
 function countQuestionnaire(questionName) {

@@ -57,7 +57,8 @@ function createQuestion() {
     deleteCookie('TQuestionName');
     deleteCookie('TQuestionContent');
     deleteCookie('QuestionId');
-    window.location.href = 'designQuestionnaire.html';
+    var url = "designQuestionnaire.html";//此处拼接内容
+    window.open(url);
 }
 
 //导入模板 历史模板或类型模板

@@ -107,7 +107,7 @@ public class QuestionnaireService {
     public int addProjectId(Map<String,Object> map){
         Map<String, Object>  m = questionnaireEntityMapper.queryQuestionStop(map);
         String questionStop = String.valueOf(m.get("questionStop"));
-        if(questionStop.equals("2")){
+        if(questionStop.equals("1")){
             return -1;
         }
         if(questionStop.equals("0")){
@@ -239,7 +239,7 @@ public class QuestionnaireService {
     public int removeProjectId(Map<String, Object> map){
         Map<String, Object>  m = questionnaireEntityMapper.queryQuestionStop(map);
         String questionStop = String.valueOf(m.get("questionStop"));
-        if(questionStop.equals("2")){
+        if(questionStop.equals("1")){
             return -1;
         }
         if(questionStop.equals("0")){

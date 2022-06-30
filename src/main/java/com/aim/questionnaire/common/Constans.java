@@ -13,6 +13,10 @@ public class Constans {
 
     public static final String PROJECST_STATUS_EXIST="项目名称已存在";
 
+    public static final String QUESTIONNAIRE_STATUS_CLOES="成功关闭问卷";
+
+    public static final String QUESTIONNAIRE_STATUS_OPEN="成功开启问卷";
+
 
     public static final String  PROJECST_STATUS_EXISTOPENEDQUESTIONNAIRE="项目中存在开启的问卷，编辑失败！";
 

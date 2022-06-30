@@ -10,6 +10,7 @@ $(function () {
 
 });
 
+
 // 查看项目详细信息
 function getProjectInfo() {
     var projectId = getCookie('projectId');

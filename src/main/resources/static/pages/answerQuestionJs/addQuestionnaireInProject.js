@@ -96,14 +96,14 @@ function getQuestionnairesOutOfProjectSuccess(result){
 function addBtnInTable1(row) {
     var btnText = '';
 
-    btnText += "<button type=\"button\" id=\"btn_look\" style='width: 50px;height: 30px;' onclick=\"checkQuestionnaire(" + "'" + row.id + "'" + "," + "'" + row.question_name + "'" + ")\" class=\"btn btn-default ajax-link\"><text style='font-size: 15px;text-align: center'>查看</text></button>&nbsp;&nbsp;";
+    btnText += "<button type=\"button\" id=\"btn_look\" style='width: 50px;height: 30px;' onclick=\"checkQuestionnaire(" + "'" + row.id + "'" + ")\" class=\"btn btn-default ajax-link\"><text style='font-size: 15px;text-align: center'>查看</text></button>&nbsp;&nbsp;";
     btnText += "<button type=\"button\" id=\"btn_stop" + row.id + "\" style='width: 50px;height: 30px;' onclick=\"removeQuestionFromProject(" + "'" + row.id + "'" + ")\" class=\"btn btn-danger ajax-link\"><text style='font-size: 15px'>移除</text></button>&nbsp;&nbsp;";
     return btnText;
 }
 
 function addBtnInTable2(row) {
     var btnText = '';
-    btnText += "<button type=\"button\" id=\"btn_look\" style='width: 50px;height: 30px;' onclick=\"checkQuestionnaire(" + "'" + row.id + "'" + "," + "'" + row.question_name + "'" + ")\" class=\"btn btn-default ajax-link\"><text style='font-size: 15px;text-align: center'>查看</text></button>&nbsp;&nbsp;";
+    btnText += "<button type=\"button\" id=\"btn_look\" style='width: 50px;height: 30px;' onclick=\"checkQuestionnaire(" + "'" + row.id + "'" + ")\" class=\"btn btn-default ajax-link\"><text style='font-size: 15px;text-align: center'>查看</text></button>&nbsp;&nbsp;";
     btnText += "<button type=\"button\" id=\"btn_stop" + row.id + "\" style='width: 50px;height: 30px;' onclick=\"addQuestionnaireToProject(" + "'" + row.id + "'" + ")\" class=\"btn btn-success ajax-link\"><text style='font-size: 15px'>加入</text></button>&nbsp;&nbsp;";
     return btnText;
 }
@@ -147,4 +147,9 @@ function addQuestionnaireToProject(id){
             layer.msg(result.message, {icon: 2});
         }
     });
+}
+//查看问卷
+function checkQuestionnaire(id){
+    let url = "previewQuestionnaire.html?i="+id;
+    window.open(url);
 }

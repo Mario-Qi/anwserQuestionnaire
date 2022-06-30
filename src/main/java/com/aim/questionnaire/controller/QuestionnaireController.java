@@ -233,8 +233,11 @@ public class QuestionnaireController {
             httpResponseEntity.setCode(Constans.SUCCESS_CODE);
 //            httpResponseEntity.setMessage(Constans.DELETE_MESSAGE);
         }
-        else {
-            httpResponseEntity.setMessage(Constans.MODEL_DELETE_FAIL);
+        else if(result==-1){
+            httpResponseEntity.setMessage(Constans.REMOVE_EXIT_MESSAGE);
+        }
+        else{
+            httpResponseEntity.setMessage(Constans.REMOVE_STOP_MESSAGE);
         }
 
         return httpResponseEntity;
@@ -255,8 +258,11 @@ public class QuestionnaireController {
             httpResponseEntity.setCode(Constans.SUCCESS_CODE);
 //            httpResponseEntity.setMessage(Constans.DELETE_MESSAGE);
         }
-        else {
-            httpResponseEntity.setMessage(Constans.QUEST_MOTIFY_FAIL);
+        else if(result == -1){
+            httpResponseEntity.setMessage(Constans.ADD_EXIT_MESSAGE);
+        }
+        else{
+            httpResponseEntity.setMessage(Constans.ADD_STOP_MESSAGE);
         }
 
         return httpResponseEntity;

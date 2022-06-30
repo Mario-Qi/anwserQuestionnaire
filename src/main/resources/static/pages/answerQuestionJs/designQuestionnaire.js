@@ -17,6 +17,7 @@ var bbb = 0;
 var questionId
 $(function () {
 
+    console.log(getCookie("userName"));
     console.log(getCookie("QuestionId"));
     deleteCookie('previewId');
     var urlObj = GetRequest();
@@ -1003,6 +1004,7 @@ function editFinish() {
             // 'dataId': dataId,
             'questionName': questionName,
             'questionContent': questionContent,
+            'createdBy':getCookie("userName")
             // 'endTime': ''
         };
         console.log(questionList);

@@ -46,6 +46,10 @@ public class Constans {
      * Created by wln on 2018/8/8
      * Descriptions:问卷状态码
      */
+    public static final String REMOVE_EXIT_MESSAGE = "问卷开启中，无法移除";
+    public static final String ADD_EXIT_MESSAGE = "问卷开启中，无法加入";
+    public static final String ADD_STOP_MESSAGE = "问卷已过期，无法加入";
+    public static final String REMOVE_STOP_MESSAGE = "问卷已过期，无法移除";
     public static final String COPY_MESSAGE = "复制成功";
     public static final String COPY_EXIT_MESSAGE = "问卷发布中，不可复制";
     public static final String NAME_EXIT_MESSAGE = "问卷名称重复";
@@ -131,4 +135,5 @@ public class Constans {
     public static final String QUEST_MOTIFY_CODE = "111";
     public static final String QUEST_MOTIFY_SUCCESS = "修改成功";
     public static final String QUEST_MOTIFY_FAIL = "修改失败";
+
 }

@@ -105,6 +105,14 @@ public class QuestionnaireService {
      */
 
     public int addProjectId(Map<String,Object> map){
+        Map<String, Object>  m = questionnaireEntityMapper.queryQuestionStop(map);
+        String questionStop = String.valueOf(m.get("questionStop"));
+        if(questionStop.equals("2")){
+            return -1;
+        }
+        if(questionStop.equals("0")){
+            return 0;
+        }
         questionnaireEntityMapper.addProjectId(map);
         return 1;
     }
@@ -224,11 +232,19 @@ public class QuestionnaireService {
     }
 
     /**
-     * 将问卷从项目中删除
+     * 将问卷从项目中移除
      * @param map
      * @return
      */
     public int removeProjectId(Map<String, Object> map){
+        Map<String, Object>  m = questionnaireEntityMapper.queryQuestionStop(map);
+        String questionStop = String.valueOf(m.get("questionStop"));
+        if(questionStop.equals("2")){
+            return -1;
+        }
+        if(questionStop.equals("0")){
+            return 0;
+        }
         questionnaireEntityMapper.removeProjectId(map);
         return 1;
     }

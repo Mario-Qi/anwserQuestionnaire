@@ -1085,4 +1085,11 @@
   and question_stop != 0
   and id != #{id}
 </select>
+
+<!--  修改问卷发布状态-->
+  <update id="modifyReleaseStatueById" parameterType="map">
+    UPDATE questionnaire_info
+    SET release_status = #{releaseStatues,jdbcType=VARCHAR},release_time = #{releaseTime}
+    WHERE id =  #{id,jdbcType=VARCHAR}
+  </update>
 </mapper>

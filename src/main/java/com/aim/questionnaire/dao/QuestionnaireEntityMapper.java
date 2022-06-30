@@ -454,10 +454,14 @@ public interface QuestionnaireEntityMapper {
 
     /**
      * 修改答题人答题是否有效状态
-     * @param map
-     * @return
      */
+
     int modifyAnswerIsValid(Map<String, Object> map);
+    /**
+     * 修改问卷发布状态和发布时间
+     * @param map
+     */
+    int modifyReleaseStatueById(Map<String, Object> map);
 
     /**
      * 修改问卷的创建人和修改人根据用户名

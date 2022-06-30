@@ -101,10 +101,10 @@ function TableInit() {
                     formatter: addFunctionAlty//表格中增加按钮
                 }],
             responseHandler: function (res) {
-                //console.log(res);
+                console.log(res);
                 if(res.code == "666"){
                     var questionnaireInfo = res.data.list;
-                    console.log(res.data);
+                    // console.log(res.data);
                     var NewData = [];
                     if (questionnaireInfo.length) {
                         for (var i = 0; i < questionnaireInfo.length; i++) {
@@ -115,7 +115,8 @@ function TableInit() {
                                 'answerTotal': '',
                                 "startTime": '',
                                 'endTime': '',
-                                'questionstop': ''
+                                'status':'',
+                                'releaseStatus':''
                             };
 
                             dataNewObj.id =  questionnaireInfo[i].id;
@@ -125,6 +126,7 @@ function TableInit() {
                             dataNewObj.startTime = timestampToTime(questionnaireInfo[i].start_time);
                             dataNewObj.endTime = timestampToTime(questionnaireInfo[i].end_time);
                             dataNewObj.status = questionnaireInfo[i].question_stop;
+                            dataNewObj.releaseStatus = questionnaireInfo[i].release_status;
                             NewData.push(dataNewObj);
                         }
 
@@ -210,7 +212,8 @@ window.operateEvents = {
 // 表格中按钮
 function addFunctionAlty(value, row, index) {
     var btnText = '';
-
+    // console.log(row.question_stop)
+    // console.log(row.id);
     //btnText += "<button type=\"button\" id=\"btn_look\" onclick=\"resetPassword(" + "'" + row.id + "'" + ")\" style='width: 77px;' class=\"btn btn-default-g ajax-link\">重置密码</button>&nbsp;&nbsp;";
 
     btnText += "<button type=\"button\" id=\"btn_look\" onclick=\"editQuestionnairePage(" + "'" + row.id + "')\" class=\"btn btn-default-g ajax-link\">编辑</button>&nbsp;&nbsp;";
@@ -221,7 +224,7 @@ function addFunctionAlty(value, row, index) {
  //   } else if (row.status === "2" || row.status === "0") {//关闭中或者过期
  //       btnText += "<button type=\"button\" id=\"btn_stop" + row.id + "\" style='width: 50px;height: 30px;' class=\"btn btn-success ajax-link\" onclick=\"openAction(" + "'" + row.id + "'" + "," + "'" + row.status + "'" + ")\"><text style='font-size: 15px'>开启</text></button>&nbsp;&nbsp;"
   //  }
-    btnText += "<button type=\"button\" id=\"btn_stop" + row.id + "\" onclick=\"deleteUser(" + "'" + row.id + "'" + ")\" class=\"btn btn-danger-g ajax-link\">删除</button>&nbsp;&nbsp;";
+    btnText += "<button type=\"button\" id=\"btn_stop" + row.id + "\" onclick=\"deleteQuestionnaire(" + "'" + row.id + "'" + "," + "'" + row.status + "'"+ "," + "'" + row.releaseStatus + "'" + ")\" class=\"btn btn-danger-g ajax-link\">删除</button>&nbsp;&nbsp;";
 
     return btnText;
 }
@@ -265,10 +268,39 @@ function changeStatus(index) {
     alert("修改问卷状态")
 }
 
-//删除用户
-function deleteUser(id) {
+//删除
+function deleteQuestionnaire(id,questionStop,releaseStatus) {
 
-    alert("删除问卷")
+    if(releaseStatus === "1"){
+        alert("问卷已经被发布过，不能删除")
+    }
+    else if(questionStop === "1"){
+        alert("问卷正在开启中，请关闭后再删除");
+    }
+    else {
+        layer.confirm('您确认要删除此问卷吗？', {
+            btn: ['确定', '取消'] //按钮
+        }, function () {
+            var url = '/deleteQuestionnaireById';
+            var data = {
+                "id": id
+            };
+            commonAjaxPost(true, url, data, function (result) {
+                if (result.code == "666") {
+                    layer.msg(result.message, {icon: 1});
+                    getQuestionnaireList();
+                } else if (result.code == "333") {
+                    layer.msg(result.message, {icon: 2});
+                    setTimeout(function () {
+                        window.location.href = 'login.html';
+                    }, 1000);
+                } else {
+                    layer.msg(result.message, {icon: 2});
+                }
+            });
+        }, function () {
+        });
+    }
 }
 
 function closeAction(id, status) {//关闭问卷

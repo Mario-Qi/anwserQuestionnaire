@@ -787,7 +787,7 @@ $(".swcbj_but").live("click", function () {
 
     var jcxxxx = $(this).parent(".bjqxwc_box").parent(".dx_box"); //编辑题目区
     var questionType = jcxxxx.attr("data-t"); //获取题目类型
-console.log(jcxxxx.find(".btwen_text").val())
+    console.log(jcxxxx.find(".btwen_text").val())
     if(jcxxxx.find(".btwen_text").val()!=""){
 
         switch (questionType) {
@@ -1045,12 +1045,12 @@ function changeInfo() {
         , shade: 0.6 //遮罩透明度
         , anim: 2 //0-6的动画形式，-1不开启
         , content: '<div style="padding: 20px 10px 0 10px;" id="cancelChange">' +
-        '<div class="form-group"><label style="margin-bottom: 10px">问卷标题:</label><input class="form-control" id="questionName"></div>' +
-        '<div class="form-group"><label>问卷说明:</label><textarea class="form-control" style="height: 80px;" id="questionContent"></textarea></div>' +
-        '<div class="form-group" style="margin-left: 330px">' +
-        '<button class="layui-btn layui-btn-primary" onclick="cancelChange()">取消</button>' +
-        '<button class="layui-btn layui-btn-normal" onclick="sureChange()">确定</button></div>' +
-        '</div>'
+            '<div class="form-group"><label style="margin-bottom: 10px">问卷标题:</label><input class="form-control" id="questionName"></div>' +
+            '<div class="form-group"><label>问卷说明:</label><textarea class="form-control" style="height: 80px;" id="questionContent"></textarea></div>' +
+            '<div class="form-group" style="margin-left: 330px">' +
+            '<button class="layui-btn layui-btn-primary" onclick="cancelChange()">取消</button>' +
+            '<button class="layui-btn layui-btn-normal" onclick="sureChange()">确定</button></div>' +
+            '</div>'
     });
     $('#questionName').val(questionName);
     $('#questionContent').val(questionContent);
@@ -1252,9 +1252,9 @@ function queryQuestionnaireAllSuccess(res) {
         //         $('#pater_desc').html(questionInfo.questionContent);//问卷说明
         //     }
         // } else if (res.data.questionStop == '5') {
-            endTime = res.data.endTime;
-            startTime = res.data.startTime;
-            questionStop = res.data.questionStop;
+        endTime = res.data.endTime;
+        startTime = res.data.startTime;
+        questionStop = res.data.questionStop;
         // }
         var question = res.data.questionList;
         console.log(question);

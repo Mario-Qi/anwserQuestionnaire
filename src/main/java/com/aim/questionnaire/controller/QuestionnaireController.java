@@ -364,10 +364,20 @@ public class QuestionnaireController {
     public HttpResponseEntity deleteByPrimaryKey(@RequestBody Map<String, Object> map) {
         HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
 
-        int result = questionnaireservice.deleteByPrimaryKey((String) map.get("modalId"));
-
-        if(result==1){
-            httpResponseEntity.setCode(Constans.SUCCESS_CODE);
+        try {
+            int result = questionnaireservice.deleteByPrimaryKey((String) map.get("id"));
+            if(result == 1){
+                httpResponseEntity.setCode(Constans.SUCCESS_CODE);
+                httpResponseEntity.setMessage(Constans.DELETE_MESSAGE);
+            }
+            else {
+                httpResponseEntity.setCode(Constans.EXIST_CODE);
+                httpResponseEntity.setMessage(Constans.MODEL_DELETE_FAIL);
+            }
+        } catch (Exception e) {
+            httpResponseEntity.setMessage(Constans.EXIST_MESSAGE);
+            logger.info("deleteQuestionnaireInfo 删除问卷>>>>>>>>>" + e.getLocalizedMessage());
+            httpResponseEntity.setCode(Constans.EXIST_CODE);
         }
 
         return httpResponseEntity;

@@ -59,7 +59,6 @@
     -->
     delete from questionnaire_info
     where id = #{id,jdbcType=VARCHAR}
-    AND question_stop != '1'
   </delete>
 
   <!--根据问卷id查询问卷信息-->

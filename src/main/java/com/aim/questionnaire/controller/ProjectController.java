@@ -148,11 +148,9 @@ public class ProjectController {
             ProjectEntity projectEntity=projectService.queryProjectNameById(map);
             String user=projectEntity.getCreatedBy();
             String projectname=(String)map.get("projectName");
-            System.out.println("name:"+projectname);
 
 
            if(projectEntity.getProjectName().equals(projectname)){
-               System.out.println("没改名");
                projectEntity.setProjectContent((String) map.get("projectContent"));
                projectService.modifyProjectInfo(projectEntity,user,0);
 
@@ -162,7 +160,6 @@ public class ProjectController {
            }
 
 
-            System.out.println("改名");
 
             projectEntity.setProjectName(projectname);
 

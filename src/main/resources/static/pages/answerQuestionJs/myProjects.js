@@ -180,11 +180,33 @@ function getProjectInfo(id,name) {
 // 为了创建问卷而获取项目id、项目名称
 function createGetProjectInfo(id, name) {
     //alert("创建问卷")
-    deleteCookie("projectId");
-    deleteCookie("projectName");
-    setCookie("projectId",id);
-    setCookie("projectName",name);
-    window.location.href = "addQuestionnaireInProject.html"
+    layer.open({
+        title:"选择加入方式",
+        content: '加入创建好的问卷还是创建新的问卷？'
+        ,btn: ['加入', '创建新的',]
+        ,btn1: function(index, layero){
+            //按钮【加入】的回调
+            deleteCookie("projectId");
+            deleteCookie("projectName");
+            setCookie("projectId",id);
+            setCookie("projectName",name);
+            window.location.href = "addQuestionnaireInProject.html"
+            //return false 开启该代码可禁止点击该按钮关闭
+        }
+        ,btn2: function(index, layero){
+            deleteCookie("projectId");
+            deleteCookie("projectName");
+            setCookie("projectId",id);
+            setCookie("projectName",name);
+            window.location.href = "createQuestionnaireInProject.html"
+        }
+        ,cancel: function(){
+            //右上角关闭回调
+
+            //return false 开启该代码可禁止点击该按钮关闭
+        }
+    });
+
 }
 
 // function getQuestionnaireByProject(projectId, i) {

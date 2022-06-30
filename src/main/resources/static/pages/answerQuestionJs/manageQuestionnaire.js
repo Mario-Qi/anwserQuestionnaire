@@ -73,6 +73,12 @@ function TableInit() {
                     align: 'center',
                     width: '230px'
                 },
+                {
+                    field: 'projectName',
+                    title: '所属项目',
+                    align: 'center',
+                    width: '230px'
+                },
 
                 {
                     field: 'answerTotal',
@@ -105,7 +111,7 @@ function TableInit() {
                             var dataNewObj = {
                                 'id': '',
                                 "questionName": '',
-
+                                "projectName": '',
                                 'answerTotal': '',
                                 "startTime": '',
                                 'endTime': '',
@@ -114,10 +120,10 @@ function TableInit() {
 
                             dataNewObj.id =  questionnaireInfo[i].id;
                             dataNewObj.questionName =  questionnaireInfo[i].question_name;
-                           // dataNewObj.projectName =questionnaireInfo[i].project_name;
+                            dataNewObj.projectName = questionnaireInfo[i].project_name;
                             dataNewObj.answerTotal=  questionnaireInfo[i].answer_total;
                             dataNewObj.startTime = timestampToTime(questionnaireInfo[i].start_time);
-                            dataNewObj.endTime = timestampToTime(questionnaireInfo[i].stop_time);
+                            dataNewObj.endTime = timestampToTime(questionnaireInfo[i].end_time);
                             dataNewObj.status = questionnaireInfo[i].question_stop;
                             NewData.push(dataNewObj);
                         }
@@ -140,15 +146,18 @@ function TableInit() {
     };
 
 
+
+
+
 //更改日期格式
     function timestampToTime(timestamp) {
         var date = new Date(timestamp);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
         Y = date.getFullYear() + '/';
         M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '/';
         D = date.getDate() + ' ';
-        h = date.getHours() + ':';
-        m = date.getMinutes() + ':';
-        s = date.getSeconds();
+        h = (date.getHours() < 10 ? '0'+(date.getHours()) : date.getHours()+1) + ':';
+        m = (date.getMinutes() < 10 ? '0'+(date.getMinutes()) : date.getMinutes()+1) + ':';
+        s = (date.getSeconds() < 10 ? '0'+(date.getSeconds() ) : date.getSeconds() +1);
         return Y+M+D+" "+h+m+s;
     }
 
@@ -186,7 +195,6 @@ function TableInit() {
 
 
 
-
 window.operateEvents = {
     //编辑
     'click #btn_count': function (e, value, row, index) {
@@ -205,11 +213,11 @@ function addFunctionAlty(value, row, index) {
     btnText += "<button type=\"button\" id=\"btn_look\" onclick=\"editQuestionnairePage(" + "'" + row.id + "')\" class=\"btn btn-default-g ajax-link\">编辑</button>&nbsp;&nbsp;";
 
     btnText += "<button type=\"button\" id=\"btn_look\" onclick=\"countQuestionnaire(" + "'" + row.questionName + "')\" class=\"btn btn-default-g ajax-link\">统计</button>&nbsp;&nbsp;";
-    if (row.status === "1") {//开启中
-        btnText += "<button type=\"button\" id=\"btn_stop" + row.id + "\" style='width: 50px;height: 30px;' class=\"btn btn-danger ajax-link\" onclick=\"closeAction(" + "'" + row.id + "'" + "," + "'" + row.status + "'" + ")\" ><text style='font-size: 15px'>关闭</text></button>&nbsp;&nbsp;";
-    } else if (row.status === "2" || row.status === "0") {//关闭中或者过期
-        btnText += "<button type=\"button\" id=\"btn_stop" + row.id + "\" style='width: 50px;height: 30px;' class=\"btn btn-success ajax-link\" onclick=\"openAction(" + "'" + row.id + "'" + "," + "'" + row.status + "'" + ")\"><text style='font-size: 15px'>开启</text></button>&nbsp;&nbsp;"
-    }
+ //   if (row.status === "1") {//开启中
+ //       btnText += "<button type=\"button\" id=\"btn_stop" + row.id + "\" style='width: 50px;height: 30px;' class=\"btn btn-danger ajax-link\" onclick=\"closeAction(" + "'" + row.id + "'" + "," + "'" + row.status + "'" + ")\" ><text style='font-size: 15px'>关闭</text></button>&nbsp;&nbsp;";
+ //   } else if (row.status === "2" || row.status === "0") {//关闭中或者过期
+ //       btnText += "<button type=\"button\" id=\"btn_stop" + row.id + "\" style='width: 50px;height: 30px;' class=\"btn btn-success ajax-link\" onclick=\"openAction(" + "'" + row.id + "'" + "," + "'" + row.status + "'" + ")\"><text style='font-size: 15px'>开启</text></button>&nbsp;&nbsp;"
+  //  }
     btnText += "<button type=\"button\" id=\"btn_stop" + row.id + "\" onclick=\"deleteUser(" + "'" + row.id + "'" + ")\" class=\"btn btn-danger-g ajax-link\">删除</button>&nbsp;&nbsp;";
 
     return btnText;

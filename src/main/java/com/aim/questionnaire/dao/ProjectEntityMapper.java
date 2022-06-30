@@ -74,4 +74,9 @@ public interface ProjectEntityMapper {
      */
 
     int queryExistProject(String projectName);
+
+    ProjectEntity queryProjectNameById2(String projectid);
+
+
+
 }

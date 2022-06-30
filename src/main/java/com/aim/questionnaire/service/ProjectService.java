@@ -162,6 +162,19 @@ public class ProjectService {
 
     }
 
+
+    public String queryProjectNameById2(String projectid) {
+        // System.out.println(map);
+        ProjectEntity projectEntity=projectEntityMapper.queryProjectNameById2(projectid);
+        System.out.println(projectEntity.getId());
+        return  projectEntity.getProjectName();
+
+    }
+
+
+
+
+
     /**
      * 查询全部项目的名字接口
      *
@@ -190,4 +203,6 @@ public class ProjectService {
         pageInfo.setList(list);
         return pageInfo;
     }
+
+
 }

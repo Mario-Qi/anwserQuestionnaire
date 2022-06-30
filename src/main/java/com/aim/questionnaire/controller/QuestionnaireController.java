@@ -100,7 +100,7 @@ public class QuestionnaireController {
     @RequestMapping(value = "/modifyQuestionnaireStatus",method = RequestMethod.POST, headers = "Accept=application/json")
     public HttpResponseEntity modifyQuestionnaireStatus(@RequestBody Map<String,Object> map) {
         HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
-        System.out.println("zheliddd ");
+      //  System.out.println("zheliddd ");
 
         try {
             int result = questionnaireservice.modifyQuestionnaireStatus((HashMap<String, Object>) map);

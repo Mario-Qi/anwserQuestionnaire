@@ -94,6 +94,7 @@
     FROM user_info
     WHERE username = #{userName})
 
+
   </select>
   <!--根据项目id查询项目信息-->
   <select id="getProjectInfo" parameterType="java.lang.String" resultType="map">
@@ -114,4 +115,16 @@
     FROM  project_info
     WHERE  id=#{id,jdbcType=VARCHAR}
   </select>
+
+
+  <!--根据项目id查询项目名称-->
+  <select id="queryProjectNameById2" parameterType="java.lang.String" resultType="java.lang.String">
+    SELECT  project_name
+    FROM  project_info
+    WHERE  id=#{id,jdbcType=VARCHAR}
+  </select>
+
+
+
+
 </mapper>

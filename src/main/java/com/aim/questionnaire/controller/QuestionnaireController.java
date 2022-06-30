@@ -234,7 +234,7 @@ public class QuestionnaireController {
         int result = questionnaireservice.removeProjectId(map);
         if(result ==1){
             httpResponseEntity.setCode(Constans.SUCCESS_CODE);
-//            httpResponseEntity.setMessage(Constans.DELETE_MESSAGE);
+            httpResponseEntity.setMessage(Constans.DELETE_MESSAGE);
         }
         else if(result==-1){
             httpResponseEntity.setMessage(Constans.REMOVE_EXIT_MESSAGE);

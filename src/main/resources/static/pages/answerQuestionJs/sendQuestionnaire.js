@@ -3,7 +3,7 @@ var teachers = [];
 var sendTime = "";
 var questionId = getCookie("questionId");
 var dataId = getCookie("dataId");  // 在校生：2；毕业生：3；教师：4；用人单位：5
-var nameOfQuestionnaire = getCookie("nameOfQuestionnaire");
+var nameOfQuestionnaire = getCookie("questionName");
 
 document.getElementById("questPeople").innerText = "调查人员信息 — " + nameOfQuestionnaire;
 // document.getElementById("ctl02_ContentPlaceHolder1_InviteEmail1_hrefSend").innerText = "批量发送问卷 — " + nameOfQuestionnaire;
@@ -219,7 +219,7 @@ if(getCookie("changeTableType") == "shortMessageSend"){   //从已发问卷页�
 
     changeTab('shortMessageSend');
 
-    getQuestionInfo();
+    // getQuestionInfo();
     if (document.getElementById('msg').value != "") {
         var msg = document.getElementById('msg');
         wordStatic(msg);
@@ -236,7 +236,7 @@ if(getCookie("changeTableType") == "shortMessageSend"){   //从已发问卷页�
 }
 
 createDtePicker();
-getQuestionInfo();
+// getQuestionInfo();
 var oTable = new TableInit();
 oTable.Init();
 
@@ -429,10 +429,6 @@ function send(value) {
         document.getElementById('sendTimeChoose').style.display = 'none'
         //    邮箱方式隐藏
         document.getElementById('sendMailContent').style.display = 'none'
-        //    链接方式显示
-        // document.getElementById('sendUrlContent').style.display = 'block'
-        //调用生成二维码方法
-        getQrcode();
         //    发送按钮
         document.getElementById('sendButton').style.display = 'block'
         document.getElementById('myLittleTip').style.display = '';
@@ -621,7 +617,17 @@ $('#image2').change(function (e) {
 
 //发布问卷
 function layOutSend() {
-
+    var restime = document.getElementById("scheduledEndTime").value;
+    var sender = document.getElementById("senderName").value;
+    var senderQQ = document.getElementById("senderQQ").value;
+    var senderWX = document.getElementById("senderWX").value;
+    var senderEmail = document.getElementById("senderEmial").value;
+    sendTime = document.getElementById("scheduledEndTime").value;
+    sendTime = dateChange(sendTime);
+    //发送QQ消息内容
+    var sendContent = document.getElementById("msg").value;
+    //发送问卷答题结束语
+    var endContent = document.getElementById("tipT").value;
     //QQ发送方式
     if (sendType == '0') {
         if (shortMessageGetTime == '0') {
@@ -631,12 +637,9 @@ function layOutSend() {
             sendTime = document.getElementById("scheduledEndTime").value;
             sendTime = dateChange(sendTime);
         }
-        //发送QQ消息内容
-        var sendContent = document.getElementById("msg").value;
-        //发送问卷答题结束语
-        var endContent = document.getElementById("tipT").value;
 
-        if (students.length == 0) {
+
+        if (students.length == 0&&teachers.length==0) {
             layer.msg("请添加调查人员信息", {icon: 2});
         } else if (endContent == "") {
             layer.msg("请添加答题结束语", {icon: 2});
@@ -651,6 +654,10 @@ function layOutSend() {
             var data = {
                 "questionId": questionId,           //问卷id
                 "releaseTime": sendTime,            //发送时间
+                "senderName":sender,
+                "senderQQ":senderQQ,
+                "senderWX":senderWX,
+                "senderEmail":senderEmail,
                 "sendType": 0,                //发送类别，0QQ，1微信，2邮件
                 "context": sendContent,                 //消息内容
                 "questionEndContent": endContent,        //答卷结束语
@@ -678,37 +685,49 @@ function layOutSend() {
             })
         }
     } else if (sendType == "1") {
-        layer.load(2, {time: 2 * 1000});
-        var url = '/addSendQuestionnaire';
-        var studentsData = _$('#userInfoTable1').bootstrapTable('getData');
-        var teachersData = _$('#userInfoTable2').bootstrapTable('getData');
-        //短信发送问卷
-        var data = {
-            "questionId": questionId,           //问卷id
-            "releaseTime": sendTime,            //发送时间
-            "sendType": 1,                //发送类别，0QQ，1微信，2邮件
-            "context": sendContent,                 //消息内容
-            "questionEndContent": endContent,        //答卷结束语
-            "studentsData": studentsData,                     //人员信息
-            "teachersData":teachersData
-        };
-        setTimeout(function () {
-            layer.msg("发送成功", {icon: 1});
-        }, 2000);
-        jQuery.ajax({
-            "async": true,
-            "url": httpRequestUrl + url,
-            "type": "POST",
-            "data": JSON.stringify(data),
-            "dataType": "json",
-            "contentType": "application/json",
-            success: function (result) {
-                //console.log(result);
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
+        if (students.length == 0&&teachers.length==0) {
+            layer.msg("请添加调查人员信息", {icon: 2});
+        } else if (endContent == "") {
+            layer.msg("请添加答题结束语", {icon: 2});
+        } else if (sendContent == "") {
+            layer.msg("请添加微信消息内容", {icon: 2});
+        } else {
+            layer.load(2, {time: 2 * 1000});
+            var url = '/addSendQuestionnaire';
+            var studentsData = _$('#userInfoTable1').bootstrapTable('getData');
+            var teachersData = _$('#userInfoTable2').bootstrapTable('getData');
+            //短信发送问卷
+            var data = {
+                "questionId": questionId,           //问卷id
+                "releaseTime": sendTime,            //发送时间
+                "senderName":sender,
+                "senderQQ":senderQQ,
+                "senderWX":senderWX,
+                "senderEmail":senderEmail,
+                "sendType": 1,                //发送类别，0QQ，1微信，2邮件
+                "context": sendContent,                 //消息内容
+                "questionEndContent": endContent,        //答卷结束语
+                "studentsData": studentsData,                     //人员信息
+                "teachersData":teachersData
+            };
+            setTimeout(function () {
+                layer.msg("发送成功", {icon: 1});
+            }, 2000);
+            jQuery.ajax({
+                "async": true,
+                "url": httpRequestUrl + url,
+                "type": "POST",
+                "data": JSON.stringify(data),
+                "dataType": "json",
+                "contentType": "application/json",
+                success: function (result) {
+                    //console.log(result);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
 
-            }
-        })
+                }
+            })
+        }
     }
     else if (sendType == '2') {   //邮箱发送方式
         //邮件标题
@@ -716,12 +735,11 @@ function layOutSend() {
         //邮件发送富文本内容
         var emailContent = document.getElementById("ctl02_ContentPlaceHolder1_fckEmailContent");
         emailContent = emailContent.value;
-        // //console.log(emailContent);
         //发送问卷答题结束语
         var endContent = document.getElementById("tipT").value;
         // //console.log(endContent);
 
-        if (students.length == 0) {
+        if (students.length == 0&&teachers.length==0) {
             layer.msg("请添加调查人员信息", {
                 icon: 2
             });
@@ -740,7 +758,11 @@ function layOutSend() {
             //邮件发送问卷
             var data = {
                 "questionId": questionId,           //问卷id
-                "releaseTime": "",            //发送时间
+                "releaseTime": sendTime,            //发送时间
+                "senderName":sender,
+                "senderQQ":senderQQ,
+                "senderWX":senderWX,
+                "senderEmail":senderEmail,
                 "sendType": 2,                //发送类别，0短信，1邮件
                 "emailTitle": emailTitle,                //邮件标题
                 "context": emailContent,                 //邮件内容

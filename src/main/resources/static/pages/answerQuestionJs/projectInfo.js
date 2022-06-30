@@ -157,12 +157,12 @@ function addBtnInTable(row) {
         btnText += "<button type=\"button\" id=\"btn_stop" + row.id + "\" style='width: 80px;height: 30px;' class=\"btn btn-success ajax-link\" onclick=\"openAction(" + "'" + row.id + "'" + "," + "'" + row.question_stop + "'" + "," +"'" + row.start_time + "'" + ")\"><text style='font-size: 15px'>开启问卷</text></button>&nbsp;&nbsp;"
     }
     btnText += "<button type=\"button\" id=\"btn_stop" + row.id + "\" style='width: 50px;height: 30px;' onclick=\"deleteQuestionFromProject(" + "'" + row.id + "'" + ")\" class=\"btn btn-danger ajax-link\"><text style='font-size: 15px'>移除</text></button>&nbsp;&nbsp;";
-    btnText += "<button type=\"button\" id=\"btn_release" + row.id + "\"  style='width: 50px;height: 30px;' onclick=\"sendQuestionaire(" + "'" + row.id + "'" + "," + "'" + row.start_time + "'" + "," + "'" + row.end_time + "'" + "," + "'" + row.question_stop + "'" + ")\" class=\"btn btn-success ajax-link\"><text style='font-size: 15px'>发布</text></button>&nbsp;&nbsp;";
+    btnText += "<button type=\"button\" id=\"btn_release" + row.id + "\"  style='width: 50px;height: 30px;' onclick=\"sendQuestionaire(" + "'" + row.id + "'" + "," + "'" + row.start_time + "'" + "," + "'" + row.end_time + "'" + "," + "'" + row.question_stop + "'" + "," + "'" + row.question_name + "'" + ")\" class=\"btn btn-success ajax-link\"><text style='font-size: 15px'>发布</text></button>&nbsp;&nbsp;";
 
     return btnText;
 }
 
-function sendQuestionaire(id,start_time,end_time,question_stop){
+function sendQuestionaire(id,start_time,end_time,question_stop,question_name){
     var now = new Date();
     var start = start_time.split(/[- T :]/);
     var end = end_time.split(/[- T :]/);
@@ -174,6 +174,8 @@ function sendQuestionaire(id,start_time,end_time,question_stop){
         if(question_stop ==='1'){
             deleteCookie("questionId");
             setCookie("questionId", id);
+            deleteCookie("questionName");
+            setCookie("questionName",question_name);
             window.location.href = 'sendQuestionnaire.html';
         }else{
             alert("不能发布，请先开启问卷");

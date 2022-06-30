@@ -20,7 +20,6 @@ public class SendQuestionnaireController {
     @RequestMapping(value = "/addSendQuestionnaire",method = RequestMethod.POST, headers = "Accept=application/json")
     public HttpResponseEntity queryProjectList(@RequestBody(required = false) Map<String,Object> map){
         HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
-        System.out.println(map);
         int type = (Integer) map.get("sendType");
         String message = "";
         if(type==0)

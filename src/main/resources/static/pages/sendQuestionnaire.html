@@ -17,19 +17,6 @@
     <link rel="stylesheet" href="../css/send.css">
     <script type="text/javascript" src="../plugins/kindeditor/kindeditor.js?v=197"></script>
     <style>
-        /*.selSendTypeBox {*/
-        /*position: absolute;*/
-        /*top: 20px;*/
-        /*left: 480px;*/
-        /*display: flex;*/
-        /*align-items: center;*/
-        /*color: #333333;*/
-        /*font-size: 14px;*/
-        /*}*/
-
-        /*.selectpick-div {*/
-        /*background: #fff;*/
-        /*}*/
         th {
             text-align: center;
         }
@@ -144,11 +131,6 @@
                                 font-size: 12px;
                             }
                         </style>
-
-                        <!--<link rel="stylesheet" href="../css/link-code-pop.css"/>-->
-
-
-                        <!--<form name="aspnetForm" method="post" action="sendqstart.aspx?activity=26556304" id="aspnetForm">-->
                             <div>
                                 <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE"
                                        value="/wEPDwUJNDExMDg2OTczDxYCHhNWYWxpZGF0ZVJlcXVlc3RNb2RlAgEWAmYPZBYWAgEPZBYCAgEPFgIeCWlubmVyaHRtbAX8AjxhIGhyZWY9J2phdmFzY3JpcHQ6IHZvaWQoMCk7JyBvbmNsaWNrPSdQREZfbGF1bmNoKCIvd2p4L21hbmFnZS9vbmxpbmVzdXBwb3J0LmFzcHgiLCA2MjAsIDQwMCk7ICcgIGNsYXNzPSdidG4gYnRuLWRlZmF1bHQgYnRuLXNtIGJ0bi1zbS1hcHBseSAnPueUs+ivt+WNj+WKqTwvYT48ZGl2IGNsYXNzPSdmcmVlcHJvbW90ZXR4dCcgc3R5bGU9J21hcmdpbi10b3A6OHB4Oyc+PGI+5o+Q56S677yaPC9iPuWNh+e6p+WIsOS8geS4mueJiOWPr+S6q+WPl+WcqOe6v+WSqOivouWPiueUteivneaUr+aMge+8jDxhIGhyZWY9JyAvcmVnaXN0ZXIvdXBncmFkZXZpcC5hc3B4P3VwZ3JhZGVSZWFzb249MTcnICBjbGFzcz0ndGl0bGVsbmsnPuS6huino+ivpuaDhTwvYT48L3NwYW4+ZAICDxYCHwEFdTxzZWxlY3QgIGlkPSdkZGxBY3Rpdml0eW5ldycgc3R5bGU9Jyc+PG9wdGlvbiB2YWx1ZT0nMjY1NTYzMDQnIHNlbGVjdGVkPSdzZWxlY3RlZCc+VkdCKElEOjI2NTU2MzA0KTwvb3B0aW9uPjwvc2VsZWN0PmQCAw8WAh4EaHJlZgUjaHR0cHM6Ly93d3cud2p4LmNuL2pxLzI2NTU2MzA0LmFzcHhkAgQPFgQfAgUsL3dqeC9wcm9tb3RlL2ludml0ZS5hc3B4P2FjdGl2aXR5aWQ9MjY1NTYzMDQeB1Zpc2libGVoZAIFDxYEHwIFLy93angvcHJvbW90ZS9pbnZpdGVzbXMuYXNweD9hY3Rpdml0eWlkPTI2NTU2MzA0HwNoZAIGDxYCHwNnZAIHDxYCHwIFNC9zYW1wbGUvZGVtYW5kLmFzcHg/YWN0aXZpdHlpZD0yNjU1NjMwNCZsc3Q9MSZucHViPTFkAggPFgQfAgUwL3dqeC9wcm9tb3RlL2pvaW5iYWNrbGlzdC5hc3B4P2FjdGl2aXR5PTI2NTU2MzA0HwNnZAIJDxYEHwIFMC93angvcHJvbW90ZS9wcm9tb3RlYXBwbHkuYXNweD9hY3Rpdml0eT0yNjU1NjMwNB8DZ2QCCg8WAh8CBSNodHRwczovL3d3dy53anguY24vanEvMjY1NTYzMDQuYXNweGQCDA9kFgICAQ9kFgYCAQ8WBh4Dc3JjBWRodHRwczovL2Rvd24ud2p4LmNuL2hhbmRsZXIvcXJjb2RlLmFzaHg/Y2hzPTEyMHgxMjAmY2hsPWh0dHBzJTNhJTJmJTJmd3d3LndqeC5jbiUyZm0lMmYyNjU1NjMwNC5hc3B4HgV3aWR0aAUDMTQwHgZoZWlnaHQFAzE0MGQCBQ8PFgIeBFRleHQFfzxzY3JpcHQgdHlwZT0ndGV4dC9qYXZhc2NyaXB0JyBzcmM9J2h0dHBzOi8vd3d3LndqeC5jbi9oYW5kbGVyL2pxZW1lZC5hc2h4P2FjdGl2aXR5PTI2NTU2MzA0JndpZHRoPTc2MCZzb3VyY2U9aWZyYW1lJz48L3NjcmlwdD5kZAIGDw8WAh8HBZYBPGlmcmFtZSBzcmM9J2h0dHBzOi8vd3d3LndqeC5jbi9qcS8yNjU1NjMwNCxpLHQuYXNweD93aWR0aD03NjAmc291cmNlPWlmcmFtZScgd2lkdGg9Jzc5OScgaGVpZ2h0PSc4MDAnIGZyYW1lYm9yZGVyPScwJyBzdHlsZT0nb3ZlcmZsb3c6YXV0byc+PC9pZnJhbWU+ZGRk13aLVEF/7lJt0vO9Dshg4UvC3jc="/>
@@ -199,226 +181,11 @@
                                                class="add__batches pull-left" style="display: none">批量添加教师信息</a>
                                             <input type="file" id="image2" name="image2"
                                                    style="display:none;"/>
-<!--                                            <div class="link-box clearfix" style="margin-top:0px;">-->
-<!--                                                <div class="ui-dialog__section-setting">-->
-<!--                                                    <div class="ui-dialog__items ui-dialog__hidden" id="getDownLoadBtn1" style="margin-bottom: 20px">-->
-<!--                                                        &lt;!&ndash;<a style="margin-right: 20px;" href="../答题人上传数据模板.xlsx" class="add__batches pull-left">下载模板</a>&ndash;&gt;-->
-<!--                                                        &lt;!&ndash;href="javascript:void('0')"&ndash;&gt;-->
-<!--                                                        &lt;!&ndash;onclick="addPhone(1);"&ndash;&gt;-->
-<!--                                                        <a id="onloadFile1" href="#" onclick="addFile()"-->
-<!--                                                           class="add__batches pull-left">批量添加学生信息</a>-->
-<!--                                                        <input type="file" id="image1" name="image"-->
-<!--                                                               style="display:none;"/>-->
-<!--                                                        &lt;!&ndash;<a onclick="return window.confirm(&quot;您确定清空收件人列表吗？&quot;);"&ndash;&gt;-->
-<!--                                                           &lt;!&ndash;id="ctl02_ContentPlaceHolder1_btnDelete2" title="清空手机号码列表"&ndash;&gt;-->
-<!--                                                           &lt;!&ndash;class="defaultColor underline pull-right"&ndash;&gt;-->
-<!--                                                           &lt;!&ndash;href="javascript:__doPostBack('ctl02$ContentPlaceHolder1$btnDelete2','')">清空手机号码列表</a>&ndash;&gt;-->
-<!--                                                    </div>-->
-<!--                                                    <div class="fillet-box overall__table ui-dialog__resetMargin">-->
-<!--                                                        <div>-->
-<!--                                                            <table id="userInfoTable1"></table>-->
-<!--                                                        </div>-->
-<!--                                                        <ul id="ctl02_ContentPlaceHolder1_divAdd1" class="IM-address">-->
-<!--                                                        </ul>-->
-<!--                                                        &lt;!&ndash;<div id="ctl02_ContentPlaceHolder1_lmlpage" class="text-center">&ndash;&gt;-->
-<!--                                                            &lt;!&ndash;<div class="page-box page-box-myquestion"&ndash;&gt;-->
-<!--                                                                 &lt;!&ndash;style="color: #808080; font-size: 14px; height: 30px;">&ndash;&gt;-->
-<!--                                                                &lt;!&ndash;<div id="ctl02_ContentPlaceHolder1_pagehttml"&ndash;&gt;-->
-<!--                                                                     &lt;!&ndash;class="page-list pager-linkpage">&ndash;&gt;-->
-<!--                                                                    &lt;!&ndash;<a id="ctl02_ContentPlaceHolder1_btnFirst"&ndash;&gt;-->
-<!--                                                                       &lt;!&ndash;disabled="disabled" class="page-first disabled"&ndash;&gt;-->
-<!--                                                                       &lt;!&ndash;alt="第一页"></a>&ndash;&gt;-->
-<!--                                                                    &lt;!&ndash;<a id="ctl02_ContentPlaceHolder1_btnPre"&ndash;&gt;-->
-<!--                                                                       &lt;!&ndash;disabled="disabled" class="page-up disabled"&ndash;&gt;-->
-<!--                                                                       &lt;!&ndash;alt="上一页"></a>&ndash;&gt;-->
-
-<!--                                                                    &lt;!&ndash;第1/1页&ndash;&gt;-->
-
-<!--                                                                    &lt;!&ndash;<a id="ctl02_ContentPlaceHolder1_btnNext"&ndash;&gt;-->
-<!--                                                                       &lt;!&ndash;disabled="disabled" class="page-down disabled"&ndash;&gt;-->
-<!--                                                                       &lt;!&ndash;alt="下一页"></a>&ndash;&gt;-->
-
-<!--                                                                    &lt;!&ndash;<a id="ctl02_ContentPlaceHolder1_btnLast"&ndash;&gt;-->
-<!--                                                                       &lt;!&ndash;disabled="disabled" class="page-last disabled"&ndash;&gt;-->
-<!--                                                                       &lt;!&ndash;alt="最后一页"></a>&ndash;&gt;-->
-
-<!--                                                                &lt;!&ndash;</div>&ndash;&gt;-->
-<!--                                                            &lt;!&ndash;</div>&ndash;&gt;-->
-<!--                                                        &lt;!&ndash;</div>&ndash;&gt;-->
-<!--                                                    </div>-->
-
-
-
-<!--                                                </div>-->
-<!--                                                &lt;!&ndash;<script>&ndash;&gt;-->
-<!--                                                    &lt;!&ndash;var openShareWxProgram = document.getElementById("ctl02_ContentPlaceHolder1_openShareWxProgram");&ndash;&gt;-->
-<!--                                                    &lt;!&ndash;if (openShareWxProgram) {&ndash;&gt;-->
-<!--                                                        &lt;!&ndash;openShareWxProgram.addEventListener("click", function () {&ndash;&gt;-->
-<!--                                                            &lt;!&ndash;layer.open({&ndash;&gt;-->
-<!--                                                                &lt;!&ndash;type: 2,&ndash;&gt;-->
-<!--                                                                &lt;!&ndash;isOutAnim: false,&ndash;&gt;-->
-<!--                                                                &lt;!&ndash;title: false,&ndash;&gt;-->
-<!--                                                                &lt;!&ndash;maxmin: false,&ndash;&gt;-->
-<!--                                                                &lt;!&ndash;shadeClose: true, //点击遮罩关闭层&ndash;&gt;-->
-<!--                                                                &lt;!&ndash;area: ['360px', '528px'],&ndash;&gt;-->
-<!--                                                                &lt;!&ndash;content: ['/wjx/design/ActivityWxAppQrCode.aspx?activity=' + 26556304, 'no']&ndash;&gt;-->
-<!--                                                            &lt;!&ndash;});&ndash;&gt;-->
-<!--                                                        &lt;!&ndash;})&ndash;&gt;-->
-<!--                                                    &lt;!&ndash;}&ndash;&gt;-->
-
-
-<!--                                                &lt;!&ndash;</script>&ndash;&gt;-->
-<!--                                                <style>-->
-<!--                                                    .beautify-wrap {-->
-<!--                                                        clear: both;-->
-<!--                                                    }-->
-
-<!--                                                    .beautify-code {-->
-<!--                                                        display: block;-->
-<!--                                                        font-size: 14px;-->
-<!--                                                        color: #333;-->
-<!--                                                        line-height: 22px;-->
-<!--                                                    }-->
-
-<!--                                                    .beautify-icon {-->
-<!--                                                        width: 22px;-->
-<!--                                                        height: 22px;-->
-<!--                                                        margin-left: 18px;-->
-<!--                                                        /*background: url("../images/beautify.png") no-repeat center;*/-->
-<!--                                                    }-->
-
-<!--                                                    .beautify-wrap:hover .beautify-icon {-->
-<!--                                                        /*background-image: url("../images/beautify-hover.png")*/-->
-<!--                                                    }-->
-
-<!--                                                    .beautify-wrap:hover .beautify-code {-->
-<!--                                                        color: #1ea0fa;-->
-<!--                                                    }-->
-<!--                                                </style>-->
-<!--                                                <div class="beautify-wrap text-left">-->
-<!--                                                    <i class="icon beautify-icon pull-left"></i>-->
-
-<!--                                                </div>-->
-<!--                                            </div>-->
                                         </div>
-<!--                                        <div id = "qqq">-->
-<!--&lt;!&ndash;                                            <div class="link-box clearfix" style="margin-top:0px;">&ndash;&gt;-->
-<!--&lt;!&ndash;                                                <div class="ui-dialog__section-setting">&ndash;&gt;-->
-<!--&lt;!&ndash;                                                    <div class="ui-dialog__items ui-dialog__hidden" id="getDownLoadBtn1" style="margin-bottom: 20px">&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;<a style="margin-right: 20px;" href="../答题人上传数据模板.xlsx" class="add__batches pull-left">下载模板</a>&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;href="javascript:void('0')"&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;onclick="addPhone(1);"&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        <a id="onloadFile1" href="#" onclick="addFile()"&ndash;&gt;-->
-<!--&lt;!&ndash;                                                           class="add__batches pull-left">批量添加学生信息</a>&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        <input type="file" id="image1" name="image"&ndash;&gt;-->
-<!--&lt;!&ndash;                                                               style="display:none;"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;<a onclick="return window.confirm(&quot;您确定清空收件人列表吗？&quot;);"&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;id="ctl02_ContentPlaceHolder1_btnDelete2" title="清空手机号码列表"&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;class="defaultColor underline pull-right"&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;href="javascript:__doPostBack('ctl02$ContentPlaceHolder1$btnDelete2','')">清空手机号码列表</a>&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                    </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                                                    <div class="fillet-box overall__table ui-dialog__resetMargin">&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        <div>&ndash;&gt;-->
-<!--&lt;!&ndash;                                                            <table id="userInfoTable1"></table>&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        <ul id="ctl02_ContentPlaceHolder1_divAdd1" class="IM-address">&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        </ul>&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;<div id="ctl02_ContentPlaceHolder1_lmlpage" class="text-center">&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;<div class="page-box page-box-myquestion"&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;style="color: #808080; font-size: 14px; height: 30px;">&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;<div id="ctl02_ContentPlaceHolder1_pagehttml"&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;class="page-list pager-linkpage">&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;<a id="ctl02_ContentPlaceHolder1_btnFirst"&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;disabled="disabled" class="page-first disabled"&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;alt="第一页"></a>&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;<a id="ctl02_ContentPlaceHolder1_btnPre"&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;disabled="disabled" class="page-up disabled"&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;alt="上一页"></a>&ndash;&gt;&ndash;&gt;-->
-
-<!--&lt;!&ndash;                                                        &lt;!&ndash;第1/1页&ndash;&gt;&ndash;&gt;-->
-
-<!--&lt;!&ndash;                                                        &lt;!&ndash;<a id="ctl02_ContentPlaceHolder1_btnNext"&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;disabled="disabled" class="page-down disabled"&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;alt="下一页"></a>&ndash;&gt;&ndash;&gt;-->
-
-<!--&lt;!&ndash;                                                        &lt;!&ndash;<a id="ctl02_ContentPlaceHolder1_btnLast"&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;disabled="disabled" class="page-last disabled"&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;alt="最后一页"></a>&ndash;&gt;&ndash;&gt;-->
-
-<!--&lt;!&ndash;                                                        &lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                    </div>&ndash;&gt;-->
-
-
-
-<!--&lt;!&ndash;                                                </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                                                &lt;!&ndash;<script>&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                &lt;!&ndash;var openShareWxProgram = document.getElementById("ctl02_ContentPlaceHolder1_openShareWxProgram");&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                &lt;!&ndash;if (openShareWxProgram) {&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                &lt;!&ndash;openShareWxProgram.addEventListener("click", function () {&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                &lt;!&ndash;layer.open({&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                &lt;!&ndash;type: 2,&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                &lt;!&ndash;isOutAnim: false,&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                &lt;!&ndash;title: false,&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                &lt;!&ndash;maxmin: false,&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                &lt;!&ndash;shadeClose: true, //点击遮罩关闭层&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                &lt;!&ndash;area: ['360px', '528px'],&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                &lt;!&ndash;content: ['/wjx/design/ActivityWxAppQrCode.aspx?activity=' + 26556304, 'no']&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                &lt;!&ndash;});&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                &lt;!&ndash;})&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                &lt;!&ndash;}&ndash;&gt;&ndash;&gt;-->
-
-
-<!--&lt;!&ndash;                                                &lt;!&ndash;</script>&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                <style>&ndash;&gt;-->
-<!--&lt;!&ndash;                                                    .beautify-wrap {&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        clear: both;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                    }&ndash;&gt;-->
-
-<!--&lt;!&ndash;                                                    .beautify-code {&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        display: block;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        font-size: 14px;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        color: #333;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        line-height: 22px;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                    }&ndash;&gt;-->
-
-<!--&lt;!&ndash;                                                    .beautify-icon {&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        width: 22px;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        height: 22px;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        margin-left: 18px;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        /*background: url("../images/beautify.png") no-repeat center;*/&ndash;&gt;-->
-<!--&lt;!&ndash;                                                    }&ndash;&gt;-->
-
-<!--&lt;!&ndash;                                                    .beautify-wrap:hover .beautify-icon {&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        /*background-image: url("../images/beautify-hover.png")*/&ndash;&gt;-->
-<!--&lt;!&ndash;                                                    }&ndash;&gt;-->
-
-<!--&lt;!&ndash;                                                    .beautify-wrap:hover .beautify-code {&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        color: #1ea0fa;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                    }&ndash;&gt;-->
-<!--&lt;!&ndash;                                                </style>&ndash;&gt;-->
-<!--&lt;!&ndash;                                                <div class="beautify-wrap text-left">&ndash;&gt;-->
-<!--&lt;!&ndash;                                                    <i class="icon beautify-icon pull-left"></i>&ndash;&gt;-->
-
-<!--&lt;!&ndash;                                                </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                                            </div>&ndash;&gt;-->
-<!--                                        </div>-->
                                         <div id="importStudentsBox">
                                             <div class="link-box clearfix" style="margin-top:0px;">
                                                 <div class="ui-dialog__section-setting">
                                                     <div class="ui-dialog__items ui-dialog__hidden" id="getDownLoadBtn1" style="margin-bottom: 20px">
-                                                        <!--<a style="margin-right: 20px;" href="../答题人上传数据模板.xlsx" class="add__batches pull-left">下载模板</a>-->
-                                                        <!--href="javascript:void('0')"-->
-                                                        <!--onclick="addPhone(1);"-->
-<!--                                                        <a id="onloadFile1" href="#" onclick="addFile('image1')"-->
-<!--                                                           class="pull-left">批量添加学生信息</a>-->
-<!--                                                        <input type="file" id="image1" name="image1"-->
-<!--                                                               style="display:none;"/>-->
-                                                        <!--<a onclick="return window.confirm(&quot;您确定清空收件人列表吗？&quot;);"-->
-                                                        <!--id="ctl02_ContentPlaceHolder1_btnDelete2" title="清空手机号码列表"-->
-                                                        <!--class="defaultColor underline pull-right"-->
-                                                        <!--href="javascript:__doPostBack('ctl02$ContentPlaceHolder1$btnDelete2','')">清空手机号码列表</a>-->
                                                     </div>
                                                     <div class="fillet-box overall__table ui-dialog__resetMargin">
                                                         <div>
@@ -426,54 +193,11 @@
                                                         </div>
                                                         <ul id="ctl02_ContentPlaceHolder1_divAdd1" class="IM-address">
                                                         </ul>
-                                                        <!--<div id="ctl02_ContentPlaceHolder1_lmlpage" class="text-center">-->
-                                                        <!--<div class="page-box page-box-myquestion"-->
-                                                        <!--style="color: #808080; font-size: 14px; height: 30px;">-->
-                                                        <!--<div id="ctl02_ContentPlaceHolder1_pagehttml"-->
-                                                        <!--class="page-list pager-linkpage">-->
-                                                        <!--<a id="ctl02_ContentPlaceHolder1_btnFirst"-->
-                                                        <!--disabled="disabled" class="page-first disabled"-->
-                                                        <!--alt="第一页"></a>-->
-                                                        <!--<a id="ctl02_ContentPlaceHolder1_btnPre"-->
-                                                        <!--disabled="disabled" class="page-up disabled"-->
-                                                        <!--alt="上一页"></a>-->
-
-                                                        <!--第1/1页-->
-
-                                                        <!--<a id="ctl02_ContentPlaceHolder1_btnNext"-->
-                                                        <!--disabled="disabled" class="page-down disabled"-->
-                                                        <!--alt="下一页"></a>-->
-
-                                                        <!--<a id="ctl02_ContentPlaceHolder1_btnLast"-->
-                                                        <!--disabled="disabled" class="page-last disabled"-->
-                                                        <!--alt="最后一页"></a>-->
-
-                                                        <!--</div>-->
-                                                        <!--</div>-->
-                                                        <!--</div>-->
                                                     </div>
 
 
 
                                                 </div>
-                                                <!--<script>-->
-                                                <!--var openShareWxProgram = document.getElementById("ctl02_ContentPlaceHolder1_openShareWxProgram");-->
-                                                <!--if (openShareWxProgram) {-->
-                                                <!--openShareWxProgram.addEventListener("click", function () {-->
-                                                <!--layer.open({-->
-                                                <!--type: 2,-->
-                                                <!--isOutAnim: false,-->
-                                                <!--title: false,-->
-                                                <!--maxmin: false,-->
-                                                <!--shadeClose: true, //点击遮罩关闭层-->
-                                                <!--area: ['360px', '528px'],-->
-                                                <!--content: ['/wjx/design/ActivityWxAppQrCode.aspx?activity=' + 26556304, 'no']-->
-                                                <!--});-->
-                                                <!--})-->
-                                                <!--}-->
-
-
-                                                <!--</script>-->
                                                 <style>
                                                     .beautify-wrap {
                                                         clear: both;
@@ -507,126 +231,11 @@
                                                 </div>
                                             </div>
                                         </div>
-<!--                                        导入教师信息-->
-<!--                                        <div id = “wwww” class="box__inner" style="display: block">-->
-<!--&lt;!&ndash;                                            <div class="link-box clearfix" style="margin-top:0px;">&ndash;&gt;-->
-<!--&lt;!&ndash;                                                <div class="ui-dialog__section-setting">&ndash;&gt;-->
-<!--&lt;!&ndash;                                                    <div class="ui-dialog__items ui-dialog__hidden" id="getDownLoadBtn2" style="margin-bottom: 20px">&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;<a style="margin-right: 20px;" href="../答题人上传数据模板.xlsx" class="add__batches pull-left">下载模板</a>&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;href="javascript:void('0')"&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;onclick="addPhone(1);"&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        <a id="onloadFile2" href="#" onclick="addFile()"&ndash;&gt;-->
-<!--&lt;!&ndash;                                                           class="add__batches pull-left">批量添加教师信息</a>&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        <input type="file" id="image2" name="image"&ndash;&gt;-->
-<!--&lt;!&ndash;                                                               style="display:none;"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;<a onclick="return window.confirm(&quot;您确定清空收件人列表吗？&quot;);"&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;id="ctl02_ContentPlaceHolder1_btnDelete2" title="清空手机号码列表"&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;class="defaultColor underline pull-right"&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;href="javascript:__doPostBack('ctl02$ContentPlaceHolder1$btnDelete2','')">清空手机号码列表</a>&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                    </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                                                    <div class="fillet-box overall__table ui-dialog__resetMargin">&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        <div>&ndash;&gt;-->
-<!--&lt;!&ndash;                                                            <table id="userInfoTable2"></table>&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        <ul id="ctl02_ContentPlaceHolder1_divAdd2" class="IM-address">&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        </ul>&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;<div id="ctl02_ContentPlaceHolder1_lmlpage" class="text-center">&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;<div class="page-box page-box-myquestion"&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;style="color: #808080; font-size: 14px; height: 30px;">&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;<div id="ctl02_ContentPlaceHolder1_pagehttml"&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;class="page-list pager-linkpage">&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;<a id="ctl02_ContentPlaceHolder1_btnFirst"&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;disabled="disabled" class="page-first disabled"&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;alt="第一页"></a>&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;<a id="ctl02_ContentPlaceHolder1_btnPre"&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;disabled="disabled" class="page-up disabled"&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;alt="上一页"></a>&ndash;&gt;&ndash;&gt;-->
-
-<!--&lt;!&ndash;                                                        &lt;!&ndash;第1/1页&ndash;&gt;&ndash;&gt;-->
-
-<!--&lt;!&ndash;                                                        &lt;!&ndash;<a id="ctl02_ContentPlaceHolder1_btnNext"&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;disabled="disabled" class="page-down disabled"&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;alt="下一页"></a>&ndash;&gt;&ndash;&gt;-->
-
-<!--&lt;!&ndash;                                                        &lt;!&ndash;<a id="ctl02_ContentPlaceHolder1_btnLast"&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;disabled="disabled" class="page-last disabled"&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;alt="最后一页"></a>&ndash;&gt;&ndash;&gt;-->
-
-<!--&lt;!&ndash;                                                        &lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        &lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                    </div>&ndash;&gt;-->
-
-
-
-<!--&lt;!&ndash;                                                </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                                                &lt;!&ndash;<script>&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                &lt;!&ndash;var openShareWxProgram = document.getElementById("ctl02_ContentPlaceHolder1_openShareWxProgram");&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                &lt;!&ndash;if (openShareWxProgram) {&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                &lt;!&ndash;openShareWxProgram.addEventListener("click", function () {&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                &lt;!&ndash;layer.open({&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                &lt;!&ndash;type: 2,&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                &lt;!&ndash;isOutAnim: false,&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                &lt;!&ndash;title: false,&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                &lt;!&ndash;maxmin: false,&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                &lt;!&ndash;shadeClose: true, //点击遮罩关闭层&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                &lt;!&ndash;area: ['360px', '528px'],&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                &lt;!&ndash;content: ['/wjx/design/ActivityWxAppQrCode.aspx?activity=' + 26556304, 'no']&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                &lt;!&ndash;});&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                &lt;!&ndash;})&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                &lt;!&ndash;}&ndash;&gt;&ndash;&gt;-->
-
-
-<!--&lt;!&ndash;                                                &lt;!&ndash;</script>&ndash;&gt;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                <style>&ndash;&gt;-->
-<!--&lt;!&ndash;                                                    .beautify-wrap {&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        clear: both;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                    }&ndash;&gt;-->
-
-<!--&lt;!&ndash;                                                    .beautify-code {&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        display: block;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        font-size: 14px;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        color: #333;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        line-height: 22px;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                    }&ndash;&gt;-->
-
-<!--&lt;!&ndash;                                                    .beautify-icon {&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        width: 22px;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        height: 22px;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        margin-left: 18px;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        /*background: url("../images/beautify.png") no-repeat center;*/&ndash;&gt;-->
-<!--&lt;!&ndash;                                                    }&ndash;&gt;-->
-
-<!--&lt;!&ndash;                                                    .beautify-wrap:hover .beautify-icon {&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        /*background-image: url("../images/beautify-hover.png")*/&ndash;&gt;-->
-<!--&lt;!&ndash;                                                    }&ndash;&gt;-->
-
-<!--&lt;!&ndash;                                                    .beautify-wrap:hover .beautify-code {&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        color: #1ea0fa;&ndash;&gt;-->
-<!--&lt;!&ndash;                                                    }&ndash;&gt;-->
-<!--&lt;!&ndash;                                                </style>&ndash;&gt;-->
-<!--&lt;!&ndash;                                                <div class="beautify-wrap text-left">&ndash;&gt;-->
-<!--&lt;!&ndash;                                                    <i class="icon beautify-icon pull-left"></i>&ndash;&gt;-->
-
-<!--&lt;!&ndash;                                                </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                                            </div>&ndash;&gt;-->
-<!--                                        </div>-->
 
                                         <div id="importTeachersBox" style="display: none">
                                             <div class="link-box clearfix" style="margin-top:0px;">
                                                 <div class="ui-dialog__section-setting">
                                                     <div class="ui-dialog__items ui-dialog__hidden" id="getDownLoadBtn2" style="margin-bottom: 20px">
-                                                        <!--<a style="margin-right: 20px;" href="../答题人上传数据模板.xlsx" class="add__batches pull-left">下载模板</a>-->
-                                                        <!--href="javascript:void('0')"-->
-                                                        <!--onclick="addPhone(1);"-->
-<!--                                                        <a id="onloadFile2" href="#" onclick="addFile('image2')"-->
-<!--                                                           class="add__batches pull-left">批量添加教师信息</a>-->
-<!--                                                        <input type="file" id="image2" name="image2"-->
-<!--                                                               style="display:none;"/>-->
-                                                        <!--<a onclick="return window.confirm(&quot;您确定清空收件人列表吗？&quot;);"-->
-                                                        <!--id="ctl02_ContentPlaceHolder1_btnDelete2" title="清空手机号码列表"-->
-                                                        <!--class="defaultColor underline pull-right"-->
-                                                        <!--href="javascript:__doPostBack('ctl02$ContentPlaceHolder1$btnDelete2','')">清空手机号码列表</a>-->
                                                     </div>
                                                     <div class="fillet-box overall__table ui-dialog__resetMargin">
                                                         <div>
@@ -634,54 +243,9 @@
                                                         </div>
                                                         <ul id="ctl02_ContentPlaceHolder1_divAdd2" class="IM-address">
                                                         </ul>
-                                                        <!--<div id="ctl02_ContentPlaceHolder1_lmlpage" class="text-center">-->
-                                                        <!--<div class="page-box page-box-myquestion"-->
-                                                        <!--style="color: #808080; font-size: 14px; height: 30px;">-->
-                                                        <!--<div id="ctl02_ContentPlaceHolder1_pagehttml"-->
-                                                        <!--class="page-list pager-linkpage">-->
-                                                        <!--<a id="ctl02_ContentPlaceHolder1_btnFirst"-->
-                                                        <!--disabled="disabled" class="page-first disabled"-->
-                                                        <!--alt="第一页"></a>-->
-                                                        <!--<a id="ctl02_ContentPlaceHolder1_btnPre"-->
-                                                        <!--disabled="disabled" class="page-up disabled"-->
-                                                        <!--alt="上一页"></a>-->
-
-                                                        <!--第1/1页-->
-
-                                                        <!--<a id="ctl02_ContentPlaceHolder1_btnNext"-->
-                                                        <!--disabled="disabled" class="page-down disabled"-->
-                                                        <!--alt="下一页"></a>-->
-
-                                                        <!--<a id="ctl02_ContentPlaceHolder1_btnLast"-->
-                                                        <!--disabled="disabled" class="page-last disabled"-->
-                                                        <!--alt="最后一页"></a>-->
-
-                                                        <!--</div>-->
-                                                        <!--</div>-->
-                                                        <!--</div>-->
                                                     </div>
-
-
-
                                                 </div>
-                                                <!--<script>-->
-                                                <!--var openShareWxProgram = document.getElementById("ctl02_ContentPlaceHolder1_openShareWxProgram");-->
-                                                <!--if (openShareWxProgram) {-->
-                                                <!--openShareWxProgram.addEventListener("click", function () {-->
-                                                <!--layer.open({-->
-                                                <!--type: 2,-->
-                                                <!--isOutAnim: false,-->
-                                                <!--title: false,-->
-                                                <!--maxmin: false,-->
-                                                <!--shadeClose: true, //点击遮罩关闭层-->
-                                                <!--area: ['360px', '528px'],-->
-                                                <!--content: ['/wjx/design/ActivityWxAppQrCode.aspx?activity=' + 26556304, 'no']-->
-                                                <!--});-->
-                                                <!--})-->
-                                                <!--}-->
 
-
-                                                <!--</script>-->
                                                 <style>
                                                     .beautify-wrap {
                                                         clear: both;
@@ -698,11 +262,11 @@
                                                         width: 22px;
                                                         height: 22px;
                                                         margin-left: 18px;
-                                                        /*background: url("../images/beautify.png") no-repeat center;*/
+
                                                     }
 
                                                     .beautify-wrap:hover .beautify-icon {
-                                                        /*background-image: url("../images/beautify-hover.png")*/
+
                                                     }
 
                                                     .beautify-wrap:hover .beautify-code {
@@ -715,51 +279,7 @@
                                                 </div>
                                             </div>
                                         </div>
-
-
-
-
-
-
                                     </div>
-                                    <script>
-                                        // console.log(document.getElementById('importStudentsBox'));
-                                    </script>
-
-                                    <script>
-                                        // function changeIdentity(id) {
-                                        //     if (id == 'importStudentsBoxA') {
-                                        //         // document.getElementById('linkSendA').style.backgroundColor = "#1ea0fa";
-                                        //         // document.getElementById('linkSendA').removeAttribute("class", "inside-wrapper nav-show nav-items linkCode-icon");
-                                        //         // document.getElementById('linkSendA').setAttribute("class", "inside-wrapper nav-show nav-items clicked linkCode-icon");
-                                        //         //
-                                        //         // document.getElementById('shortMessageSendA').style.backgroundColor = "#fff";
-                                        //         // document.getElementById('shortMessageSendA').removeAttribute("class", "inside-wrapper nav-show nav-items clicked sms-icon");
-                                        //         // document.getElementById('shortMessageSendA').setAttribute("class", "inside-wrapper nav-show nav-items sms-icon");
-                                        //
-                                        //         console.log(document.getElementById('linkSend').style);
-                                        //         console.log(document.getElementById('importStudentsBox'));
-                                        //
-                                        //         document.getElementById("importStudentsBox").style.display = "block";
-                                        //         document.getElementById("importTeachersBox").style.display = "none";
-                                        //     } else if (id == 'importTeachersBoxA') {
-                                        //         // document.getElementById('linkSendA').style.backgroundColor = "#fff";
-                                        //         // document.getElementById('linkSendA').removeAttribute("class", "inside-wrapper nav-show nav-items clicked sms-icon");
-                                        //         // document.getElementById('linkSendA').setAttribute("class", "inside-wrapper nav-show nav-items sms-icon");
-                                        //         //
-                                        //         // document.getElementById('shortMessageSendA').style.backgroundColor = "#1ea0fa";
-                                        //         // document.getElementById('shortMessageSendA').removeAttribute("class", "inside-wrapper nav-show nav-items sms-icon");
-                                        //         // document.getElementById('shortMessageSendA').setAttribute("class", "inside-wrapper nav-show nav-items clicked sms-icon");
-                                        //
-                                        //         document.getElementById('importStudentsBox').style.display = "none";
-                                        //         document.getElementById('importStudentsBox').style.display = "block";
-                                        //         // if (document.getElementById('msg').value != "") {
-                                        //         //     var msg = document.getElementById('msg');
-                                        //         //     wordStatic(msg);
-                                        //         // }
-                                        //     }
-                                        // }
-                                    </script>
 
                                     <div class="box" id="shortMessageSend" style="display: none">
                                             <div class="pull-right" style="width: 280px;height: 200px">
@@ -779,22 +299,6 @@
                                                 </span>
                                                 </div>
 
-<!--                                                <div class="pull-left" style="margin-bottom: 20px">-->
-<!--                                                    <label style="font-weight: bold;font-size: 16px">问卷关闭时间：</label>-->
-<!--                                                    <span style="padding-bottom: 23px;">-->
-<!--                                                  <input type="radio" style="font-size: 16px" name="endTime" value="0" onclick="setEndtime('0')"-->
-<!--                                                         checked>不限&nbsp;&nbsp;&nbsp;&nbsp;-->
-<!--                                                    <input type="radio" style="font-size: 16px" name="endTime" value="1" onclick="setEndtime('1')">定时关闭-->
-<!--                                                </span>-->
-<!--                                                </div>-->
-<!--                                                <div class="pull-left" id="chooseEndTime" style="display: none;margin-bottom: 20px">-->
-<!--                                                    <label style="font-weight: bold;font-size: 16px">截止时间</label>-->
-<!--                                                    <span style="padding-left: 23px;">-->
-<!--                                                    <input id="scheduledEndTime2" class="time-g"-->
-<!--                                                           style="height:32px;padding-left: 20px;border-radius: 4px;border: 1px solid #abafb2">-->
-<!--                                                </span>-->
-<!--                                                </div>-->
-
                                                 <div class="pull-left" style="margin-bottom: 20px">
                                                     <label style="font-weight: bold;font-size: 16px">单个用户最大答题次数：</label>
                                                     <select>
@@ -806,14 +310,6 @@
                                                     </select>
                                                 </div>
                                             </div>
-<!--                                        <div class="exam__header clearfix">-->
-<!--                                            <div id="ctl02_ContentPlaceHolder1_InviteEmail1_liSendE"-->
-<!--                                                 class="exam__set-guide pull-left current"><a-->
-<!--                                                    id="ctl02_ContentPlaceHolder1_InviteEmail1_hrefSend"-->
-<!--                                                    href="javascript:void(0)"></a>-->
-<!--                                                <em class="caret-bottom"></em>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
                                         <div class="linkofquestionblok">
                                             <div class="pull-left">
                                                 <table>
@@ -884,11 +380,11 @@
                                                         <tr style="margin-top: 20px">
                                                             <td style="margin-right: 80px">
                                                                 <span class="pull-left" >发布人：&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
-                                                                <input class="pull-left" placeholder="">
+                                                                <input id="senderName" class="pull-left" placeholder="">
                                                             </td>
                                                             <td style="margin-right: 40px">
                                                                 <span class="pull-left" style="margin-left: 90px">发布人QQ:&nbsp&nbsp&nbsp&nbsp</span>
-                                                                <input class="pull-left" placeholder="请输入您的QQ">
+                                                                <input id="senderQQ" class="pull-left" placeholder="请输入您的QQ">
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -896,11 +392,11 @@
                                                         <tr style="margin-top: 20px">
                                                             <td style="margin-right: 40px">
                                                                 <span class="pull-left" >发布人微信：&nbsp&nbsp&nbsp</span>
-                                                                <input class="pull-left" placeholder="请输入您的微信">
+                                                                <input id="senderWX" class="pull-left" placeholder="请输入您的微信">
                                                             </td>
                                                             <td style="margin-right: 40px">
                                                                 <span class="pull-left" style="margin-left: 90px">发布人邮箱:&nbsp&nbsp</span>
-                                                                <input class="pull-left" placeholder="请输入您的邮箱地址">
+                                                                <input id = "senderEmial" class="pull-left" placeholder="请输入您的邮箱地址">
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -933,8 +429,8 @@
                                                           style="width: 750px;height:100px;border-radius: 4px;border: 1px solid #abafb2;resize:none;padding:6px 12px;margin-top: 15px"></textarea>
                                                     <p class="text-count" style="font-size:12px;">
                                                         <!--输入<span id="txt">0</span>字&nbsp;-->
-                                                        还能输入<span id="Lnum" style="color:red;font-size:12px;"></span>个字,
-                                                        此短信内容将按<span id="num" style="color:red;font-size:12px;">0</span>条短信计费
+                                                        <span id="Lnum" style="color:red;font-size:12px;display: none"></span>
+                                                        <span id="num" style="color:red;font-size:12px;display: none">0</span>
                                                     </p>
 
                                                 </div>
@@ -1007,24 +503,6 @@
 
                                                             </div>
                                                         </div>
-                                                        <!--<script>-->
-                                                            <!--var openShareWxProgram = document.getElementById("ctl02_ContentPlaceHolder1_openShareWxProgram");-->
-                                                            <!--if (openShareWxProgram) {-->
-                                                                <!--openShareWxProgram.addEventListener("click", function () {-->
-                                                                    <!--layer.open({-->
-                                                                        <!--type: 2,-->
-                                                                        <!--isOutAnim: false,-->
-                                                                        <!--title: false,-->
-                                                                        <!--maxmin: false,-->
-                                                                        <!--shadeClose: true, //点击遮罩关闭层-->
-                                                                        <!--area: ['360px', '528px'],-->
-                                                                        <!--content: ['/wjx/design/ActivityWxAppQrCode.aspx?activity=' + 26556304, 'no']-->
-                                                                    <!--});-->
-                                                                <!--})-->
-                                                            <!--}-->
-
-
-                                                        <!--</script>-->
                                                         <style>
                                                             .beautify-wrap {
                                                                 clear: both;
@@ -1041,11 +519,9 @@
                                                                 width: 22px;
                                                                 height: 22px;
                                                                 margin-left: 18px;
-                                                                /*background: url("../images/beautify.png") no-repeat center;*/
                                                             }
 
                                                             .beautify-wrap:hover .beautify-icon {
-                                                                /*background-image: url("../images/beautify-hover.png")*/
                                                             }
 
                                                             .beautify-wrap:hover .beautify-code {
@@ -1073,28 +549,6 @@
                                     </div>
                                 </div>
                                 <div id="ctl02_ContentPlaceHolder1_divBdShare">
-                                    <!--<script>-->
-                                        <!--//                                                                           window._bd_share_config = {-->
-                                        <!--//                                    "common": {-->
-                                        <!--//                                    "bdSnsKey": {-->
-                                        <!--//                                    "tsina": "585909223",-->
-                                        <!--//                                    'tqq': '8395078dc6184d8394090c62482dc2db'-->
-                                        <!--//                                    },-->
-                                        <!--//                                    "bdUrl": "https://www.wjx.cn/jq/26556304.aspx",-->
-                                        <!--//                                    "bdText": "VGB",-->
-                                        <!--//                                    'bdDesc': 'Hi，你好，这是我在问卷星上创建的问卷，烦请填写！ ',-->
-                                        <!--//                                    'bdComment': '',-->
-                                        <!--//                                    "bdMini": "2",-->
-                                        <!--//                                    "bdMiniList": false,-->
-                                        <!--//                                    "bdPic": "https://image.wjx.cn/images/wlogo.png",-->
-                                        <!--//                                    "bdStyle": "0",-->
-                                        <!--//                                    "bdSize": "24",-->
-                                        <!--//                                    'bdSign': 'off'-->
-                                        <!--//                                    }, "share": {}-->
-                                        <!--//                                    };-->
-                                        <!--//                                    with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = '/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];-->
-                                    <!--</script>-->
-
                                 </div>
                             </div>
                             <div id="divlinkcode" style="display:none">

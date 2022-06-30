@@ -25,12 +25,15 @@ $('#questionnaireManager').on("keydown", function (event) {
 });
 
 function getQuestionnaireList() {
+
+
     $("#questionnaireTable").bootstrapTable('refresh');
 }
 
 function TableInit() {
 
     var oTableInit = new Object();
+
     //初始化Table
     oTableInit.Init = function () {
         $('#questionnaireTable').bootstrapTable({
@@ -134,8 +137,10 @@ function TableInit() {
                         // NewData.sort(compare("startTime"))
 
                     }
+
                     var data = {
                         total: res.data.total,
+
                         rows: NewData
                     };
 
@@ -182,6 +187,7 @@ function TableInit() {
         var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
             pageNum: params.pageNumber,
             pageSize: params.pageSize,
+            'username': getCookie("userName"),
             questionName: questionName
         };
         return JSON.stringify(temp);

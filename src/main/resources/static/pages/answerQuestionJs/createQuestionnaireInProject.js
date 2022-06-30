@@ -38,6 +38,7 @@ function importQuestion(type) {
         var url = '/queryHistoryQuestionnaire';
         var da = {
             // 'projectId': getCookie('projectIdForCreate'),
+            'username': getCookie("userName"),
             'dataId': dataId
         };
         //console.log(getCookie('projectIdForCreate'));

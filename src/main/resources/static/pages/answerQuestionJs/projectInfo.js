@@ -10,7 +10,26 @@ $(function () {
 
 });
 
+function addQuestionnaireBtnAction(){
+    layer.open({
+        title:"选择加入方式",
+        content: '加入创建好的问卷还是创建新的问卷？'
+        ,btn: ['加入', '创建新的',]
+        ,btn1: function(index, layero){
+            //按钮【加入】的回调
+            window.location.href = "addQuestionnaireInProject.html"
+            //return false 开启该代码可禁止点击该按钮关闭
+        }
+        ,btn2: function(index, layero){
+            window.location.href = "createQuestionnaireInProject.html"
+        }
+        ,cancel: function(){
+            //右上角关闭回调
 
+            //return false 开启该代码可禁止点击该按钮关闭
+        }
+    });
+}
 // 查看项目详细信息
 function getProjectInfo() {
     var projectId = getCookie('projectId');

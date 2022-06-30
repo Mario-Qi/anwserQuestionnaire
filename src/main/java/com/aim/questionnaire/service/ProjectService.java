@@ -37,13 +37,11 @@ public class ProjectService {
         String userId = userEntityMapper.selectIdByName(username);
         String name=projectEntity.getProjectName();
        if(projectEntityMapper.queryExistProject(name)!=0){
-            System.out.println("3331");
             return 3;
-
         }
         if(projectEntity.getProjectName().isEmpty()||projectEntity.getProjectContent().isEmpty()){
             //项目名称或者项目说明为空
-            System.out.println("3331");
+
             return 3;
         }
 
@@ -75,7 +73,6 @@ public class ProjectService {
        // String userId = userEntityMapper.selectIdByName(username);
         String name=projectEntity.getProjectName();
         if(projectEntityMapper.queryExistProject(name)!=0&&a==1){
-            System.out.println("3331");
             return 3;
         }
         String id = projectEntity.getId();
@@ -89,7 +86,6 @@ public class ProjectService {
 
         if(projectEntity.getProjectName().isEmpty()||projectEntity.getProjectContent().isEmpty()){
             //项目名称或者项目说明为空
-            System.out.println("3331");
             return 3;
         }
         // String id = UUIDUtil.getOneUUID();
@@ -101,11 +97,9 @@ public class ProjectService {
         //创建人
         // projectEntity.setCreatedBy(username);
         projectEntity.setLastUpdatedBy(username);
-        System.out.println(username);
         //创建人ID
         // projectEntity.setUserId(userId);
 
-        // System.out.println("123");
         int result = projectEntityMapper.updateByPrimaryKeySelective(projectEntity);
 
         return result;
@@ -124,8 +118,6 @@ public class ProjectService {
 
         if(i!=0){
             return 3;
-        }else{
-            System.out.println(i);
         }
 
         int result = projectEntityMapper.deleteProjectById(id);
@@ -153,7 +145,6 @@ public class ProjectService {
             projectList.add(returnmap);
         }
         PageInfo pageInfo = new PageInfo();
-       // System.out.println("111111111111111111111111111111111:"+map.get("userName"));
         pageInfo.setList(projectList);
         return pageInfo;
     }
@@ -164,18 +155,14 @@ public class ProjectService {
      * @return
      */
     public ProjectEntity queryProjectNameById(Map<String,Object> map) {
-       // System.out.println(map);
       ProjectEntity projectEntity=projectEntityMapper.queryProjectNameById(map);
-      System.out.println(projectEntity.getId());
       return  projectEntity;
 
     }
 
 
     public String queryProjectNameById2(String projectid) {
-        // System.out.println(map);
         ProjectEntity projectEntity=projectEntityMapper.queryProjectNameById2(projectid);
-        System.out.println(projectEntity.getId());
         return  projectEntity.getProjectName();
 
     }

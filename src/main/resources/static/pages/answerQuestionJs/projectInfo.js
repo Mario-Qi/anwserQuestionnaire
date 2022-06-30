@@ -129,8 +129,8 @@ function addBtnInTable(row) {
     var btnText = '';
 
     btnText += "<button type=\"button\" id=\"btn_look\"  style='width: 80px;height: 30px;' onclick=\"setStartAndEnd(" + "'" + row.id + "'" + "," + "'" + row.question_name + "'" + ")\" class=\"btn btn-default ajax-link\" ><text style='font-size: 15px;text-align: center'>设置时间</text></button>&nbsp;&nbsp;";
-
-    btnText += "<button type=\"button\" id=\"btn_look\" style='width: 87px;height: 30px;' onclick=\"editQuestionnaire(" + "'" + row.id + "'" + "," + "'" + row.question_name + "'" + ")\" class=\"btn btn-default ajax-link\"><text style='font-size: 15px;text-align: center'>查看/修改</text></button>&nbsp;&nbsp;";
+    btnText += "<button type=\"button\" id=\"btn_look\" style='width: 50px;height: 30px;' onclick=\"previewQuestionnaire(" + "'" + row.id + "'" + ")\" class=\"btn btn-default ajax-link\"><text style='font-size: 15px;text-align: center'>预览</text></button>&nbsp;&nbsp;";
+    btnText += "<button type=\"button\" id=\"btn_look\" style='width: 50px;height: 30px;' onclick=\"editQuestionnaire(" + "'" + row.id + "'" + "," + "'" + row.question_stop + "'"+ "," + "'" + row.release_status + "'" + ")\" class=\"btn btn-default ajax-link\"><text style='font-size: 15px;text-align: center'>修改</text></button>&nbsp;&nbsp;";
     if (row.question_stop === "1") {//开启中
         btnText += "<button type=\"button\" id=\"btn_stop" + row.id + "\" style='width: 100px;height: 30px;' class=\"btn btn-danger ajax-link\" onclick=\"closeAction(" + "'" + row.id + "'" + "," + "'" + row.question_stop + "'" + ")\" ><text style='font-size: 15px'>关闭问卷</text></button>&nbsp;&nbsp;";
     } else if (row.question_stop === "2" || row.question_stop === "0") {//关闭中或者过期
@@ -229,4 +229,21 @@ function setStartAndEnd(id,name) {//设置问卷开始和结束时间
     setCookie("questionnaireName",name);
     window.location.href = "setValidDateOfQuestionnaire.html"
 
+}
+//修改问卷
+function editQuestionnaire(id,questionStop,releaseStatus){
+    if(releaseStatus === "1"){
+            alert("问卷已经被发布过，不能修改。");
+    }
+    else if(questionStop === "1"){
+        alert("问卷正在开启中，请关闭后再修改。");
+    }
+    else{
+        var url = "designQuestionnaire.html?qId="+id + "&requestType=1";//此处拼接内容
+        window.open(url);
+    }
+    }
+function previewQuestionnaire(id){
+        let url = "previewQuestionnaire.html?i="+id;
+        window.open(url);
 }

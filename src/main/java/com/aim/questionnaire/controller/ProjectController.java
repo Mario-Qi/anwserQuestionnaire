@@ -122,7 +122,7 @@ public class ProjectController {
             int result = projectService.addProjectInfo(projectEntity,user);
             if(result==3){
                 httpResponseEntity.setCode(Constans.EXIST_CODE);
-                httpResponseEntity.setMessage(Constans.PROJECST_STATUS_EXIST);
+                httpResponseEntity.setMessage(Constans.PROJECST_STATUS_DELETFAIL);
             }else{
                 httpResponseEntity.setCode(Constans.SUCCESS_CODE);
                 httpResponseEntity.setMessage(Constans.ADD_MESSAGE);
@@ -171,12 +171,14 @@ public class ProjectController {
 
             int result = projectService.modifyProjectInfo(projectEntity,user,1);
 
-
-
-            if(result==3){
+            if(result==4){
+                httpResponseEntity.setCode(Constans.EXIST_CODE);
+                httpResponseEntity.setMessage(Constans.PROJECST_STATUS_EXISTOPENEDQUESTIONNAIRE);
+            }
+            else if(result==3){
                 httpResponseEntity.setCode(Constans.EXIST_CODE);
                 httpResponseEntity.setMessage(Constans.PROJECST_STATUS_EXIST);
-            }else{
+            }else if(result!=3&&result!=4){
                 httpResponseEntity.setCode(Constans.SUCCESS_CODE);
                 httpResponseEntity.setMessage(Constans.ADD_MESSAGE);
             }

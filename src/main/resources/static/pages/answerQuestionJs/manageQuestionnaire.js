@@ -77,7 +77,7 @@ function TableInit() {
                     field: 'projectName',
                     title: '所属项目',
                     align: 'center',
-                    width: '230px'
+                    width: '120px'
                 },
 
                 {
@@ -158,6 +158,9 @@ function TableInit() {
         h = (date.getHours() < 10 ? '0'+(date.getHours()) : date.getHours()+1) + ':';
         m = (date.getMinutes() < 10 ? '0'+(date.getMinutes()) : date.getMinutes()+1) + ':';
         s = (date.getSeconds() < 10 ? '0'+(date.getSeconds() ) : date.getSeconds() +1);
+        if(!date.getFullYear()){
+            return  null;
+        }
         return Y+M+D+" "+h+m+s;
     }
 

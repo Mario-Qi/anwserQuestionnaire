@@ -181,7 +181,7 @@
 
   <update id="modifyQuestionnaireTime" parameterType="map">
     UPDATE questionnaire_info
-    SET start_time = #{startTime,jdbcType=DATE},end_time = #{stopTime,jdbcType=DATE}
+    SET start_time = #{startTime},end_time = #{stopTime}
     WHERE id = #{questionnaireId,jdbcType=VARCHAR}
   </update>
 

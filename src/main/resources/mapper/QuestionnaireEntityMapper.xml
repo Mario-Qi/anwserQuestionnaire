@@ -128,6 +128,13 @@
     WHERE project_id = #{id,jdbcType=VARCHAR}
   </select>
 
+<!--查询问卷的状态-->
+  <select id="queryQuestionStop" parameterType="map" resultType="java.util.Map">
+    SELECT question_stop questionStop
+    FROM questionnaire_info
+    WHERE id = #{id,jdbcType=VARCHAR}
+  </select>
+
   <select id="queryQuestionnaireByProjectID1" parameterType="java.lang.String" resultType="java.util.Map">
     SELECT id,question_name questionName, start_time startTime, end_time endTime, release_time releaseTime
     FROM questionnaire_info

@@ -102,7 +102,7 @@ public class QuestionnaireController {
     public HttpResponseEntity modifyQuestionnaireStatus(@RequestBody Map<String,Object> map) {
         HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
       //  System.out.println("zheliddd ");
-
+//关闭问卷
         try {
             int result = questionnaireservice.modifyQuestionnaireStatus((HashMap<String, Object>) map);
             if(result == 3) {
@@ -110,7 +110,7 @@ public class QuestionnaireController {
                 httpResponseEntity.setCode(Constans.USER_USERNAME_CODE);
                 httpResponseEntity.setMessage(Constans.USER_USERNAME_MESSAGE);
             }else {
-                httpResponseEntity.setMessage(Constans.UPDATE_MESSAGE);
+                httpResponseEntity.setMessage(Constans.QUESTIONNAIRE_STATUS_CLOES);
                 httpResponseEntity.setCode(Constans.SUCCESS_CODE);
             }
         } catch (Exception e) {
@@ -143,7 +143,7 @@ public class QuestionnaireController {
                 httpResponseEntity.setCode(Constans.USER_USERNAME_CODE);
                 httpResponseEntity.setMessage(Constans.USER_USERNAME_MESSAGE);
             } else {
-                httpResponseEntity.setMessage(Constans.UPDATE_MESSAGE);
+                httpResponseEntity.setMessage(Constans.QUESTIONNAIRE_STATUS_OPEN);
                 httpResponseEntity.setCode(Constans.SUCCESS_CODE);
             }
         } catch (Exception e) {
@@ -236,8 +236,11 @@ public class QuestionnaireController {
             httpResponseEntity.setCode(Constans.SUCCESS_CODE);
 //            httpResponseEntity.setMessage(Constans.DELETE_MESSAGE);
         }
-        else {
-            httpResponseEntity.setMessage(Constans.MODEL_DELETE_FAIL);
+        else if(result==-1){
+            httpResponseEntity.setMessage(Constans.REMOVE_EXIT_MESSAGE);
+        }
+        else{
+            httpResponseEntity.setMessage(Constans.REMOVE_STOP_MESSAGE);
         }
 
         return httpResponseEntity;
@@ -258,8 +261,11 @@ public class QuestionnaireController {
             httpResponseEntity.setCode(Constans.SUCCESS_CODE);
 //            httpResponseEntity.setMessage(Constans.DELETE_MESSAGE);
         }
-        else {
-            httpResponseEntity.setMessage(Constans.QUEST_MOTIFY_FAIL);
+        else if(result == -1){
+            httpResponseEntity.setMessage(Constans.ADD_EXIT_MESSAGE);
+        }
+        else{
+            httpResponseEntity.setMessage(Constans.ADD_STOP_MESSAGE);
         }
 
         return httpResponseEntity;

@@ -72,8 +72,8 @@
   <!--查询问卷列表（模糊搜索）-->
   <select id="queryQuestionnaireList" parameterType="map" resultType="java.util.Map">
     SELECT questionnaire_info.*,project_info.project_name
-    FROM questionnaire_info,project_info
-    WHERE  questionnaire_info.question_name LIKE "%"#{questionName}"%"  and  project_info.id = questionnaire_info.project_id
+    FROM questionnaire_info  LEFT OUTER JOIN project_info ON project_info.id = questionnaire_info.project_id
+    WHERE  questionnaire_info.question_name LIKE "%"#{questionName}"%"
     <!--
     SLECT project_name
     FROM
@@ -126,6 +126,13 @@
     SELECT *
     FROM questionnaire_info
     WHERE project_id = #{id,jdbcType=VARCHAR}
+  </select>
+
+<!--查询问卷的状态-->
+  <select id="queryQuestionStop" parameterType="map" resultType="java.util.Map">
+    SELECT question_stop questionStop
+    FROM questionnaire_info
+    WHERE id = #{id,jdbcType=VARCHAR}
   </select>
 
   <select id="queryQuestionnaireByProjectID1" parameterType="java.lang.String" resultType="java.util.Map">

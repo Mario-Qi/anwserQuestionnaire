@@ -78,6 +78,14 @@ public class ProjectService {
             System.out.println("3331");
             return 3;
         }
+        String id = projectEntity.getId();
+        int i= questionnaireEntityMapper.queryopenedQuestionnaireByProjectID(id);
+        //questionnaireEntityMapper.queryQuestionnaireByProjectID(id);
+
+        if(i!=0){
+            return 4;
+        }
+
 
         if(projectEntity.getProjectName().isEmpty()||projectEntity.getProjectContent().isEmpty()){
             //项目名称或者项目说明为空
@@ -113,6 +121,7 @@ public class ProjectService {
         String id = projectEntity.getId();
         int i= questionnaireEntityMapper.queryopenedQuestionnaireByProjectID(id);
         //questionnaireEntityMapper.queryQuestionnaireByProjectID(id);
+
         if(i!=0){
             return 3;
         }else{

@@ -11,7 +11,12 @@ import java.util.Map;
 @Repository
 public interface QuestionnaireEntityMapper {
 
-
+    /**
+     * 查询问卷状态
+     * @param
+     * @return
+     */
+    Map<String, Object> queryQuestionStop(Map<String,Object> map);
 
 
     /**

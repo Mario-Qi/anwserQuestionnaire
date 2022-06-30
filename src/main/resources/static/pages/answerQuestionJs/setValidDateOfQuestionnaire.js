@@ -60,6 +60,8 @@ function submittime(){
     var startTime = dateChange(timeRange.split(' ~ ')[0]);
     var stopTime = dateChange(timeRange.split(' ~ ')[1]);
     let questionnaireId = getCookie("questionnaireId");
+    // console.log("start"+new Date(startTime));
+    // console.log("end"+stopTime)
 
 
     var url = '/motifyTimeOfQuestionnaire';

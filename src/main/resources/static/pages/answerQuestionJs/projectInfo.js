@@ -24,6 +24,7 @@ function getProjectInfo() {
 function getProjectInfoSuccess(result) {
     console.log(result)
     if (result.code == "666") {
+        console.log(result);
         var projectInfo = result.data.list[0];
         $("#projectNameSpan").text(projectInfo.projectName);
         $("#createTimeSpan").text(projectInfo.creationDate.replace(/-/g, '/'));
@@ -127,7 +128,6 @@ function editQuest(id, name, content, endTime, creationDate, dataId) {
 
 function addBtnInTable(row) {
     var btnText = '';
-
     btnText += "<button type=\"button\" id=\"btn_look\"  style='width: 80px;height: 30px;' onclick=\"setStartAndEnd(" + "'" + row.id + "'" + "," + "'" + row.question_name + "'" + ")\" class=\"btn btn-default ajax-link\" ><text style='font-size: 15px;text-align: center'>设置时间</text></button>&nbsp;&nbsp;";
 
     btnText += "<button type=\"button\" id=\"btn_look\" style='width: 87px;height: 30px;' onclick=\"editQuestionnaire(" + "'" + row.id + "'" + "," + "'" + row.question_name + "'" + ")\" class=\"btn btn-default ajax-link\"><text style='font-size: 15px;text-align: center'>查看/修改</text></button>&nbsp;&nbsp;";
@@ -137,15 +137,30 @@ function addBtnInTable(row) {
         btnText += "<button type=\"button\" id=\"btn_stop" + row.id + "\" style='width: 50px;height: 30px;' class=\"btn btn-success ajax-link\" onclick=\"openAction(" + "'" + row.id + "'" + "," + "'" + row.question_stop + "'" + "," +"'" + row.start_time + "'" + ")\"><text style='font-size: 15px'>开启</text></button>&nbsp;&nbsp;"
     }
     btnText += "<button type=\"button\" id=\"btn_stop" + row.id + "\" style='width: 50px;height: 30px;' onclick=\"deleteQuestionFromProject(" + "'" + row.id + "'" + ")\" class=\"btn btn-danger ajax-link\"><text style='font-size: 15px'>移除</text></button>&nbsp;&nbsp;";
-    btnText += "<button type=\"button\" id=\"btn_release" + row.id + "\"  style='width: 50px;height: 30px;' onclick=\"sendQuestionaire(" + "'" + row.id + "'" + ")\" class=\"btn btn-success ajax-link\"><text style='font-size: 15px'>发布</text></button>&nbsp;&nbsp;";
+    btnText += "<button type=\"button\" id=\"btn_release" + row.id + "\"  style='width: 50px;height: 30px;' onclick=\"sendQuestionaire(" + "'" + row.id + "'" + "," + "'" + row.start_time + "'" + "," + "'" + row.end_time + "'" + "," + "'" + row.question_stop + "'" + ")\" class=\"btn btn-success ajax-link\"><text style='font-size: 15px'>发布</text></button>&nbsp;&nbsp;";
 
     return btnText;
 }
 
-function sendQuestionaire(id){
-    deleteCookie("questionId");
-    setCookie("questionId", id);
-    window.location.href = 'sendQuestionnaire.html';
+function sendQuestionaire(id,start_time,end_time,question_stop){
+    var now = new Date();
+    var start = start_time.split(/[- T :]/);
+    var end = end_time.split(/[- T :]/);
+    var startstr = start[0]+"-"+start[1]+"-"+start[2]+" "+start[3]+":"+start[4]+":"+start[5];
+    var endstr = end[0]+"-"+end[1]+"-"+end[2]+" "+end[3]+":"+end[4]+":"+end[5];
+    var startDate = new Date(startstr.replace(/-/g, "/"));
+    var endDate = new Date(endstr.replace(/-/g, "/"));
+    if(now>=startDate&&now<=endDate){
+        if(question_stop ==='1'){
+            deleteCookie("questionId");
+            setCookie("questionId", id);
+            window.location.href = 'sendQuestionnaire.html';
+        }else{
+            alert("不能发布，请先开启问卷");
+        }
+    }else{
+        alert("不能发布，问卷不在起止时间内");
+    }
 }
 
 

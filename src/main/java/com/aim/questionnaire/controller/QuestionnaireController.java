@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.aim.questionnaire.service.QuestionnaireService;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -163,6 +164,8 @@ public class QuestionnaireController {
      */
     @RequestMapping(value = "/motifyTimeOfQuestionnaire",method = RequestMethod.POST, headers = "Accept=application/json")
     public HttpResponseEntity motifyTime(@RequestBody Map<String,Object> map){
+//        System.out.println(map.get("startTime"));
+//        System.out.println(new Date((Long) map.get("startTime")));
         HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
         int count = questionnaireservice.mofityTimebyQuestionnaireId((HashMap<String, Object>) map);
         if(count==1) {

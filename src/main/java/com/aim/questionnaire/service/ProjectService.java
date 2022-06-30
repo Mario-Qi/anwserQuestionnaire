@@ -36,7 +36,6 @@ public class ProjectService {
     public int addProjectInfo(ProjectEntity projectEntity, String username) {
         String userId = userEntityMapper.selectIdByName(username);
         String name=projectEntity.getProjectName();
-       // System.out.println(name);
        if(projectEntityMapper.queryExistProject(name)!=0){
             System.out.println("3331");
             return 3;

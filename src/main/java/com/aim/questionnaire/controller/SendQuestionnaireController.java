@@ -19,7 +19,7 @@ public class SendQuestionnaireController {
     public HttpResponseEntity queryProjectList(@RequestBody(required = false) Map<String,Object> map){
         HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
         int type = (Integer) map.get("sendType");
-        String message = "";
+        String message="";
         if(type==0){
             message = sendQuestionnaireservice.sendByQQ(map);
         }

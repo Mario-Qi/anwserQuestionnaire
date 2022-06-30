@@ -19,7 +19,6 @@ public class SendQuestionnaireService {
         List<Map<String,String>> studentList = (List<Map<String, String>>)map.get("studentsData");
         for(Map<String,String> m : studentList){
             String qq = String.valueOf(m.get("studentQQNum"));
-            //发送问卷
             motitifyReleaseStatutsById((String)map.get("questionId"));
         }
         String str = "通过QQ发送成功";
@@ -30,7 +29,6 @@ public class SendQuestionnaireService {
         List<Map<String,String>> studentList = (List<Map<String, String>>)map.get("studentsData");
         for(Map<String,String> m : studentList){
             String qq = m.get("studentWeiNum");
-            //发送问卷
             motitifyReleaseStatutsById((String)map.get("questionId"));
         }
         String str = "通过微信发送成功";
@@ -41,7 +39,6 @@ public class SendQuestionnaireService {
         List<Map<String,String>> studentList = (List<Map<String, String>>)map.get("studentsData");
         for(Map<String,String> m : studentList){
             String qq = m.get("studentEmail");
-            //发送问卷
             motitifyReleaseStatutsById((String)map.get("questionId"));
         }
         String str = "通过邮箱发送成功";

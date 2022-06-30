@@ -941,7 +941,7 @@ function designQuestionnaire() {
 
 //预览问卷
 $('#ctl02_hrefView').click(function () {
-    window.open('previewQuestionnaire.html?=' + questionId)
+    window.open('previewQuestionnaire.html?i=' + questionId)
 });
 
 

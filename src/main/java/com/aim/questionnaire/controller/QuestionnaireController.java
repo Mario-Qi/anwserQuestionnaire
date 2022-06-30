@@ -101,7 +101,6 @@ public class QuestionnaireController {
     @RequestMapping(value = "/modifyQuestionnaireStatus",method = RequestMethod.POST, headers = "Accept=application/json")
     public HttpResponseEntity modifyQuestionnaireStatus(@RequestBody Map<String,Object> map) {
         HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
-      //  System.out.println("zheliddd ");
 //关闭问卷
         try {
             int result = questionnaireservice.modifyQuestionnaireStatus((HashMap<String, Object>) map);
@@ -164,8 +163,7 @@ public class QuestionnaireController {
      */
     @RequestMapping(value = "/motifyTimeOfQuestionnaire",method = RequestMethod.POST, headers = "Accept=application/json")
     public HttpResponseEntity motifyTime(@RequestBody Map<String,Object> map){
-//        System.out.println(map.get("startTime"));
-//        System.out.println(new Date((Long) map.get("startTime")));
+
         HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
         int count = questionnaireservice.mofityTimebyQuestionnaireId((HashMap<String, Object>) map);
         if(count==1) {
@@ -282,7 +280,8 @@ public class QuestionnaireController {
     public HttpResponseEntity queryQuestionnaireById(@RequestBody Map<String, Object> map) {
         HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
         try {
-            httpResponseEntity.setData(questionnaireservice.queryQuestionnaireById(String.valueOf(map.get("questionId"))));
+            String questionId = String.valueOf(map.get("questionId"));
+            httpResponseEntity.setData(questionnaireservice.queryQuestionnaireById(questionId));
             httpResponseEntity.setCode(Constans.SUCCESS_CODE);
         } catch (Exception e) {
             httpResponseEntity.setMessage(Constans.EXIST_MESSAGE);
@@ -302,7 +301,6 @@ public class QuestionnaireController {
     public HttpResponseEntity queryHistoryQuestionnaire(@RequestBody Map<String, Object> map) {
         HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
 
-//        System.out.println(map.get("username"));
         httpResponseEntity.setData(questionnaireservice.queryHistoryQuestionnaire((HashMap<String, Object>) map));
         httpResponseEntity.setCode(Constans.SUCCESS_CODE);
 

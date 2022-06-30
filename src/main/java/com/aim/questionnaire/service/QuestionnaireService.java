@@ -220,10 +220,8 @@ public class QuestionnaireService {
      */
     public PageInfo queryQuestionnaireList(Map<String,Object> map) {
         PageInfo pageInfo = new PageInfo();
-        //System.out.println(map.get("pageNum"));
         pageInfo.setPageNum((Integer) map.get("pageNum"));
         pageInfo.setPageSize((Integer) map.get("pageSize"));
-       // System.out.println("111111111111111111111111111111111:"+map.get("username"));
 
         List<Map<String,Object>> resultList = questionnaireEntityMapper.queryQuestionnaireList(map);
         pageInfo.setList(resultList);

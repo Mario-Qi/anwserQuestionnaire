@@ -22,7 +22,8 @@ public class SendQuestionnaireService {
             //发送问卷
             motitifyReleaseStatutsById((String)map.get("questionId"));
         }
-        return "通过QQ发送成功";
+        String str = "通过QQ发送成功";
+        return str;
     }
 
     public String sendByWeiXin(Map<String,Object> map){
@@ -32,7 +33,8 @@ public class SendQuestionnaireService {
             //发送问卷
             motitifyReleaseStatutsById((String)map.get("questionId"));
         }
-        return "通过微信发送成功";
+        String str = "通过微信发送成功";
+        return str;
     }
 
     public String sendByEmail(Map<String,Object> map){
@@ -42,7 +44,8 @@ public class SendQuestionnaireService {
             //发送问卷
             motitifyReleaseStatutsById((String)map.get("questionId"));
         }
-        return "通过邮箱发送成功";
+        String str = "通过邮箱发送成功";
+        return str;
     }
 
     public void motitifyReleaseStatutsById(String id){

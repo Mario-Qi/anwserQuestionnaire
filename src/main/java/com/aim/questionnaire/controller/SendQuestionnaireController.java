@@ -1,7 +1,6 @@
 package com.aim.questionnaire.controller;
 
 import com.aim.questionnaire.beans.HttpResponseEntity;
-import com.aim.questionnaire.service.QuestionnaireService;
 import com.aim.questionnaire.service.SendQuestionnaireService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
 import java.util.Map;
 @RestController
 public class SendQuestionnaireController {
@@ -22,14 +20,16 @@ public class SendQuestionnaireController {
         HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
         int type = (Integer) map.get("sendType");
         String message = "";
-        if(type==0)
+        if(type==0){
             message = sendQuestionnaireservice.sendByQQ(map);
-        else if(type==1)
+        }
+        else if(type==1){
             message = sendQuestionnaireservice.sendByWeiXin(map);
-        else if(type==2)
+        }
+        else if(type==2){
             message = sendQuestionnaireservice.sendByEmail(map);
+        }
         httpResponseEntity.setMessage(message);
-        System.out.println(message);
         httpResponseEntity.setCode("666");
         return httpResponseEntity;
     }

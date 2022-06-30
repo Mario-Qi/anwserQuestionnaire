@@ -228,7 +228,8 @@ function importModal(questionId, questionName, questionContent,projectId) {
     // setCookie('TQuestionContent', questionContent);
     // setCookie('projectIdForCreate', projectId);
     setCookie('dataId', dataId);
-    var url = "designQuestionnaire.html?qId="+questionId;//此处拼接内容
+    let pId = getCookie("projectId");
+    var url = "designQuestionnaire.html?qId="+questionId+"&projectId="+pId;//此处拼接内容
     // window.location.href = url;
     window.open(url)
     // window.location.href = '';

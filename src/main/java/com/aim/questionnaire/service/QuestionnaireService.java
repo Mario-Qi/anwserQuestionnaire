@@ -241,14 +241,15 @@ public class QuestionnaireService {
     public int removeProjectId(Map<String, Object> map){
         Map<String, Object>  m = questionnaireEntityMapper.queryQuestionStop(map);
         String questionStop = String.valueOf(m.get("questionStop"));
+        int result = 1;
         if(questionStop.equals("1")){
-            return -1;
+            result = -1;
         }
-        if(questionStop.equals("0")){
-            return 0;
+        else if(questionStop.equals("0")){
+            result = 0;
         }
         questionnaireEntityMapper.removeProjectId(map);
-        return 1;
+        return result;
     }
 
 

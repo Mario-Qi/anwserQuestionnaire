@@ -56,7 +56,7 @@ responseHandler: function getProjectQuestSuccess(result) {
                 text += "         <a class=\"panel-title\" data-toggle=\"collapse\" id=\"projectNumber" + i + "\" data-parent=\"#panel-23802\"  href=\"#panel-element-" + projectInfo.id + "\">" + projectName + "</a>";
                 text += "";
                 text += "         <div class=\"operation-box pull-right\" style=\"font-size: 16px;\">";
-                text += "             <a href=\"javascript:void(0)\" class=\"pull-left release-items\" title=\"创建问卷\" onclick=\"createGetProjectInfo(" + "'" + projectInfo.id + "'" + "," + "'" + projectName + "'" + ")\">";
+                text += "             <a href=\"javascript:void(0)\" class=\"pull-left release-items\" title=\"加入问卷\" onclick=\"createGetProjectInfo(" + "'" + projectInfo.id + "'" + "," + "'" + projectName + "'" + ")\">";
                 text += "                 <i class=\"icon release-icon\"></i>加入问卷</a>";
                 text += "             <a href=\"javascript:void(0)\" id=\"projectShow" + i + "\" class=\"pull-left copy-items\" onclick=\"getProjectInfo(" + "'" + projectInfo.id + "'"+"," + "'" + projectName + "'"+" )\"><i class=\"icon copy-icon\"></i>详情</a>";
                 text += "             <a class=\"pull-left item-remind\" id=\"projectUpdate" + i + "\" href=\"javascript:void(0)\" onclick=\"editProject(" + "'" + projectInfo.id + "'" + "," + "'" + projectName + "'" + "," + "'" + projectInfo.project_content + "'" + ")\"><i class=\"icon remind-icon\"></i>编辑</a>";

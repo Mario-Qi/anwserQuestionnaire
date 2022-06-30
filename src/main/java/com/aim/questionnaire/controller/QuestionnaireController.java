@@ -232,7 +232,7 @@ public class QuestionnaireController {
         HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
 
         int result = questionnaireservice.removeProjectId(map);
-        if(result ==1){
+        if(result == 1){
             httpResponseEntity.setCode(Constans.SUCCESS_CODE);
             httpResponseEntity.setMessage(Constans.DELETE_MESSAGE);
         }

@@ -154,9 +154,9 @@ function addBtnInTable(row) {
     if (row.question_stop === "1") {//开启中
         btnText += "<button type=\"button\" id=\"btn_stop" + row.id + "\" style='width: 80px;height: 30px;' class=\"btn btn-danger ajax-link\" onclick=\"closeAction(" + "'" + row.id + "'" + "," + "'" + row.question_stop + "'" + ")\" ><text style='font-size: 15px'>关闭问卷</text></button>&nbsp;&nbsp;";
     } else if (row.question_stop === "2" || row.question_stop === "0") {//关闭中或者过期
-        btnText += "<button type=\"button\" id=\"btn_stop" + row.id + "\" style='width: 80px;height: 30px;' class=\"btn btn-success ajax-link\" onclick=\"openAction(" + "'" + row.id + "'" + "," + "'" + row.question_stop + "'" + "," +"'" + row.start_time + "'" + ")\"><text style='font-size: 15px'>开启问卷</text></button>&nbsp;&nbsp;"
+        btnText += "<button type=\"button\" id=\"btn_stop" + row.id + "\" style='width: 80px;height: 30px;' class=\"btn btn-success ajax-link\" onclick=\"openAction(" + "'" + row.id + "'" + "," + "'" + row.question_stop + "'" +","+ "'"+row.start_time + "'"+ ")\"><text style='font-size: 15px'>开启问卷</text></button>&nbsp;&nbsp;"
     }
-    btnText += "<button type=\"button\" id=\"btn_stop" + row.id + "\" style='width: 50px;height: 30px;' onclick=\"deleteQuestionFromProject(" + "'" + row.id + "'" + ")\" class=\"btn btn-danger ajax-link\"><text style='font-size: 15px'>移除</text></button>&nbsp;&nbsp;";
+    btnText += "<button type=\"button\" id=\"btn_stop" + row.id + "\" style='width: 50px;height: 30px;' onclick=\"deleteQuestionFromProject(" + "'" + row.id + "'" + "," + "'" + row.release_status + "'"  + ")\" class=\"btn btn-danger ajax-link\"><text style='font-size: 15px'>移除</text></button>&nbsp;&nbsp;";
     btnText += "<button type=\"button\" id=\"btn_release" + row.id + "\"  style='width: 50px;height: 30px;' onclick=\"sendQuestionaire(" + "'" + row.id + "'" + "," + "'" + row.start_time + "'" + "," + "'" + row.end_time + "'" + "," + "'" + row.question_stop + "'" + "," + "'" + row.question_name + "'" + ")\" class=\"btn btn-success ajax-link\"><text style='font-size: 15px'>发布</text></button>&nbsp;&nbsp;";
 
     return btnText;
@@ -241,22 +241,29 @@ function openAction(id, status, startTime) {
     }
 }
 
-function deleteQuestionFromProject(id) {//从项目中移除问卷
-    data = {"id": id}
-    url = "/removeProjectId";
-    commonAjaxPost(true, url, data, function (result) {
-        if (result.code == "666") {
-            layer.msg(result.message, {icon: 1});
-            getProjectInfo();
-        } else if (result.code == "333") {
-            layer.msg(result.message, {icon: 2});
-            setTimeout(function () {
-                window.location.href = 'login.html';
-            }, 1000);
-        } else {
-            layer.msg(result.message, {icon: 2});
-        }
-    });
+function deleteQuestionFromProject(id,releaseStatus) {//从项目中移除问卷
+
+    if(releaseStatus === "1"){
+        alert("问卷已被发布过，不能移除。");
+    }
+    else{
+        data = {"id": id}
+        url = "/removeProjectId";
+        commonAjaxPost(true, url, data, function (result) {
+            if (result.code == "666") {
+                layer.msg(result.message, {icon: 1});
+                getProjectInfo();
+            } else if (result.code == "333") {
+                layer.msg(result.message, {icon: 2});
+                setTimeout(function () {
+                    window.location.href = 'login.html';
+                }, 1000);
+            } else {
+                layer.msg(result.message, {icon: 2});
+            }
+        });
+    }
+
 }
 
 function setStartAndEnd(id,name) {//设置问卷开始和结束时间

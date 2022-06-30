@@ -122,7 +122,7 @@ public class ProjectController {
             int result = projectService.addProjectInfo(projectEntity,user);
             if(result==3){
                 httpResponseEntity.setCode(Constans.EXIST_CODE);
-                httpResponseEntity.setMessage(Constans.PROJECST_STATUS_DELETFAIL);
+                httpResponseEntity.setMessage("项目名称已存在，不能创建同名项目");
             }else{
                 httpResponseEntity.setCode(Constans.SUCCESS_CODE);
                 httpResponseEntity.setMessage(Constans.ADD_MESSAGE);

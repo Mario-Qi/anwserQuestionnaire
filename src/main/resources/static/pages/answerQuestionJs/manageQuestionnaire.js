@@ -222,7 +222,7 @@ function addFunctionAlty(value, row, index) {
     // console.log(row.id);
     //btnText += "<button type=\"button\" id=\"btn_look\" onclick=\"resetPassword(" + "'" + row.id + "'" + ")\" style='width: 77px;' class=\"btn btn-default-g ajax-link\">重置密码</button>&nbsp;&nbsp;";
 
-    btnText += "<button type=\"button\" id=\"btn_look\" onclick=\"editQuestionnairePage(" + "'" + row.id + "')\" class=\"btn btn-default-g ajax-link\">编辑</button>&nbsp;&nbsp;";
+    btnText += "<button type=\"button\" id=\"btn_look\" onclick=\"editQuestionnairePage(" + "'" + row.id + "'" + "," + "'" + row.status + "'"+ "," + "'" + row.releaseStatus + "'" + ")\" class=\"btn btn-default-g ajax-link\">编辑</button>&nbsp;&nbsp;";
 
     btnText += "<button type=\"button\" id=\"btn_look\" onclick=\"countQuestionnaire(" + "'" + row.questionName + "')\" class=\"btn btn-default-g ajax-link\">统计</button>&nbsp;&nbsp;";
  //   if (row.status === "1") {//开启中
@@ -253,10 +253,18 @@ function openCreateQuestionnairePage(id, value) {
     window.location.href = 'createQuestionnaireOutOfProject.html';
 }
 
-function editQuestionnairePage(questionId) {
+function editQuestionnairePage(id,questionStop,releaseStatus) {
+    if(releaseStatus === "1"){
+        alert("问卷已经被发布过，不能修改。");
+    }
+    else if(questionStop === "1"){
+        alert("问卷正在开启中，请关闭后再修改。");
+    }
+    else{
+        var url = "designQuestionnaire.html?qId="+id + "&requestType=1";//此处拼接内容
+        window.open(url);
+    }
 
-    var url = "designQuestionnaire.html?qId="+questionId + "&requestType=1";//此处拼接内容
-    window.open(url);
 
 }
 

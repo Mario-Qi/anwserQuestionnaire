@@ -151,14 +151,14 @@ public class UserService {
      * @return
      */
     public UserEntity queryProjectByUser(UserEntity userEntity){
-//        String p = userEntity.getPassword();
-//        String password = null;
-//        try {
-//            password = Base64.getEncoder().encodeToString(p.getBytes("UTF-8"));
-//        } catch (UnsupportedEncodingException e) {
-//            throw new RuntimeException(e);
-//        }
-//        userEntity.setPassword(password);
+        String p = userEntity.getPassword();
+        String password = null;
+        try {
+            password = Base64.getEncoder().encodeToString(p.getBytes("UTF-8"));
+        } catch (UnsupportedEncodingException e) {
+            throw new RuntimeException(e);
+        }
+        userEntity.setPassword(password);
         List<UserEntity> hasUser = userEntityMapper.selectUserInfo(userEntity);
         for(UserEntity u: hasUser){
             if(u.getPassword().equals(userEntity.getPassword()))

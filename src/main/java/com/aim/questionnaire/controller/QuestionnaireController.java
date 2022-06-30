@@ -302,6 +302,7 @@ public class QuestionnaireController {
     public HttpResponseEntity queryHistoryQuestionnaire(@RequestBody Map<String, Object> map) {
         HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
 
+//        System.out.println(map.get("username"));
         httpResponseEntity.setData(questionnaireservice.queryHistoryQuestionnaire((HashMap<String, Object>) map));
         httpResponseEntity.setCode(Constans.SUCCESS_CODE);
 

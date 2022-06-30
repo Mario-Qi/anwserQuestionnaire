@@ -687,6 +687,7 @@
   <select id="queryHistoryQuestionnaire" parameterType="java.util.Map" resultType="map">
     SELECT id, question_name questionName,release_time releaseTime,answer_total answerTotal,question_content questionContent
     FROM questionnaire_info
+    WHERE created_by =  #{username,jdbcType=VARCHAR}
   </select>
 
   <!--根据id修改问卷的全部信息-->

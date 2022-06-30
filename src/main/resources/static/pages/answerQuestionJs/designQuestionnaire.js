@@ -15,13 +15,16 @@ var questionStop = '';
 var aaa = 0;
 var bbb = 0;
 var questionId
+var projectId
 $(function () {
 
     console.log(getCookie("userName"));
     console.log(getCookie("QuestionId"));
     deleteCookie('previewId');
     var urlObj = GetRequest();
-    if (Object.keys(urlObj).length == 0) {
+    var qId = urlObj.qId;
+    projectId = urlObj.projectId;
+    if (qId == null) {
         deleteCookie("QuestionId");
         // setCookie('QuestionId', getCookie("QuestionId"));
         // //id =>questionId
@@ -32,8 +35,8 @@ $(function () {
         deleteCookie('QuestionId');
         deleteCookie('isEdit');
         deleteCookie('projectIdForCreate');
-        var qId = urlObj.qId;
-        console.log(qId);
+        // var qId = urlObj.qId;
+        // console.log(qId);
         var requestType = urlObj.requestType;
         console.log(requestType);
         // var qIdStr = "";
@@ -1002,6 +1005,7 @@ function editFinish() {
             'questionTitle': questionTitles, //所有的题目
             // 'questionId': questionId,
             // 'dataId': dataId,
+            'projectId': projectId,
             'questionName': questionName,
             'questionContent': questionContent,
             'createdBy':getCookie("userName")

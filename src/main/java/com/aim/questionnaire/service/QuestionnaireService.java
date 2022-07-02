@@ -246,7 +246,10 @@ public class QuestionnaireService {
         else if(questionStop.equals("0")){
             result = 0;
         }
-        questionnaireEntityMapper.removeProjectId(map);
+        else{
+            questionnaireEntityMapper.removeProjectId(map);
+        }
+
         return result;
     }
 

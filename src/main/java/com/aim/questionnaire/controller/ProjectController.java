@@ -89,12 +89,13 @@ public class ProjectController {
         HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
         try {
             int result = projectService.deleteProjectById(projectEntity);
-            projectService.removeQuestionnaireProjectid(projectEntity.getId());
+
            if(result == 3) {
 
                 httpResponseEntity.setCode(Constans.USER_USERNAME_CODE);
                 httpResponseEntity.setMessage(Constans.PROJECST_STATUS_DELETFAIL);
             }else {
+               projectService.removeQuestionnaireProjectid(projectEntity.getId());
                 httpResponseEntity.setMessage(Constans.DELETE_MESSAGE);
                 httpResponseEntity.setCode(Constans.SUCCESS_CODE);
             }

@@ -78,5 +78,5 @@ public interface ProjectEntityMapper {
     ProjectEntity queryProjectNameById2(String projectid);
 
 
-
+    void removeQuestionnaireProjectid(String project_id);
 }

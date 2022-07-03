@@ -166,7 +166,9 @@ public class ProjectService {
         return  projectEntity.getProjectName();
 
     }
-
+    public void removeQuestionnaireProjectid(String projectid){
+        projectEntityMapper.removeQuestionnaireProjectid(projectid);
+    }
 
 
 

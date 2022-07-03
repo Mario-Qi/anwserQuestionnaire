@@ -75,6 +75,16 @@
     WHERE id = #{id,jdbcType=VARCHAR}
   </delete>
 
+
+  <!--修改问卷状态 (guan)-->
+  <update id="removeQuestionnaireProjectid" parameterType="java.lang.String">
+    UPDATE questionnaire_info
+    SET project_id = null
+    WHERE  project_id  = #{id,jdbcType=VARCHAR}
+  </update>
+
+
+
   <!--判断项目名是否存在-->
   <select id="queryExistProject" parameterType="java.lang.String" resultType="java.lang.Integer">
     SELECT count(1)
@@ -93,7 +103,6 @@
     (SELECT id
     FROM user_info
     WHERE username = #{userName})
-
 
   </select>
   <!--根据项目id查询项目信息-->

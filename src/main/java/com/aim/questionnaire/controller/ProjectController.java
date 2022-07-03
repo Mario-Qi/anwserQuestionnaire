@@ -89,6 +89,7 @@ public class ProjectController {
         HttpResponseEntity httpResponseEntity = new HttpResponseEntity();
         try {
             int result = projectService.deleteProjectById(projectEntity);
+            projectService.removeQuestionnaireProjectid(projectEntity.getId());
            if(result == 3) {
 
                 httpResponseEntity.setCode(Constans.USER_USERNAME_CODE);
@@ -152,10 +153,18 @@ public class ProjectController {
 
            if(projectEntity.getProjectName().equals(projectname)){
                projectEntity.setProjectContent((String) map.get("projectContent"));
-               projectService.modifyProjectInfo(projectEntity,user,0);
-
-               httpResponseEntity.setCode(Constans.SUCCESS_CODE);
-               httpResponseEntity.setMessage(Constans.ADD_MESSAGE);
+               int result = projectService.modifyProjectInfo(projectEntity,user,0);
+               if(result==4){
+                   httpResponseEntity.setCode(Constans.EXIST_CODE);
+                   httpResponseEntity.setMessage(Constans.PROJECST_STATUS_EXISTOPENEDQUESTIONNAIRE);
+               }
+               else if(result==3){
+                   httpResponseEntity.setCode(Constans.EXIST_CODE);
+                   httpResponseEntity.setMessage(Constans.PROJECST_STATUS_EXIST);
+               }else if(result!=3&&result!=4){
+                   httpResponseEntity.setCode(Constans.SUCCESS_CODE);
+                   httpResponseEntity.setMessage(Constans.ADD_MESSAGE);
+               }
                return httpResponseEntity;
            }
 

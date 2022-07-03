@@ -47,7 +47,8 @@ function getProjectInfoSuccess(result) {
         console.log(result);
         var projectInfo = result.data.list[0];
         $("#projectNameSpan").text(projectInfo.projectName);
-        $("#createTimeSpan").text(projectInfo.creationDate.replace(/-/g, '/'));
+        let createdDate = timeFormat(projectInfo.creationDate);
+        $("#createTimeSpan").text(createdDate.replace(/-/g, '/'));
         $("#adminSpan").text(projectInfo.createdBy);
         $("#projectContentSpan").text(projectInfo.projectContent);
 
@@ -63,7 +64,14 @@ function getProjectInfoSuccess(result) {
                 text += "<tr>";
                 text += "    <td style=\"text-align: center;\">" + (j + 1) + "</td>";
                 text += "    <td style=\"text-align: center;\">" + questionnaireList[j].question_name + "</td>";
-                text += "    <td style=\"text-align: center;\">" + questionnaireList[j].release_time + "</td>";
+                if(typeof(questionnaireList[j].release_time) == "undefined"){
+                    text += "    <td style=\"text-align: center;\"> 未发布 </td>";
+                }
+                else {
+                    let releaseTime = timeFormat(questionnaireList[j].release_time);
+                    text += "    <td style=\"text-align: center;\">" + releaseTime + "</td>";
+                }
+
                 text += "    <td style=\"text-align: center;\">" +
                     addBtnInTable(questionnaireList[j]) + "</td>";
                 text += "</tr>";

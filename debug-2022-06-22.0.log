@@ -1,0 +1,380 @@
+2022-06-22 19:58:09.474 [http-nio-8085-exec-1] DEBUG c.a.q.d.U.selectUserInfo -==>  Preparing: SELECT id,username,`password`,status FROM user_info WHERE username = ? AND status = "1"
+2022-06-22 19:58:09.474 [http-nio-8085-exec-1] DEBUG c.a.q.d.U.selectUserInfo -==>  Preparing: SELECT id,username,`password`,status FROM user_info WHERE username = ? AND status = "1"
+2022-06-22 19:58:09.491 [http-nio-8085-exec-1] DEBUG c.a.q.d.U.selectUserInfo -==> Parameters: admin(String)
+2022-06-22 19:58:09.491 [http-nio-8085-exec-1] DEBUG c.a.q.d.U.selectUserInfo -==> Parameters: admin(String)
+2022-06-22 19:58:09.505 [http-nio-8085-exec-1] DEBUG c.a.q.d.U.selectUserInfo -<==      Total: 1
+2022-06-22 19:58:09.505 [http-nio-8085-exec-1] DEBUG c.a.q.d.U.selectUserInfo -<==      Total: 1
+2022-06-22 19:58:09.601 [http-nio-8085-exec-9] DEBUG c.a.q.d.P.queryProjectList -==>  Preparing: select * from project_info where (project_name LIKE "%"?"%" )AND user_id = (SELECT id FROM user_info WHERE username = ?)
+2022-06-22 19:58:09.601 [http-nio-8085-exec-9] DEBUG c.a.q.d.P.queryProjectList -==>  Preparing: select * from project_info where (project_name LIKE "%"?"%" )AND user_id = (SELECT id FROM user_info WHERE username = ?)
+2022-06-22 19:58:09.602 [http-nio-8085-exec-9] DEBUG c.a.q.d.P.queryProjectList -==> Parameters: (String), admin(String)
+2022-06-22 19:58:09.602 [http-nio-8085-exec-9] DEBUG c.a.q.d.P.queryProjectList -==> Parameters: (String), admin(String)
+2022-06-22 19:58:09.608 [http-nio-8085-exec-9] DEBUG c.a.q.d.P.queryProjectList -<==      Total: 2
+2022-06-22 19:58:09.608 [http-nio-8085-exec-9] DEBUG c.a.q.d.P.queryProjectList -<==      Total: 2
+2022-06-22 19:58:09.609 [http-nio-8085-exec-9] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: select * from questionnaire_info where project_id = ?
+2022-06-22 19:58:09.609 [http-nio-8085-exec-9] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: select * from questionnaire_info where project_id = ?
+2022-06-22 19:58:09.609 [http-nio-8085-exec-9] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: 4cd6ccb65c894eafaa70b12330f8c2f8(String)
+2022-06-22 19:58:09.609 [http-nio-8085-exec-9] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: 4cd6ccb65c894eafaa70b12330f8c2f8(String)
+2022-06-22 19:58:09.611 [http-nio-8085-exec-9] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 3
+2022-06-22 19:58:09.611 [http-nio-8085-exec-9] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 3
+2022-06-22 19:58:09.611 [http-nio-8085-exec-9] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: select * from questionnaire_info where project_id = ?
+2022-06-22 19:58:09.611 [http-nio-8085-exec-9] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: select * from questionnaire_info where project_id = ?
+2022-06-22 19:58:09.612 [http-nio-8085-exec-9] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: a894af7f22184eaaba830f15b0e79ef0(String)
+2022-06-22 19:58:09.612 [http-nio-8085-exec-9] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: a894af7f22184eaaba830f15b0e79ef0(String)
+2022-06-22 19:58:09.612 [http-nio-8085-exec-9] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 0
+2022-06-22 19:58:09.612 [http-nio-8085-exec-9] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 0
+2022-06-22 19:58:48.987 [http-nio-8085-exec-2] DEBUG c.a.q.d.P.queryProjectList -==>  Preparing: select * from project_info where (project_name LIKE "%"?"%" )AND user_id = (SELECT id FROM user_info WHERE username = ?)
+2022-06-22 19:58:48.987 [http-nio-8085-exec-2] DEBUG c.a.q.d.P.queryProjectList -==>  Preparing: select * from project_info where (project_name LIKE "%"?"%" )AND user_id = (SELECT id FROM user_info WHERE username = ?)
+2022-06-22 19:58:49.004 [http-nio-8085-exec-2] DEBUG c.a.q.d.P.queryProjectList -==> Parameters: (String), admin(String)
+2022-06-22 19:58:49.004 [http-nio-8085-exec-2] DEBUG c.a.q.d.P.queryProjectList -==> Parameters: (String), admin(String)
+2022-06-22 19:58:49.023 [http-nio-8085-exec-2] DEBUG c.a.q.d.P.queryProjectList -<==      Total: 2
+2022-06-22 19:58:49.023 [http-nio-8085-exec-2] DEBUG c.a.q.d.P.queryProjectList -<==      Total: 2
+2022-06-22 19:58:49.026 [http-nio-8085-exec-2] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: select * from questionnaire_info where project_id = ?
+2022-06-22 19:58:49.026 [http-nio-8085-exec-2] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: select * from questionnaire_info where project_id = ?
+2022-06-22 19:58:49.027 [http-nio-8085-exec-2] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: 4cd6ccb65c894eafaa70b12330f8c2f8(String)
+2022-06-22 19:58:49.027 [http-nio-8085-exec-2] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: 4cd6ccb65c894eafaa70b12330f8c2f8(String)
+2022-06-22 19:58:49.029 [http-nio-8085-exec-2] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 3
+2022-06-22 19:58:49.029 [http-nio-8085-exec-2] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 3
+2022-06-22 19:58:49.030 [http-nio-8085-exec-2] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: select * from questionnaire_info where project_id = ?
+2022-06-22 19:58:49.030 [http-nio-8085-exec-2] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: select * from questionnaire_info where project_id = ?
+2022-06-22 19:58:49.030 [http-nio-8085-exec-2] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: a894af7f22184eaaba830f15b0e79ef0(String)
+2022-06-22 19:58:49.030 [http-nio-8085-exec-2] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: a894af7f22184eaaba830f15b0e79ef0(String)
+2022-06-22 19:58:49.031 [http-nio-8085-exec-2] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 0
+2022-06-22 19:58:49.031 [http-nio-8085-exec-2] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 0
+2022-06-22 20:51:17.681 [http-nio-8085-exec-2] DEBUG c.a.q.d.U.selectUserInfo -==>  Preparing: SELECT id,username,`password`,status FROM user_info WHERE username = ? AND status = "1"
+2022-06-22 20:51:17.681 [http-nio-8085-exec-2] DEBUG c.a.q.d.U.selectUserInfo -==>  Preparing: SELECT id,username,`password`,status FROM user_info WHERE username = ? AND status = "1"
+2022-06-22 20:51:17.698 [http-nio-8085-exec-2] DEBUG c.a.q.d.U.selectUserInfo -==> Parameters: admin(String)
+2022-06-22 20:51:17.698 [http-nio-8085-exec-2] DEBUG c.a.q.d.U.selectUserInfo -==> Parameters: admin(String)
+2022-06-22 20:51:17.715 [http-nio-8085-exec-2] DEBUG c.a.q.d.U.selectUserInfo -<==      Total: 1
+2022-06-22 20:51:17.715 [http-nio-8085-exec-2] DEBUG c.a.q.d.U.selectUserInfo -<==      Total: 1
+2022-06-22 20:51:17.828 [http-nio-8085-exec-4] DEBUG c.a.q.d.P.queryProjectList -==>  Preparing: select * from project_info where (project_name LIKE "%"?"%" )AND user_id = (SELECT id FROM user_info WHERE username = ?)
+2022-06-22 20:51:17.828 [http-nio-8085-exec-4] DEBUG c.a.q.d.P.queryProjectList -==>  Preparing: select * from project_info where (project_name LIKE "%"?"%" )AND user_id = (SELECT id FROM user_info WHERE username = ?)
+2022-06-22 20:51:17.828 [http-nio-8085-exec-4] DEBUG c.a.q.d.P.queryProjectList -==> Parameters: (String), admin(String)
+2022-06-22 20:51:17.828 [http-nio-8085-exec-4] DEBUG c.a.q.d.P.queryProjectList -==> Parameters: (String), admin(String)
+2022-06-22 20:51:17.833 [http-nio-8085-exec-4] DEBUG c.a.q.d.P.queryProjectList -<==      Total: 2
+2022-06-22 20:51:17.833 [http-nio-8085-exec-4] DEBUG c.a.q.d.P.queryProjectList -<==      Total: 2
+2022-06-22 20:51:17.834 [http-nio-8085-exec-4] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: SELECT * FROM questionnaire_info WHERE project_id = ?
+2022-06-22 20:51:17.834 [http-nio-8085-exec-4] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: SELECT * FROM questionnaire_info WHERE project_id = ?
+2022-06-22 20:51:17.834 [http-nio-8085-exec-4] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: 4cd6ccb65c894eafaa70b12330f8c2f8(String)
+2022-06-22 20:51:17.834 [http-nio-8085-exec-4] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: 4cd6ccb65c894eafaa70b12330f8c2f8(String)
+2022-06-22 20:51:17.836 [http-nio-8085-exec-4] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 3
+2022-06-22 20:51:17.836 [http-nio-8085-exec-4] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 3
+2022-06-22 20:51:17.836 [http-nio-8085-exec-4] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: SELECT * FROM questionnaire_info WHERE project_id = ?
+2022-06-22 20:51:17.836 [http-nio-8085-exec-4] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: SELECT * FROM questionnaire_info WHERE project_id = ?
+2022-06-22 20:51:17.836 [http-nio-8085-exec-4] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: a894af7f22184eaaba830f15b0e79ef0(String)
+2022-06-22 20:51:17.836 [http-nio-8085-exec-4] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: a894af7f22184eaaba830f15b0e79ef0(String)
+2022-06-22 20:51:17.837 [http-nio-8085-exec-4] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 0
+2022-06-22 20:51:17.837 [http-nio-8085-exec-4] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 0
+2022-06-22 20:51:23.291 [http-nio-8085-exec-5] DEBUG c.a.q.d.U.selectUserInfo -==>  Preparing: SELECT id,username,`password`,status FROM user_info WHERE username = ? AND status = "1"
+2022-06-22 20:51:23.291 [http-nio-8085-exec-5] DEBUG c.a.q.d.U.selectUserInfo -==>  Preparing: SELECT id,username,`password`,status FROM user_info WHERE username = ? AND status = "1"
+2022-06-22 20:51:23.291 [http-nio-8085-exec-5] DEBUG c.a.q.d.U.selectUserInfo -==> Parameters: admin(String)
+2022-06-22 20:51:23.291 [http-nio-8085-exec-5] DEBUG c.a.q.d.U.selectUserInfo -==> Parameters: admin(String)
+2022-06-22 20:51:23.292 [http-nio-8085-exec-5] DEBUG c.a.q.d.U.selectUserInfo -<==      Total: 1
+2022-06-22 20:51:23.292 [http-nio-8085-exec-5] DEBUG c.a.q.d.U.selectUserInfo -<==      Total: 1
+2022-06-22 20:51:23.349 [http-nio-8085-exec-7] DEBUG c.a.q.d.P.queryProjectList -==>  Preparing: select * from project_info where (project_name LIKE "%"?"%" )AND user_id = (SELECT id FROM user_info WHERE username = ?)
+2022-06-22 20:51:23.349 [http-nio-8085-exec-7] DEBUG c.a.q.d.P.queryProjectList -==>  Preparing: select * from project_info where (project_name LIKE "%"?"%" )AND user_id = (SELECT id FROM user_info WHERE username = ?)
+2022-06-22 20:51:23.349 [http-nio-8085-exec-7] DEBUG c.a.q.d.P.queryProjectList -==> Parameters: (String), admin(String)
+2022-06-22 20:51:23.349 [http-nio-8085-exec-7] DEBUG c.a.q.d.P.queryProjectList -==> Parameters: (String), admin(String)
+2022-06-22 20:51:23.350 [http-nio-8085-exec-7] DEBUG c.a.q.d.P.queryProjectList -<==      Total: 2
+2022-06-22 20:51:23.350 [http-nio-8085-exec-7] DEBUG c.a.q.d.P.queryProjectList -<==      Total: 2
+2022-06-22 20:51:23.351 [http-nio-8085-exec-7] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: SELECT * FROM questionnaire_info WHERE project_id = ?
+2022-06-22 20:51:23.351 [http-nio-8085-exec-7] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: SELECT * FROM questionnaire_info WHERE project_id = ?
+2022-06-22 20:51:23.351 [http-nio-8085-exec-7] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: 4cd6ccb65c894eafaa70b12330f8c2f8(String)
+2022-06-22 20:51:23.351 [http-nio-8085-exec-7] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: 4cd6ccb65c894eafaa70b12330f8c2f8(String)
+2022-06-22 20:51:23.352 [http-nio-8085-exec-7] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 3
+2022-06-22 20:51:23.352 [http-nio-8085-exec-7] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 3
+2022-06-22 20:51:23.353 [http-nio-8085-exec-7] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: SELECT * FROM questionnaire_info WHERE project_id = ?
+2022-06-22 20:51:23.353 [http-nio-8085-exec-7] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: SELECT * FROM questionnaire_info WHERE project_id = ?
+2022-06-22 20:51:23.353 [http-nio-8085-exec-7] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: a894af7f22184eaaba830f15b0e79ef0(String)
+2022-06-22 20:51:23.353 [http-nio-8085-exec-7] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: a894af7f22184eaaba830f15b0e79ef0(String)
+2022-06-22 20:51:23.354 [http-nio-8085-exec-7] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 0
+2022-06-22 20:51:23.354 [http-nio-8085-exec-7] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 0
+2022-06-22 20:51:25.355 [http-nio-8085-exec-9] DEBUG c.a.q.d.P.queryProjectList -==>  Preparing: select * from project_info where (project_name LIKE "%"?"%" )AND user_id = (SELECT id FROM user_info WHERE username = ?)
+2022-06-22 20:51:25.355 [http-nio-8085-exec-9] DEBUG c.a.q.d.P.queryProjectList -==>  Preparing: select * from project_info where (project_name LIKE "%"?"%" )AND user_id = (SELECT id FROM user_info WHERE username = ?)
+2022-06-22 20:51:25.355 [http-nio-8085-exec-9] DEBUG c.a.q.d.P.queryProjectList -==> Parameters: (String), admin(String)
+2022-06-22 20:51:25.355 [http-nio-8085-exec-9] DEBUG c.a.q.d.P.queryProjectList -==> Parameters: (String), admin(String)
+2022-06-22 20:51:25.356 [http-nio-8085-exec-9] DEBUG c.a.q.d.P.queryProjectList -<==      Total: 2
+2022-06-22 20:51:25.356 [http-nio-8085-exec-9] DEBUG c.a.q.d.P.queryProjectList -<==      Total: 2
+2022-06-22 20:51:25.356 [http-nio-8085-exec-9] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: SELECT * FROM questionnaire_info WHERE project_id = ?
+2022-06-22 20:51:25.356 [http-nio-8085-exec-9] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: SELECT * FROM questionnaire_info WHERE project_id = ?
+2022-06-22 20:51:25.356 [http-nio-8085-exec-9] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: 4cd6ccb65c894eafaa70b12330f8c2f8(String)
+2022-06-22 20:51:25.356 [http-nio-8085-exec-9] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: 4cd6ccb65c894eafaa70b12330f8c2f8(String)
+2022-06-22 20:51:25.357 [http-nio-8085-exec-9] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 3
+2022-06-22 20:51:25.357 [http-nio-8085-exec-9] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 3
+2022-06-22 20:51:25.357 [http-nio-8085-exec-9] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: SELECT * FROM questionnaire_info WHERE project_id = ?
+2022-06-22 20:51:25.357 [http-nio-8085-exec-9] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: SELECT * FROM questionnaire_info WHERE project_id = ?
+2022-06-22 20:51:25.358 [http-nio-8085-exec-9] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: a894af7f22184eaaba830f15b0e79ef0(String)
+2022-06-22 20:51:25.358 [http-nio-8085-exec-9] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: a894af7f22184eaaba830f15b0e79ef0(String)
+2022-06-22 20:51:25.358 [http-nio-8085-exec-9] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 0
+2022-06-22 20:51:25.358 [http-nio-8085-exec-9] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 0
+2022-06-22 20:51:35.431 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.queryUserList_COUNT -==>  Preparing: select count(0) from (SELECT * FROM user_info WHERE username LIKE "%"?"%" ORDER BY start_time DESC) tmp_count
+2022-06-22 20:51:35.431 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.queryUserList_COUNT -==>  Preparing: select count(0) from (SELECT * FROM user_info WHERE username LIKE "%"?"%" ORDER BY start_time DESC) tmp_count
+2022-06-22 20:51:35.431 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.queryUserList_COUNT -==> Parameters: (String)
+2022-06-22 20:51:35.431 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.queryUserList_COUNT -==> Parameters: (String)
+2022-06-22 20:51:35.432 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.queryUserList_COUNT -<==      Total: 1
+2022-06-22 20:51:35.432 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.queryUserList_COUNT -<==      Total: 1
+2022-06-22 20:51:35.433 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.queryUserList -==>  Preparing: SELECT * FROM user_info WHERE username LIKE "%"?"%" ORDER BY start_time DESC LIMIT 10
+2022-06-22 20:51:35.433 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.queryUserList -==>  Preparing: SELECT * FROM user_info WHERE username LIKE "%"?"%" ORDER BY start_time DESC LIMIT 10
+2022-06-22 20:51:35.433 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.queryUserList -==> Parameters: (String)
+2022-06-22 20:51:35.433 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.queryUserList -==> Parameters: (String)
+2022-06-22 20:51:35.435 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.queryUserList -<==      Total: 10
+2022-06-22 20:51:35.435 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.queryUserList -<==      Total: 10
+2022-06-22 20:51:35.436 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.getTotalCount -==>  Preparing: SELECT count(*) FROM user_info WHERE username LIKE "%"?"%"
+2022-06-22 20:51:35.436 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.getTotalCount -==>  Preparing: SELECT count(*) FROM user_info WHERE username LIKE "%"?"%"
+2022-06-22 20:51:35.436 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.getTotalCount -==> Parameters: (String)
+2022-06-22 20:51:35.436 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.getTotalCount -==> Parameters: (String)
+2022-06-22 20:51:35.436 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.getTotalCount -<==      Total: 1
+2022-06-22 20:51:35.436 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.getTotalCount -<==      Total: 1
+2022-06-22 20:51:35.438 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.modifyUserStatusByTime -==>  Preparing: UPDATE user_info SET status = 0 WHERE stop_time < ?
+2022-06-22 20:51:35.438 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.modifyUserStatusByTime -==>  Preparing: UPDATE user_info SET status = 0 WHERE stop_time < ?
+2022-06-22 20:51:35.438 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.modifyUserStatusByTime -==> Parameters: 2022-06-22 20:51:35(String)
+2022-06-22 20:51:35.438 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.modifyUserStatusByTime -==> Parameters: 2022-06-22 20:51:35(String)
+2022-06-22 20:51:46.228 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.queryUserList_COUNT -==>  Preparing: select count(0) from (SELECT * FROM user_info WHERE username LIKE "%"?"%" ORDER BY start_time DESC) tmp_count
+2022-06-22 20:51:46.228 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.queryUserList_COUNT -==>  Preparing: select count(0) from (SELECT * FROM user_info WHERE username LIKE "%"?"%" ORDER BY start_time DESC) tmp_count
+2022-06-22 20:51:46.228 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.queryUserList_COUNT -==> Parameters: (String)
+2022-06-22 20:51:46.228 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.queryUserList_COUNT -==> Parameters: (String)
+2022-06-22 20:51:46.232 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.queryUserList_COUNT -<==      Total: 1
+2022-06-22 20:51:46.232 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.queryUserList_COUNT -<==      Total: 1
+2022-06-22 20:51:46.233 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.queryUserList -==>  Preparing: SELECT * FROM user_info WHERE username LIKE "%"?"%" ORDER BY start_time DESC LIMIT 10
+2022-06-22 20:51:46.233 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.queryUserList -==>  Preparing: SELECT * FROM user_info WHERE username LIKE "%"?"%" ORDER BY start_time DESC LIMIT 10
+2022-06-22 20:51:46.233 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.queryUserList -==> Parameters: (String)
+2022-06-22 20:51:46.233 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.queryUserList -==> Parameters: (String)
+2022-06-22 20:51:46.234 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.queryUserList -<==      Total: 10
+2022-06-22 20:51:46.234 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.queryUserList -<==      Total: 10
+2022-06-22 20:51:46.235 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.getTotalCount -==>  Preparing: SELECT count(*) FROM user_info WHERE username LIKE "%"?"%"
+2022-06-22 20:51:46.235 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.getTotalCount -==>  Preparing: SELECT count(*) FROM user_info WHERE username LIKE "%"?"%"
+2022-06-22 20:51:46.235 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.getTotalCount -==> Parameters: (String)
+2022-06-22 20:51:46.235 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.getTotalCount -==> Parameters: (String)
+2022-06-22 20:51:46.236 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.getTotalCount -<==      Total: 1
+2022-06-22 20:51:46.236 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.getTotalCount -<==      Total: 1
+2022-06-22 20:51:46.237 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.modifyUserStatusByTime -==>  Preparing: UPDATE user_info SET status = 0 WHERE stop_time < ?
+2022-06-22 20:51:46.237 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.modifyUserStatusByTime -==>  Preparing: UPDATE user_info SET status = 0 WHERE stop_time < ?
+2022-06-22 20:51:46.237 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.modifyUserStatusByTime -==> Parameters: 2022-06-22 20:51:46(String)
+2022-06-22 20:51:46.237 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.modifyUserStatusByTime -==> Parameters: 2022-06-22 20:51:46(String)
+2022-06-22 20:52:02.911 [http-nio-8085-exec-1] DEBUG c.a.q.d.U.queryUserList_COUNT -==>  Preparing: select count(0) from (SELECT * FROM user_info WHERE username LIKE "%"?"%" ORDER BY start_time DESC) tmp_count
+2022-06-22 20:52:02.911 [http-nio-8085-exec-1] DEBUG c.a.q.d.U.queryUserList_COUNT -==>  Preparing: select count(0) from (SELECT * FROM user_info WHERE username LIKE "%"?"%" ORDER BY start_time DESC) tmp_count
+2022-06-22 20:52:02.912 [http-nio-8085-exec-1] DEBUG c.a.q.d.U.queryUserList_COUNT -==> Parameters: (String)
+2022-06-22 20:52:02.912 [http-nio-8085-exec-1] DEBUG c.a.q.d.U.queryUserList_COUNT -==> Parameters: (String)
+2022-06-22 20:52:02.912 [http-nio-8085-exec-1] DEBUG c.a.q.d.U.queryUserList_COUNT -<==      Total: 1
+2022-06-22 20:52:02.912 [http-nio-8085-exec-1] DEBUG c.a.q.d.U.queryUserList_COUNT -<==      Total: 1
+2022-06-22 20:52:02.912 [http-nio-8085-exec-1] DEBUG c.a.q.d.U.queryUserList -==>  Preparing: SELECT * FROM user_info WHERE username LIKE "%"?"%" ORDER BY start_time DESC LIMIT 10
+2022-06-22 20:52:02.912 [http-nio-8085-exec-1] DEBUG c.a.q.d.U.queryUserList -==>  Preparing: SELECT * FROM user_info WHERE username LIKE "%"?"%" ORDER BY start_time DESC LIMIT 10
+2022-06-22 20:52:02.912 [http-nio-8085-exec-1] DEBUG c.a.q.d.U.queryUserList -==> Parameters: (String)
+2022-06-22 20:52:02.912 [http-nio-8085-exec-1] DEBUG c.a.q.d.U.queryUserList -==> Parameters: (String)
+2022-06-22 20:52:02.913 [http-nio-8085-exec-1] DEBUG c.a.q.d.U.queryUserList -<==      Total: 10
+2022-06-22 20:52:02.913 [http-nio-8085-exec-1] DEBUG c.a.q.d.U.queryUserList -<==      Total: 10
+2022-06-22 20:52:02.914 [http-nio-8085-exec-1] DEBUG c.a.q.d.U.getTotalCount -==>  Preparing: SELECT count(*) FROM user_info WHERE username LIKE "%"?"%"
+2022-06-22 20:52:02.914 [http-nio-8085-exec-1] DEBUG c.a.q.d.U.getTotalCount -==>  Preparing: SELECT count(*) FROM user_info WHERE username LIKE "%"?"%"
+2022-06-22 20:52:02.914 [http-nio-8085-exec-1] DEBUG c.a.q.d.U.getTotalCount -==> Parameters: (String)
+2022-06-22 20:52:02.914 [http-nio-8085-exec-1] DEBUG c.a.q.d.U.getTotalCount -==> Parameters: (String)
+2022-06-22 20:52:02.915 [http-nio-8085-exec-1] DEBUG c.a.q.d.U.getTotalCount -<==      Total: 1
+2022-06-22 20:52:02.915 [http-nio-8085-exec-1] DEBUG c.a.q.d.U.getTotalCount -<==      Total: 1
+2022-06-22 20:52:02.915 [http-nio-8085-exec-1] DEBUG c.a.q.d.U.modifyUserStatusByTime -==>  Preparing: UPDATE user_info SET status = 0 WHERE stop_time < ?
+2022-06-22 20:52:02.915 [http-nio-8085-exec-1] DEBUG c.a.q.d.U.modifyUserStatusByTime -==>  Preparing: UPDATE user_info SET status = 0 WHERE stop_time < ?
+2022-06-22 20:52:02.916 [http-nio-8085-exec-1] DEBUG c.a.q.d.U.modifyUserStatusByTime -==> Parameters: 2022-06-22 20:52:02(String)
+2022-06-22 20:52:02.916 [http-nio-8085-exec-1] DEBUG c.a.q.d.U.modifyUserStatusByTime -==> Parameters: 2022-06-22 20:52:02(String)
+2022-06-22 20:52:13.620 [http-nio-8085-exec-5] DEBUG c.a.q.d.U.queryExistUser -==>  Preparing: SELECT count(1) FROM user_info where username = ?
+2022-06-22 20:52:13.620 [http-nio-8085-exec-5] DEBUG c.a.q.d.U.queryExistUser -==>  Preparing: SELECT count(1) FROM user_info where username = ?
+2022-06-22 20:52:13.620 [http-nio-8085-exec-5] DEBUG c.a.q.d.U.queryExistUser -==> Parameters: 123(String)
+2022-06-22 20:52:13.620 [http-nio-8085-exec-5] DEBUG c.a.q.d.U.queryExistUser -==> Parameters: 123(String)
+2022-06-22 20:52:13.621 [http-nio-8085-exec-5] DEBUG c.a.q.d.U.queryExistUser -<==      Total: 1
+2022-06-22 20:52:13.621 [http-nio-8085-exec-5] DEBUG c.a.q.d.U.queryExistUser -<==      Total: 1
+2022-06-22 20:52:13.624 [http-nio-8085-exec-5] DEBUG c.a.q.d.UserEntityMapper.addUserInfo -==>  Preparing: insert into user_info ( id, username, password, start_time, stop_time, status, created_by, creation_date, last_updated_by, last_update_date ) values ( ?, ?, ?, ?, ?, 1, ?, ?, ?, ? )
+2022-06-22 20:52:13.624 [http-nio-8085-exec-5] DEBUG c.a.q.d.UserEntityMapper.addUserInfo -==>  Preparing: insert into user_info ( id, username, password, start_time, stop_time, status, created_by, creation_date, last_updated_by, last_update_date ) values ( ?, ?, ?, ?, ?, 1, ?, ?, ?, ? )
+2022-06-22 20:52:13.625 [http-nio-8085-exec-5] DEBUG c.a.q.d.UserEntityMapper.addUserInfo -==> Parameters: 0c41538408ca40aab5239b6402ca0992(String), 123(String), 1(String), 2022-06-22 20:52:03.0(Timestamp), 2022-07-22 20:52:03.0(Timestamp), admin(String), 2022-06-22 20:52:13.0(Timestamp), admin(String), 2022-06-22 20:52:13.0(Timestamp)
+2022-06-22 20:52:13.625 [http-nio-8085-exec-5] DEBUG c.a.q.d.UserEntityMapper.addUserInfo -==> Parameters: 0c41538408ca40aab5239b6402ca0992(String), 123(String), 1(String), 2022-06-22 20:52:03.0(Timestamp), 2022-07-22 20:52:03.0(Timestamp), admin(String), 2022-06-22 20:52:13.0(Timestamp), admin(String), 2022-06-22 20:52:13.0(Timestamp)
+2022-06-22 20:52:13.630 [http-nio-8085-exec-5] DEBUG c.a.q.d.UserEntityMapper.addUserInfo -<==    Updates: 1
+2022-06-22 20:52:13.630 [http-nio-8085-exec-5] DEBUG c.a.q.d.UserEntityMapper.addUserInfo -<==    Updates: 1
+2022-06-22 20:52:14.683 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.queryUserList_COUNT -==>  Preparing: select count(0) from (SELECT * FROM user_info WHERE username LIKE "%"?"%" ORDER BY start_time DESC) tmp_count
+2022-06-22 20:52:14.683 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.queryUserList_COUNT -==>  Preparing: select count(0) from (SELECT * FROM user_info WHERE username LIKE "%"?"%" ORDER BY start_time DESC) tmp_count
+2022-06-22 20:52:14.683 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.queryUserList_COUNT -==> Parameters: (String)
+2022-06-22 20:52:14.683 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.queryUserList_COUNT -==> Parameters: (String)
+2022-06-22 20:52:14.684 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.queryUserList_COUNT -<==      Total: 1
+2022-06-22 20:52:14.684 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.queryUserList_COUNT -<==      Total: 1
+2022-06-22 20:52:14.684 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.queryUserList -==>  Preparing: SELECT * FROM user_info WHERE username LIKE "%"?"%" ORDER BY start_time DESC LIMIT 10
+2022-06-22 20:52:14.684 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.queryUserList -==>  Preparing: SELECT * FROM user_info WHERE username LIKE "%"?"%" ORDER BY start_time DESC LIMIT 10
+2022-06-22 20:52:14.684 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.queryUserList -==> Parameters: (String)
+2022-06-22 20:52:14.684 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.queryUserList -==> Parameters: (String)
+2022-06-22 20:52:14.685 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.queryUserList -<==      Total: 10
+2022-06-22 20:52:14.685 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.queryUserList -<==      Total: 10
+2022-06-22 20:52:14.686 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.getTotalCount -==>  Preparing: SELECT count(*) FROM user_info WHERE username LIKE "%"?"%"
+2022-06-22 20:52:14.686 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.getTotalCount -==>  Preparing: SELECT count(*) FROM user_info WHERE username LIKE "%"?"%"
+2022-06-22 20:52:14.686 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.getTotalCount -==> Parameters: (String)
+2022-06-22 20:52:14.686 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.getTotalCount -==> Parameters: (String)
+2022-06-22 20:52:14.687 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.getTotalCount -<==      Total: 1
+2022-06-22 20:52:14.687 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.getTotalCount -<==      Total: 1
+2022-06-22 20:52:14.687 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.modifyUserStatusByTime -==>  Preparing: UPDATE user_info SET status = 0 WHERE stop_time < ?
+2022-06-22 20:52:14.687 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.modifyUserStatusByTime -==>  Preparing: UPDATE user_info SET status = 0 WHERE stop_time < ?
+2022-06-22 20:52:14.687 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.modifyUserStatusByTime -==> Parameters: 2022-06-22 20:52:14(String)
+2022-06-22 20:52:14.687 [http-nio-8085-exec-8] DEBUG c.a.q.d.U.modifyUserStatusByTime -==> Parameters: 2022-06-22 20:52:14(String)
+2022-06-22 20:52:16.727 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.queryUserList_COUNT -==>  Preparing: select count(0) from (SELECT * FROM user_info WHERE username LIKE "%"?"%" ORDER BY start_time DESC) tmp_count
+2022-06-22 20:52:16.727 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.queryUserList_COUNT -==>  Preparing: select count(0) from (SELECT * FROM user_info WHERE username LIKE "%"?"%" ORDER BY start_time DESC) tmp_count
+2022-06-22 20:52:16.727 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.queryUserList_COUNT -==> Parameters: (String)
+2022-06-22 20:52:16.727 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.queryUserList_COUNT -==> Parameters: (String)
+2022-06-22 20:52:16.728 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.queryUserList_COUNT -<==      Total: 1
+2022-06-22 20:52:16.728 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.queryUserList_COUNT -<==      Total: 1
+2022-06-22 20:52:16.728 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.queryUserList -==>  Preparing: SELECT * FROM user_info WHERE username LIKE "%"?"%" ORDER BY start_time DESC LIMIT 10
+2022-06-22 20:52:16.728 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.queryUserList -==>  Preparing: SELECT * FROM user_info WHERE username LIKE "%"?"%" ORDER BY start_time DESC LIMIT 10
+2022-06-22 20:52:16.728 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.queryUserList -==> Parameters: (String)
+2022-06-22 20:52:16.728 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.queryUserList -==> Parameters: (String)
+2022-06-22 20:52:16.729 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.queryUserList -<==      Total: 10
+2022-06-22 20:52:16.729 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.queryUserList -<==      Total: 10
+2022-06-22 20:52:16.730 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.getTotalCount -==>  Preparing: SELECT count(*) FROM user_info WHERE username LIKE "%"?"%"
+2022-06-22 20:52:16.730 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.getTotalCount -==>  Preparing: SELECT count(*) FROM user_info WHERE username LIKE "%"?"%"
+2022-06-22 20:52:16.730 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.getTotalCount -==> Parameters: (String)
+2022-06-22 20:52:16.730 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.getTotalCount -==> Parameters: (String)
+2022-06-22 20:52:16.730 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.getTotalCount -<==      Total: 1
+2022-06-22 20:52:16.730 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.getTotalCount -<==      Total: 1
+2022-06-22 20:52:16.731 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.modifyUserStatusByTime -==>  Preparing: UPDATE user_info SET status = 0 WHERE stop_time < ?
+2022-06-22 20:52:16.731 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.modifyUserStatusByTime -==>  Preparing: UPDATE user_info SET status = 0 WHERE stop_time < ?
+2022-06-22 20:52:16.731 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.modifyUserStatusByTime -==> Parameters: 2022-06-22 20:52:16(String)
+2022-06-22 20:52:16.731 [http-nio-8085-exec-9] DEBUG c.a.q.d.U.modifyUserStatusByTime -==> Parameters: 2022-06-22 20:52:16(String)
+2022-06-22 20:52:20.986 [http-nio-8085-exec-1] DEBUG c.a.q.d.P.queryProjectList -==>  Preparing: select * from project_info where (project_name LIKE "%"?"%" )AND user_id = (SELECT id FROM user_info WHERE username = ?)
+2022-06-22 20:52:20.986 [http-nio-8085-exec-1] DEBUG c.a.q.d.P.queryProjectList -==>  Preparing: select * from project_info where (project_name LIKE "%"?"%" )AND user_id = (SELECT id FROM user_info WHERE username = ?)
+2022-06-22 20:52:20.987 [http-nio-8085-exec-1] DEBUG c.a.q.d.P.queryProjectList -==> Parameters: (String), admin(String)
+2022-06-22 20:52:20.987 [http-nio-8085-exec-1] DEBUG c.a.q.d.P.queryProjectList -==> Parameters: (String), admin(String)
+2022-06-22 20:52:20.988 [http-nio-8085-exec-1] DEBUG c.a.q.d.P.queryProjectList -<==      Total: 2
+2022-06-22 20:52:20.988 [http-nio-8085-exec-1] DEBUG c.a.q.d.P.queryProjectList -<==      Total: 2
+2022-06-22 20:52:20.988 [http-nio-8085-exec-1] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: SELECT * FROM questionnaire_info WHERE project_id = ?
+2022-06-22 20:52:20.988 [http-nio-8085-exec-1] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: SELECT * FROM questionnaire_info WHERE project_id = ?
+2022-06-22 20:52:20.988 [http-nio-8085-exec-1] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: 4cd6ccb65c894eafaa70b12330f8c2f8(String)
+2022-06-22 20:52:20.988 [http-nio-8085-exec-1] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: 4cd6ccb65c894eafaa70b12330f8c2f8(String)
+2022-06-22 20:52:20.989 [http-nio-8085-exec-1] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 3
+2022-06-22 20:52:20.989 [http-nio-8085-exec-1] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 3
+2022-06-22 20:52:20.990 [http-nio-8085-exec-1] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: SELECT * FROM questionnaire_info WHERE project_id = ?
+2022-06-22 20:52:20.990 [http-nio-8085-exec-1] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: SELECT * FROM questionnaire_info WHERE project_id = ?
+2022-06-22 20:52:20.990 [http-nio-8085-exec-1] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: a894af7f22184eaaba830f15b0e79ef0(String)
+2022-06-22 20:52:20.990 [http-nio-8085-exec-1] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: a894af7f22184eaaba830f15b0e79ef0(String)
+2022-06-22 20:52:20.990 [http-nio-8085-exec-1] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 0
+2022-06-22 20:52:20.990 [http-nio-8085-exec-1] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 0
+2022-06-22 20:52:49.934 [http-nio-8085-exec-3] DEBUG c.a.q.d.P.queryProjectList -==>  Preparing: select * from project_info where (project_name LIKE "%"?"%" )AND user_id = (SELECT id FROM user_info WHERE username = ?)
+2022-06-22 20:52:49.934 [http-nio-8085-exec-3] DEBUG c.a.q.d.P.queryProjectList -==>  Preparing: select * from project_info where (project_name LIKE "%"?"%" )AND user_id = (SELECT id FROM user_info WHERE username = ?)
+2022-06-22 20:52:49.934 [http-nio-8085-exec-3] DEBUG c.a.q.d.P.queryProjectList -==> Parameters: (String), admin(String)
+2022-06-22 20:52:49.934 [http-nio-8085-exec-3] DEBUG c.a.q.d.P.queryProjectList -==> Parameters: (String), admin(String)
+2022-06-22 20:52:49.935 [http-nio-8085-exec-3] DEBUG c.a.q.d.P.queryProjectList -<==      Total: 2
+2022-06-22 20:52:49.935 [http-nio-8085-exec-3] DEBUG c.a.q.d.P.queryProjectList -<==      Total: 2
+2022-06-22 20:52:49.936 [http-nio-8085-exec-3] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: SELECT * FROM questionnaire_info WHERE project_id = ?
+2022-06-22 20:52:49.936 [http-nio-8085-exec-3] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: SELECT * FROM questionnaire_info WHERE project_id = ?
+2022-06-22 20:52:49.936 [http-nio-8085-exec-3] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: 4cd6ccb65c894eafaa70b12330f8c2f8(String)
+2022-06-22 20:52:49.936 [http-nio-8085-exec-3] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: 4cd6ccb65c894eafaa70b12330f8c2f8(String)
+2022-06-22 20:52:49.937 [http-nio-8085-exec-3] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 3
+2022-06-22 20:52:49.937 [http-nio-8085-exec-3] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 3
+2022-06-22 20:52:49.937 [http-nio-8085-exec-3] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: SELECT * FROM questionnaire_info WHERE project_id = ?
+2022-06-22 20:52:49.937 [http-nio-8085-exec-3] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: SELECT * FROM questionnaire_info WHERE project_id = ?
+2022-06-22 20:52:49.937 [http-nio-8085-exec-3] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: a894af7f22184eaaba830f15b0e79ef0(String)
+2022-06-22 20:52:49.937 [http-nio-8085-exec-3] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: a894af7f22184eaaba830f15b0e79ef0(String)
+2022-06-22 20:52:49.937 [http-nio-8085-exec-3] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 0
+2022-06-22 20:52:49.937 [http-nio-8085-exec-3] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 0
+2022-06-22 20:52:55.479 [http-nio-8085-exec-6] DEBUG c.a.q.d.U.selectUserInfo -==>  Preparing: SELECT id,username,`password`,status FROM user_info WHERE username = ? AND status = "1"
+2022-06-22 20:52:55.479 [http-nio-8085-exec-6] DEBUG c.a.q.d.U.selectUserInfo -==>  Preparing: SELECT id,username,`password`,status FROM user_info WHERE username = ? AND status = "1"
+2022-06-22 20:52:55.479 [http-nio-8085-exec-6] DEBUG c.a.q.d.U.selectUserInfo -==> Parameters: admin(String)
+2022-06-22 20:52:55.479 [http-nio-8085-exec-6] DEBUG c.a.q.d.U.selectUserInfo -==> Parameters: admin(String)
+2022-06-22 20:52:55.480 [http-nio-8085-exec-6] DEBUG c.a.q.d.U.selectUserInfo -<==      Total: 1
+2022-06-22 20:52:55.480 [http-nio-8085-exec-6] DEBUG c.a.q.d.U.selectUserInfo -<==      Total: 1
+2022-06-22 20:52:57.456 [http-nio-8085-exec-4] DEBUG c.a.q.d.U.selectUserInfo -==>  Preparing: SELECT id,username,`password`,status FROM user_info WHERE username = ? AND status = "1"
+2022-06-22 20:52:57.456 [http-nio-8085-exec-4] DEBUG c.a.q.d.U.selectUserInfo -==>  Preparing: SELECT id,username,`password`,status FROM user_info WHERE username = ? AND status = "1"
+2022-06-22 20:52:57.456 [http-nio-8085-exec-4] DEBUG c.a.q.d.U.selectUserInfo -==> Parameters: admin(String)
+2022-06-22 20:52:57.456 [http-nio-8085-exec-4] DEBUG c.a.q.d.U.selectUserInfo -==> Parameters: admin(String)
+2022-06-22 20:52:57.457 [http-nio-8085-exec-4] DEBUG c.a.q.d.U.selectUserInfo -<==      Total: 1
+2022-06-22 20:52:57.457 [http-nio-8085-exec-4] DEBUG c.a.q.d.U.selectUserInfo -<==      Total: 1
+2022-06-22 20:52:57.488 [http-nio-8085-exec-5] DEBUG c.a.q.d.P.queryProjectList -==>  Preparing: select * from project_info where (project_name LIKE "%"?"%" )AND user_id = (SELECT id FROM user_info WHERE username = ?)
+2022-06-22 20:52:57.488 [http-nio-8085-exec-5] DEBUG c.a.q.d.P.queryProjectList -==>  Preparing: select * from project_info where (project_name LIKE "%"?"%" )AND user_id = (SELECT id FROM user_info WHERE username = ?)
+2022-06-22 20:52:57.489 [http-nio-8085-exec-5] DEBUG c.a.q.d.P.queryProjectList -==> Parameters: (String), admin(String)
+2022-06-22 20:52:57.489 [http-nio-8085-exec-5] DEBUG c.a.q.d.P.queryProjectList -==> Parameters: (String), admin(String)
+2022-06-22 20:52:57.490 [http-nio-8085-exec-5] DEBUG c.a.q.d.P.queryProjectList -<==      Total: 2
+2022-06-22 20:52:57.490 [http-nio-8085-exec-5] DEBUG c.a.q.d.P.queryProjectList -<==      Total: 2
+2022-06-22 20:52:57.491 [http-nio-8085-exec-5] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: SELECT * FROM questionnaire_info WHERE project_id = ?
+2022-06-22 20:52:57.491 [http-nio-8085-exec-5] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: SELECT * FROM questionnaire_info WHERE project_id = ?
+2022-06-22 20:52:57.491 [http-nio-8085-exec-5] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: 4cd6ccb65c894eafaa70b12330f8c2f8(String)
+2022-06-22 20:52:57.491 [http-nio-8085-exec-5] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: 4cd6ccb65c894eafaa70b12330f8c2f8(String)
+2022-06-22 20:52:57.492 [http-nio-8085-exec-5] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 3
+2022-06-22 20:52:57.492 [http-nio-8085-exec-5] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 3
+2022-06-22 20:52:57.492 [http-nio-8085-exec-5] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: SELECT * FROM questionnaire_info WHERE project_id = ?
+2022-06-22 20:52:57.492 [http-nio-8085-exec-5] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: SELECT * FROM questionnaire_info WHERE project_id = ?
+2022-06-22 20:52:57.492 [http-nio-8085-exec-5] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: a894af7f22184eaaba830f15b0e79ef0(String)
+2022-06-22 20:52:57.492 [http-nio-8085-exec-5] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: a894af7f22184eaaba830f15b0e79ef0(String)
+2022-06-22 20:52:57.493 [http-nio-8085-exec-5] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 0
+2022-06-22 20:52:57.493 [http-nio-8085-exec-5] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 0
+2022-06-22 20:52:58.665 [http-nio-8085-exec-8] DEBUG c.a.q.d.P.queryProjectList -==>  Preparing: select * from project_info where (project_name LIKE "%"?"%" )AND user_id = (SELECT id FROM user_info WHERE username = ?)
+2022-06-22 20:52:58.665 [http-nio-8085-exec-8] DEBUG c.a.q.d.P.queryProjectList -==>  Preparing: select * from project_info where (project_name LIKE "%"?"%" )AND user_id = (SELECT id FROM user_info WHERE username = ?)
+2022-06-22 20:52:58.665 [http-nio-8085-exec-8] DEBUG c.a.q.d.P.queryProjectList -==> Parameters: (String), admin(String)
+2022-06-22 20:52:58.665 [http-nio-8085-exec-8] DEBUG c.a.q.d.P.queryProjectList -==> Parameters: (String), admin(String)
+2022-06-22 20:52:58.666 [http-nio-8085-exec-8] DEBUG c.a.q.d.P.queryProjectList -<==      Total: 2
+2022-06-22 20:52:58.666 [http-nio-8085-exec-8] DEBUG c.a.q.d.P.queryProjectList -<==      Total: 2
+2022-06-22 20:52:58.666 [http-nio-8085-exec-8] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: SELECT * FROM questionnaire_info WHERE project_id = ?
+2022-06-22 20:52:58.666 [http-nio-8085-exec-8] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: SELECT * FROM questionnaire_info WHERE project_id = ?
+2022-06-22 20:52:58.666 [http-nio-8085-exec-8] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: 4cd6ccb65c894eafaa70b12330f8c2f8(String)
+2022-06-22 20:52:58.666 [http-nio-8085-exec-8] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: 4cd6ccb65c894eafaa70b12330f8c2f8(String)
+2022-06-22 20:52:58.667 [http-nio-8085-exec-8] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 3
+2022-06-22 20:52:58.667 [http-nio-8085-exec-8] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 3
+2022-06-22 20:52:58.668 [http-nio-8085-exec-8] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: SELECT * FROM questionnaire_info WHERE project_id = ?
+2022-06-22 20:52:58.668 [http-nio-8085-exec-8] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: SELECT * FROM questionnaire_info WHERE project_id = ?
+2022-06-22 20:52:58.668 [http-nio-8085-exec-8] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: a894af7f22184eaaba830f15b0e79ef0(String)
+2022-06-22 20:52:58.668 [http-nio-8085-exec-8] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: a894af7f22184eaaba830f15b0e79ef0(String)
+2022-06-22 20:52:58.668 [http-nio-8085-exec-8] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 0
+2022-06-22 20:52:58.668 [http-nio-8085-exec-8] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 0
+2022-06-22 20:53:38.223 [http-nio-8085-exec-3] DEBUG c.a.q.d.P.queryProjectList -==>  Preparing: select * from project_info where (project_name LIKE "%"?"%" )AND user_id = (SELECT id FROM user_info WHERE username = ?)
+2022-06-22 20:53:38.223 [http-nio-8085-exec-3] DEBUG c.a.q.d.P.queryProjectList -==>  Preparing: select * from project_info where (project_name LIKE "%"?"%" )AND user_id = (SELECT id FROM user_info WHERE username = ?)
+2022-06-22 20:53:38.223 [http-nio-8085-exec-3] DEBUG c.a.q.d.P.queryProjectList -==> Parameters: (String), admin(String)
+2022-06-22 20:53:38.223 [http-nio-8085-exec-3] DEBUG c.a.q.d.P.queryProjectList -==> Parameters: (String), admin(String)
+2022-06-22 20:53:38.224 [http-nio-8085-exec-3] DEBUG c.a.q.d.P.queryProjectList -<==      Total: 2
+2022-06-22 20:53:38.224 [http-nio-8085-exec-3] DEBUG c.a.q.d.P.queryProjectList -<==      Total: 2
+2022-06-22 20:53:38.225 [http-nio-8085-exec-3] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: SELECT * FROM questionnaire_info WHERE project_id = ?
+2022-06-22 20:53:38.225 [http-nio-8085-exec-3] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: SELECT * FROM questionnaire_info WHERE project_id = ?
+2022-06-22 20:53:38.225 [http-nio-8085-exec-3] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: 4cd6ccb65c894eafaa70b12330f8c2f8(String)
+2022-06-22 20:53:38.225 [http-nio-8085-exec-3] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: 4cd6ccb65c894eafaa70b12330f8c2f8(String)
+2022-06-22 20:53:38.225 [http-nio-8085-exec-3] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 3
+2022-06-22 20:53:38.225 [http-nio-8085-exec-3] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 3
+2022-06-22 20:53:38.226 [http-nio-8085-exec-3] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: SELECT * FROM questionnaire_info WHERE project_id = ?
+2022-06-22 20:53:38.226 [http-nio-8085-exec-3] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: SELECT * FROM questionnaire_info WHERE project_id = ?
+2022-06-22 20:53:38.226 [http-nio-8085-exec-3] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: a894af7f22184eaaba830f15b0e79ef0(String)
+2022-06-22 20:53:38.226 [http-nio-8085-exec-3] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: a894af7f22184eaaba830f15b0e79ef0(String)
+2022-06-22 20:53:38.226 [http-nio-8085-exec-3] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 0
+2022-06-22 20:53:38.226 [http-nio-8085-exec-3] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 0
+2022-06-22 20:53:45.628 [http-nio-8085-exec-6] DEBUG c.a.q.d.U.selectUserInfo -==>  Preparing: SELECT id,username,`password`,status FROM user_info WHERE username = ? AND status = "1"
+2022-06-22 20:53:45.628 [http-nio-8085-exec-6] DEBUG c.a.q.d.U.selectUserInfo -==>  Preparing: SELECT id,username,`password`,status FROM user_info WHERE username = ? AND status = "1"
+2022-06-22 20:53:45.629 [http-nio-8085-exec-6] DEBUG c.a.q.d.U.selectUserInfo -==> Parameters: admin(String)
+2022-06-22 20:53:45.629 [http-nio-8085-exec-6] DEBUG c.a.q.d.U.selectUserInfo -==> Parameters: admin(String)
+2022-06-22 20:53:45.629 [http-nio-8085-exec-6] DEBUG c.a.q.d.U.selectUserInfo -<==      Total: 1
+2022-06-22 20:53:45.629 [http-nio-8085-exec-6] DEBUG c.a.q.d.U.selectUserInfo -<==      Total: 1
+2022-06-22 20:53:45.658 [http-nio-8085-exec-4] DEBUG c.a.q.d.P.queryProjectList -==>  Preparing: select * from project_info where (project_name LIKE "%"?"%" )AND user_id = (SELECT id FROM user_info WHERE username = ?)
+2022-06-22 20:53:45.658 [http-nio-8085-exec-4] DEBUG c.a.q.d.P.queryProjectList -==>  Preparing: select * from project_info where (project_name LIKE "%"?"%" )AND user_id = (SELECT id FROM user_info WHERE username = ?)
+2022-06-22 20:53:45.659 [http-nio-8085-exec-4] DEBUG c.a.q.d.P.queryProjectList -==> Parameters: (String), admin(String)
+2022-06-22 20:53:45.659 [http-nio-8085-exec-4] DEBUG c.a.q.d.P.queryProjectList -==> Parameters: (String), admin(String)
+2022-06-22 20:53:45.659 [http-nio-8085-exec-4] DEBUG c.a.q.d.P.queryProjectList -<==      Total: 2
+2022-06-22 20:53:45.659 [http-nio-8085-exec-4] DEBUG c.a.q.d.P.queryProjectList -<==      Total: 2
+2022-06-22 20:53:45.660 [http-nio-8085-exec-4] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: SELECT * FROM questionnaire_info WHERE project_id = ?
+2022-06-22 20:53:45.660 [http-nio-8085-exec-4] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: SELECT * FROM questionnaire_info WHERE project_id = ?
+2022-06-22 20:53:45.660 [http-nio-8085-exec-4] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: 4cd6ccb65c894eafaa70b12330f8c2f8(String)
+2022-06-22 20:53:45.660 [http-nio-8085-exec-4] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: 4cd6ccb65c894eafaa70b12330f8c2f8(String)
+2022-06-22 20:53:45.661 [http-nio-8085-exec-4] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 3
+2022-06-22 20:53:45.661 [http-nio-8085-exec-4] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 3
+2022-06-22 20:53:45.661 [http-nio-8085-exec-4] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: SELECT * FROM questionnaire_info WHERE project_id = ?
+2022-06-22 20:53:45.661 [http-nio-8085-exec-4] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: SELECT * FROM questionnaire_info WHERE project_id = ?
+2022-06-22 20:53:45.661 [http-nio-8085-exec-4] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: a894af7f22184eaaba830f15b0e79ef0(String)
+2022-06-22 20:53:45.661 [http-nio-8085-exec-4] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: a894af7f22184eaaba830f15b0e79ef0(String)
+2022-06-22 20:53:45.662 [http-nio-8085-exec-4] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 0
+2022-06-22 20:53:45.662 [http-nio-8085-exec-4] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 0
+2022-06-22 21:07:21.632 [http-nio-8085-exec-1] DEBUG c.a.q.d.U.selectUserInfo -==>  Preparing: SELECT id,username,`password`,status FROM user_info WHERE username = ? AND status = "1"
+2022-06-22 21:07:21.632 [http-nio-8085-exec-1] DEBUG c.a.q.d.U.selectUserInfo -==>  Preparing: SELECT id,username,`password`,status FROM user_info WHERE username = ? AND status = "1"
+2022-06-22 21:07:21.647 [http-nio-8085-exec-1] DEBUG c.a.q.d.U.selectUserInfo -==> Parameters: admin(String)
+2022-06-22 21:07:21.647 [http-nio-8085-exec-1] DEBUG c.a.q.d.U.selectUserInfo -==> Parameters: admin(String)
+2022-06-22 21:07:21.660 [http-nio-8085-exec-1] DEBUG c.a.q.d.U.selectUserInfo -<==      Total: 1
+2022-06-22 21:07:21.660 [http-nio-8085-exec-1] DEBUG c.a.q.d.U.selectUserInfo -<==      Total: 1
+2022-06-22 21:07:21.749 [http-nio-8085-exec-3] DEBUG c.a.q.d.P.queryProjectList -==>  Preparing: select * from project_info where (project_name LIKE "%"?"%" )AND user_id = (SELECT id FROM user_info WHERE username = ?)
+2022-06-22 21:07:21.749 [http-nio-8085-exec-3] DEBUG c.a.q.d.P.queryProjectList -==>  Preparing: select * from project_info where (project_name LIKE "%"?"%" )AND user_id = (SELECT id FROM user_info WHERE username = ?)
+2022-06-22 21:07:21.749 [http-nio-8085-exec-3] DEBUG c.a.q.d.P.queryProjectList -==> Parameters: (String), admin(String)
+2022-06-22 21:07:21.749 [http-nio-8085-exec-3] DEBUG c.a.q.d.P.queryProjectList -==> Parameters: (String), admin(String)
+2022-06-22 21:07:21.755 [http-nio-8085-exec-3] DEBUG c.a.q.d.P.queryProjectList -<==      Total: 2
+2022-06-22 21:07:21.755 [http-nio-8085-exec-3] DEBUG c.a.q.d.P.queryProjectList -<==      Total: 2
+2022-06-22 21:07:21.756 [http-nio-8085-exec-3] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: SELECT * FROM questionnaire_info WHERE project_id = ?
+2022-06-22 21:07:21.756 [http-nio-8085-exec-3] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: SELECT * FROM questionnaire_info WHERE project_id = ?
+2022-06-22 21:07:21.756 [http-nio-8085-exec-3] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: 4cd6ccb65c894eafaa70b12330f8c2f8(String)
+2022-06-22 21:07:21.756 [http-nio-8085-exec-3] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: 4cd6ccb65c894eafaa70b12330f8c2f8(String)
+2022-06-22 21:07:21.757 [http-nio-8085-exec-3] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 3
+2022-06-22 21:07:21.757 [http-nio-8085-exec-3] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 3
+2022-06-22 21:07:21.758 [http-nio-8085-exec-3] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: SELECT * FROM questionnaire_info WHERE project_id = ?
+2022-06-22 21:07:21.758 [http-nio-8085-exec-3] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==>  Preparing: SELECT * FROM questionnaire_info WHERE project_id = ?
+2022-06-22 21:07:21.758 [http-nio-8085-exec-3] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: a894af7f22184eaaba830f15b0e79ef0(String)
+2022-06-22 21:07:21.758 [http-nio-8085-exec-3] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -==> Parameters: a894af7f22184eaaba830f15b0e79ef0(String)
+2022-06-22 21:07:21.758 [http-nio-8085-exec-3] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 0
+2022-06-22 21:07:21.758 [http-nio-8085-exec-3] DEBUG c.a.q.d.Q.queryQuestionnaireByProjectID -<==      Total: 0

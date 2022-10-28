@@ -62,14 +62,14 @@
   <select id="queryUserList" parameterType="map" resultType="java.util.Map">
     SELECT *
     FROM user_info
-    WHERE  username like "%"#{userName}"%"
-    order by start_time desc
+    WHERE  username LIKE "%"#{userName}"%"
+    ORDER BY start_time DESC
   </select>
   <!--模糊查找得到的数量-->
   <select id="getTotalCount" parameterType="java.lang.String" resultType="java.lang.Integer">
     SELECT count(*)
     FROM user_info
-    WHERE username like "%"#{username}"%"
+    WHERE username LIKE "%"#{username}"%"
   </select>
   <!--根据当前时间下用户权限是否过期修改用户状态-->
 <select id="modifyUserStatusByTime" parameterType="java.lang.String">
@@ -84,7 +84,9 @@
 
   <!--根据用户名查找用户id-->
   <select id="selectIdByName"  parameterType="java.lang.String" resultType="java.lang.String">
-
+    SELECT id
+    FROM user_info
+    WHERE username = #{username,jdbcType=VARCHAR} AND status = "1"
   </select>
 
   <!--创建用户的基本信息-->
@@ -195,7 +197,9 @@
 
   <!--查询用户密码-->
   <select id="queryUserPassword" parameterType="map" resultType="int">
-
+        SELECT COUNT(id)
+        FROM user_info
+        WHERE username = #{userName,jdbcType=VARCHAR} AND password = #{password,jdbcType=VARCHAR} AND status ="1"
   </select>
 
   <!--根据用户id查询用户名-->

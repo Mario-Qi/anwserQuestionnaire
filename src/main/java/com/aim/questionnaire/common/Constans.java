@@ -9,6 +9,18 @@ public class Constans {
      * Created by wln on 2018/8/3
      * Descriptions:公用成功失败状态码
      */
+    public static final String QUESTIONNAIRE_CHANGE_SUCCES="成功更改状态";
+
+    public static final String PROJECST_STATUS_EXIST="项目名称已存在";
+
+    public static final String QUESTIONNAIRE_STATUS_CLOES="成功关闭问卷";
+
+    public static final String QUESTIONNAIRE_STATUS_OPEN="成功开启问卷";
+
+
+    public static final String  PROJECST_STATUS_EXISTOPENEDQUESTIONNAIRE="项目中存在开启的问卷，编辑失败！";
+
+    public static final String PROJECST_STATUS_DELETFAIL="项目中有问卷正在进行，删除失败";
     public static final String SUCCESS_CODE = "666"; //成功状态码
     public static final String EXIST_CODE = "20001"; //失败状态码
 
@@ -34,6 +46,10 @@ public class Constans {
      * Created by wln on 2018/8/8
      * Descriptions:问卷状态码
      */
+    public static final String REMOVE_EXIT_MESSAGE = "问卷开启中，无法移除";
+    public static final String ADD_EXIT_MESSAGE = "问卷开启中，无法加入";
+    public static final String ADD_STOP_MESSAGE = "问卷已过期，无法加入";
+    public static final String REMOVE_STOP_MESSAGE = "问卷已过期，无法移除";
     public static final String COPY_MESSAGE = "复制成功";
     public static final String COPY_EXIT_MESSAGE = "问卷发布中，不可复制";
     public static final String NAME_EXIT_MESSAGE = "问卷名称重复";
@@ -115,4 +131,9 @@ public class Constans {
     public static final String MODEL_DELETE_FAIL="删除失败";
     public static final String MODEL_NO_PATH_PERMISSION="权限管理找不到模块的路径";
     public static final String MODEL_NO_PATH="找不到模块信息";
+
+    public static final String QUEST_MOTIFY_CODE = "111";
+    public static final String QUEST_MOTIFY_SUCCESS = "修改成功";
+    public static final String QUEST_MOTIFY_FAIL = "修改失败";
+
 }

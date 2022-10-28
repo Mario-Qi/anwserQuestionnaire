@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="ctl01_Head1">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10"/>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand"/>
+    <meta id="ctl01_keywords" name="keywords"/>
+    <title>加入问卷</title>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css">
+    <link id="ctl01_cssdefault" rel="stylesheet" type="text/css" href="../css/default.css?v=4"/>
+    <link id="ctl01_cssmaster" rel="stylesheet" type="text/css" href="../css/wjxmaster.css?v=4"/>
+    <link rel="stylesheet" type="text/css" href="../css/choosetype.css?v=4"/>
+    <link rel="stylesheet" href="../plugins/bootstrap-table/css/bootstrap-table.css">
+
+    <script src="../plugins/jQuery/jquery-1.12.4.min.js"></script>
+    <script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../plugins/cookie/jquery.cookie.js"></script>
+    <script src="../plugins/layer/layer.js"></script>
+    <script src="../js/jquery.base64.js"></script>
+    <script src="../common/common.js"></script>
+    <script src="answerQuestionJs/addQuestionnaireInProject.js"></script>
+    <style type="text/css">
+        .form-control {
+            display: inline-block;
+            width: 50%;
+            height: 34px;
+            padding: 6px 12px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            vertical-align: bottom;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+            -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+            -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        }
+
+        /*.historyQuestionClass{*/
+        /*display: block;*/
+        /*}*/
+        #historyQuestion {
+            display: none;
+        }
+
+        #typeQuestion {
+            display: none;
+        }
+
+        .editModal {
+            width: 100px;
+            height: 40px;
+            font-size: 20px;
+            line-height: 36px;
+            border-width: 2px;
+            margin-left: -120px;
+            border-radius: 6px;
+            margin-top: 12px;
+        }
+    </style>
+</head>
+<body>
+<div id="BS">
+    <div class="header"></div>
+    <div class="BS-box" style="text-align:left;">
+
+        <div class="nav-header">
+            <div class="container">
+                <div class="nav-wrapper clearfix">
+                    <h1 class="hd-title pull-left">加入问卷</h1>
+                </div>
+            </div>
+        </div>
+        <div style="width: 737px;margin-top: 20px">
+            <label class="control-label fontWeight" style="font-size: 22px;margin-left: 124px;font-weight: 500">当前项目:</label>
+            <input class="form-control selectpicker" id="belongProject" title='当前项目' data-first-option="false"
+                   data-live-search="true" readonly="readonly" style="margin-left: 16px"/>
+        </div>
+        <div style="padding-top: 20px">
+            <label class="control-label fontWeight" style="font-size: 22px;margin-left: 54px;font-weight: 500">当前项目下的问卷:</label>
+            <label class="control-label fontWeight" style="font-size: 22px;margin-left: 124px;font-weight: 500;padding-left: 489px">可选问卷:</label>
+        </div>
+        <div style="display:flex;">
+
+            <div style="padding-left: 50px">
+
+
+                <div class="bootstrap-table" style="width: 670px;text-align:  center;font-size: 14px;margin: auto">
+                    <div class="fixed-table-toolbar"></div>
+                    <div class="fixed-table-container" style="padding-bottom: 0px;">
+                        <div class="fixed-table-body">
+                            <div class="fixed-table-loading" style="top: 41px; display: none;">正在努力地加载数据中，请稍候……
+                            </div>
+                            <table id="questionnaireTable1" class="questionnaire_table table table-hover table-striped"
+                                   style="word-wrap:break-word; word-break:break-all">
+                                <thead>
+                                <tr>
+                                    <th style="text-align: center; " data-field="Number">
+                                        <div class="th-inner ">序号</div>
+                                        <div class="fht-cell"></div>
+                                    </th>
+                                    <th style="text-align: center; " data-field="questionname">
+                                        <div class="th-inner ">试卷名称</div>
+                                        <div class="fht-cell"></div>
+                                    </th>
+                                    <th style="text-align: center; " data-field="operation">
+                                        <div class="th-inner ">操作</div>
+                                        <div class="fht-cell"></div>
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody id="questTableBody1">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div style="width: 130px"></div>
+
+            <div>
+                <div class="bootstrap-table" style="width: 670px;text-align:  center;font-size: 14px;margin: auto">
+                    <div class="fixed-table-toolbar"></div>
+                    <div class="fixed-table-container" style="padding-bottom: 0px;">
+                        <div class="fixed-table-body">
+                            <div class="fixed-table-loading" style="top: 41px; display: none;">正在努力地加载数据中，请稍候……
+                            </div>
+                            <table id="questionnaireTable2" class="questionnaire_table table table-hover table-striped"
+                                   style="word-wrap:break-word; word-break:break-all">
+                                <thead>
+                                <tr>
+                                    <th style="text-align: center; " data-field="Number">
+                                        <div class="th-inner ">序号</div>
+                                        <div class="fht-cell"></div>
+                                    </th>
+                                    <th style="text-align: center; " data-field="questionname">
+                                        <div class="th-inner ">试卷名称</div>
+                                        <div class="fht-cell"></div>
+                                    </th>
+                                    <th style="text-align: center; " data-field="operation">
+                                        <div class="th-inner ">操作</div>
+                                        <div class="fht-cell"></div>
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody id="questTableBody2">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div><!--        flex-->
+
+
+
+
+
+
+        </div>
+
+    </div>
+
+
+</body>
+</html>
+
+

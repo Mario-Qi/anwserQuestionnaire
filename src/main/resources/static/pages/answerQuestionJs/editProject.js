@@ -33,6 +33,7 @@ function editProjectRight(projectNameInt, projectContentInt) {
             layer.msg('请完整填写项目描述')
         } else {
             var url = '/modifyProjectInfo';
+            console.log(document.cookie)
             var data = {
                 "id": projectId,
                 "projectName": projectNameInt,
@@ -43,7 +44,7 @@ function editProjectRight(projectNameInt, projectContentInt) {
                 if (result.code == '666') {
                     layer.msg('修改成功');
                     setTimeout(function () {
-                        window.location.href = "myQuestionnaires.html"
+                        window.location.href = "myProjects.html"
                     }, 1000)
                 } else if (result.code == "333") {
                     layer.msg(result.message, {icon: 2});

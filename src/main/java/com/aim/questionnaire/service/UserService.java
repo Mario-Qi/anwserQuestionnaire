@@ -11,16 +11,15 @@ import com.aim.questionnaire.dao.entity.UserEntity;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.xml.ws.Action;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+//import javax.xml.ws.Action;
+import java.io.UnsupportedEncodingException;
+import java.util.*;
 
 /**
  * Created by wln on 2018\8\9 0009.
@@ -46,7 +45,17 @@ public class UserService {
         PageInfo pageInfo = new PageInfo();
         pageInfo.setPageNum((Integer) map.get("pageNum"));
         pageInfo.setPageSize((Integer) map.get("pageSize"));
-        List<Map<String,Object>> resultList = userEntityMapper.queryUserList(map);
+        List<Map<String,Object>> list = userEntityMapper.queryUserList(map);
+        List<Map<String,Object>> resultList = new ArrayList<>();
+        for(Map<String , Object> m : list){
+            byte[] decode = Base64.getDecoder().decode(String.valueOf(m.get("password")));
+            try {
+                m.put("password" , new String(decode, "UTF-8"));
+            } catch (UnsupportedEncodingException e) {
+                throw new RuntimeException(e);
+            }
+            resultList.add(m);
+        }
         pageInfo.setList(resultList);
         int total = userEntityMapper.getTotalCount((String) map.get("userName"));
         pageInfo.setTotal(total);
@@ -69,6 +78,14 @@ public class UserService {
 
         String id = UUIDUtil.getOneUUID();
         map.put("id",id);
+
+        String password = String.valueOf(map.get("password"));
+        //
+        try {
+            map.put("password",Base64.getEncoder().encodeToString(password.getBytes("UTF-8")));
+        } catch (UnsupportedEncodingException e) {
+            throw new RuntimeException(e);
+        }
         //创建时间
         Date date = DateUtil.getCreateTime();
         map.put("creationDate",date);
@@ -126,5 +143,27 @@ public class UserService {
     public int deteleUserInfoById(UserEntity userEntity) {
 
         return 0;
+    }
+
+    /**
+     * 验证账号密码是否正确
+     * @param userEntity
+     * @return
+     */
+    public UserEntity queryProjectByUser(UserEntity userEntity){
+        String p = userEntity.getPassword();
+        String password = null;
+        try {
+            password = Base64.getEncoder().encodeToString(p.getBytes("UTF-8"));
+        } catch (UnsupportedEncodingException e) {
+            throw new RuntimeException(e);
+        }
+        userEntity.setPassword(password);
+        List<UserEntity> hasUser = userEntityMapper.selectUserInfo(userEntity);
+        for(UserEntity u: hasUser){
+            if(u.getPassword().equals(userEntity.getPassword()))
+                return u;
+        }
+        return null;
     }
 }

@@ -544,6 +544,77 @@ body{
     border: 1px solid #4b84bd;
 }
 
+.my-nav-unselect{
+    width: 180px;
+    background-color: #FFFFFF;
+    font-size: medium;
+}
+.my-nav-select{
+    width: 180px;
+    background-color: orange;
+    font-size: large;
+}
+
+#onloadFile1 {
+    display: block;
+    height: 30px;
+    *height: 14px;
+    line-height: 14px;
+    font-size: 14px;
+    padding: 7px 15px;
+    color: #4b84bd;
+    text-align: center;
+    background-color: #ffffff;
+    border-radius: 4px;
+    border: 1px solid #4b84bd;
+
+    /*position: absolute;*/
+    /*top: 50px;*/
+    /*left: 50px;*/
+}
+
+#onloadFile2 {
+    display: block;
+    height: 30px;
+    *height: 14px;
+    line-height: 14px;
+    font-size: 14px;
+    padding: 7px 15px;
+    color: #4b84bd;
+    text-align: center;
+    background-color: #ffffff;
+    border-radius: 4px;
+    border: 1px solid #4b84bd;
+
+    /*position: absolute;*/
+    /*top: 0px;*/
+    /*left: 50px;*/
+}
+#answerpersonInfo_header{
+    width: 1400px;
+}
+
+
+
+.box-items{
+    height: 800px;
+    width: 1400px;
+    /*background: #f7f8f9;*/
+    /*font-size: 16px;*/
+    /*color: #808080;*/
+    /*border-bottom: 1px solid #a6d7ff;*/
+    /*border-radius: 6px 6px 0 0;*/
+    /*background-color: #f5faff;*/
+}
+#inside-con{
+    height: 800px;
+    width: 1400px;
+}
+#shortMessageSend{
+    background-color: #f7f8f9;
+    text-align: center;
+}
+
 .add__batches:hover {
     color: #fff;
     background-color: #4b84bd;
@@ -558,10 +629,43 @@ body{
     border-radius: 4px;
     background-color: transparent;
 }
+.linkofquestionblok{
+    background-color: #FFFFFF;
+    width: 800px;
+    height: 160px;
+    margin: 0 auto;
+}
+
+.waybutton{
+    width: 40px;
+    height: 40px;
+}
+.iconway{
+    width: 250px;
+    height: 40px;
+    top: 0px;
+}
+.vjuzhong{
+    position: relative;
+    top: 65px;
+    left: 50px;
+    vertical-align: middle;
+}
+
+#sendwaydiv{
+    position: relative;
+    top: 50px;
+    left: 10px;
+    vertical-align: middle;
+}
 
 #liSet .finishBtn {
     color: #4b84bd;
     border: 1px solid #4b84bd;
+}
+.image-box{
+    text-align:center;
+    font-size:14px
 }
 
 #liSet .finishBtn:hover {

@@ -5,20 +5,27 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <meta name="renderer" content="webkit|ie-comp|ie-stand"/>
     <meta id="ctl01_keywords" name="keywords"/>
-    <title>项目信息查看</title>
+    <title>项目详情信息</title>
+
+    <link rel="stylesheet" href="../css/wjxmaster.css">
+    <link rel="stylesheet" href="../css/myquestionnaires.css">
+
+    <link rel="stylesheet" href="../plugins/AdminLTE-2.4.0-rc">
+    <link rel="stylesheet" href="../css/default.css">
     <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../plugins/bootstrap-table/css/bootstrap-table.css">
     <link rel="stylesheet" href="../plugins/bootstrap-select/bootstrap-select.min.css">
     <link id="ctl01_cssdefault" rel="stylesheet" type="text/css" href="../css/default.css?v=4" />
-    <link rel="stylesheet" href="../css/myquestionnaires.css">
-    <link id="ctl01_cssmaster" rel="stylesheet" type="text/css" href="../css/wjxmaster.css?v=4" />
     <link rel="stylesheet" type="text/css" href="../css/choosetype.css?v=4" />
     <link rel="stylesheet" href="../css/createblank.css">
 
+    <script src="../common/common.js"></script>
     <script src="../plugins/jQuery/jquery-1.12.4.min.js"></script>
     <script src="../plugins/cookie/jquery.cookie.js"></script>
+    <script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../plugins/bootstrap-table/js/bootstrap-table-zh-CN.js"></script>
     <script src="../plugins/layer/layer.js"></script>
-    <script src="../common/common.js"></script>
+    <script src="../plugins/daterangepicker/moment.min.js"></script>
     <script src="answerQuestionJs/projectInfo.js"></script>
     <style>
         body, html {
@@ -85,24 +92,30 @@
     <div class="main-wrapper" style="margin-top: -10px;">
     <div class="create-box" style="margin-top: 50px;margin-bottom: 50px;">
         <div class="create__fill">
-            <div class="fill__name-box clearfix">
+            <div class="fill__name-box clearfix" style="margin-bottom: 0px">
                 <label class="pull-left" id="spanName" style="font-size: 22px;">项目名称：</label>
                 <span class="spanTitle" id="projectNameSpan" style="text-align: left;width: 950px;"></span>
             </div>
-            <div class="fill__name-box clearfix">
+            <div class="fill__name-box clearfix" style="margin-bottom: 0px">
                 <label class="pull-left" id="spanIntro" style="font-size: 22px;">创建时间：</label>
                 <span class="spanTitle"  id="createTimeSpan"></span>
             </div>
-            <div class="fill__name-box clearfix">
+            <div class="fill__name-box clearfix" style="margin-bottom: 0px">
                 <label class="pull-left" id="ss" style="font-size: 22px;">负责人员：</label>
                 <span class="spanTitle" id="adminSpan"></span>
             </div>
-            <div class="fill__name-box clearfix" style="font-size: 22px;">
+            <div class="fill__name-box clearfix" style="font-size: 22px;margin-bottom: 0px">
                 <label class="pull-left" id="dd" style="font-size: 22px;">项目描述：</label>
                 <span class="spanTitle" style="width: 950px; text-align: left;"  id="projectContentSpan"></span>
             </div>
-            <div class="fill__name-box clearfix">
-                <label class="pull-left" id="ddd" style="font-size: 22px;">测卷详情：</label>
+            <div class="fill__name-box clearfix" style="margin-bottom: 0px">
+                 <div>
+                     <label class="pull-left" id="ddd" style="font-size: 22px;">测卷详情：</label>
+                     <div style="padding-top: 10px;padding-left: 950px ">
+                         <button id="addQuestionnaireBtn" onclick="addQuestionnaireBtnAction()" style="width: 90px;height: 35px;"  class="button btn-success ajax-link"><text style="font-size: 15px">加入问卷</text></button>
+                     </div>
+                 </div>
+
             </div>
 
             <div class="bootstrap-table" style="width: 1050px;text-align:  center;font-size: 14px;margin: auto">
@@ -111,7 +124,7 @@
                     <div class="fixed-table-body">
                         <div class="fixed-table-loading" style="top: 41px; display: none;">正在努力地加载数据中，请稍候……
                         </div>
-                        <table class="questionnaire_table table table-hover table-striped"
+                        <table id="questionnaireTable" class="questionnaire_table table table-hover table-striped"
                                style="word-wrap:break-word; word-break:break-all">
                             <thead>
                             <tr>

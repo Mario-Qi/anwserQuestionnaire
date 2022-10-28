@@ -98,14 +98,14 @@ function quickCreate() {
             'questionContent': questionContent,
             'startTime': dateChange(nowTimeInput),
             'endTime': dateChange(questionendTime),
-            'questionStop': '5',
+            // 'questionStop': '5',
             'dataId': getCookie('dataId'),
             // 'projectId': getCookie('projectIdForCreate')
         };
-        if (getCookie('TProjectId') != undefined) {    //创建问卷
-            da.projectId = getCookie('TProjectId');
-            da.questionStop = '5';
-        }
+        // if (getCookie('TProjectId') != undefined) {    //创建问卷
+        //     da.projectId = getCookie('TProjectId');
+        //     da.questionStop = '5';
+        // }
         var url = '/addQuestionnaire';
         commonAjaxPost(true, url, da, addQuestionnaireSuccess);
     } else {
@@ -118,9 +118,9 @@ function quickCreate() {
             'questionContent': questionContent,
             'startTime': dateChange(nowTimeInput),
             'endTime': dateChange(questionendTime),
-            'questionStop': '5',
+            // 'questionStop': '5',
             'dataId': getCookie('dataId'),
-            'projectId': getCookie('TProjectId')
+            // 'projectId': getCookie('TProjectId')
         };
         // deleteCookie('QuestionId');
     }
@@ -129,9 +129,14 @@ function quickCreate() {
 function addQuestionnaireSuccess(res) {
     //console.log(res);
     if (res.code == '666') {
-        layer.msg(res.message, {icon: 1});
+        // layer.msg(res.message, {icon: 1});
         deleteCookie('dataId');
-        window.location.href = 'myQuestionnaires.html'
+        // window.location.href = 'designQuestionnaire.html'
+        // console.log(res.data);
+        var url = "designQuestionnaire.html?qId="+res.data;//此处拼接内容
+        // window.location.href = url;
+        window.open(url);
+        window.location.href = 'manageQuestionnaire.html';
     } else if (res.code == "333") {
         layer.msg(res.message, {icon: 2});
         setTimeout(function () {

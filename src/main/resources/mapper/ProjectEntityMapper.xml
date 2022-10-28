@@ -20,19 +20,50 @@
 
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-
+    SELECT id, user_id, project_name, project_content, created_by, creation_date, last_updated_by, last_update_date
+    FROM LATERAL project_info
+    WHERE  id=#{id,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-
+    DELETE from project_info
+    WHERE id = #{id,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.aim.questionnaire.dao.entity.ProjectEntity">
-
+    INSERT INTO project_info
+    (id, user_id, project_name, project_content, created_by, creation_date, last_updated_by, last_update_date)
+    VALUES
+      (#{id},#{userId},#{projectName},#{projectContent},#{createdBy},#{creationDate},#{lastUpdatedBy},#{lastUpdateDate})
   </insert>
   <insert id="insertSelective" parameterType="com.aim.questionnaire.dao.entity.ProjectEntity">
 
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.aim.questionnaire.dao.entity.ProjectEntity">
+    update project_info
+    <set>
+      <if test="projectName != null">
+        project_name = #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="creationDate != null">
+        creation_date = #{creationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null">
+        created_by = #{createdBy,jdbcType=VARCHAR},
+      </if>
 
+      <if test="projectContent != null">
+        project_content = #{projectContent,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdatedBy != null">
+        last_updated_by = #{lastUpdatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateDate != null">
+        last_update_date = #{lastUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.aim.questionnaire.dao.entity.ProjectEntity">
 
@@ -40,14 +71,47 @@
 
   <!--根据项目id删除项目-->
   <delete id="deleteProjectById" parameterType="java.lang.String">
-
+    DELETE from project_info
+    WHERE id = #{id,jdbcType=VARCHAR}
   </delete>
 
-  <!--查询项目列表-->
-  <select id="queryProjectList" parameterType="com.aim.questionnaire.dao.entity.ProjectEntity" resultType="map">
- 
-   
+
+  <!--修改问卷状态 (guan)-->
+  <update id="removeQuestionnaireProjectid" parameterType="java.lang.String">
+    UPDATE questionnaire_info
+    SET project_id = null
+    WHERE  project_id  = #{id,jdbcType=VARCHAR}
+  </update>
+
+
+
+  <!--判断项目名是否存在-->
+  <select id="queryExistProject" parameterType="java.lang.String" resultType="java.lang.Integer">
+    SELECT count(1)
+    FROM project_info
+    where project_name = #{projectName,jdbcType=VARCHAR}
+
   </select>
+
+
+
+  <!--查询项目列表-->
+  <select id="queryProjectList" parameterType="map" resultType="java.util.Map">
+    select *
+    from project_info
+    where (project_name LIKE "%"#{projectName}"%" )AND user_id =
+    (SELECT id
+    FROM user_info
+    WHERE username = #{userName})
+
+  </select>
+  <!--根据项目id查询项目信息-->
+  <select id="getProjectInfo" parameterType="java.lang.String" resultType="map">
+    SELECT id, user_id AS userId, project_name AS projectName, project_content AS projectContent, created_by AS createdBy, creation_date AS creationDate, last_updated_by AS lastUpdatedBy, last_update_date AS lastUpdatedDate
+    FROM  project_info
+    WHERE  id = #{id,jdbcType=VARCHAR}
+  </select>
+
 
   <!--查询全部项目的名字接口-->
   <select id="queryAllProjectName" resultType="map">
@@ -55,7 +119,21 @@
   </select>
 
   <!--根据项目id查询项目名称-->
-  <select id="queryProjectNameById" parameterType="java.lang.String" resultType="java.lang.String">
-
+  <select id="queryProjectNameById" parameterType="java.lang.String" resultType="com.aim.questionnaire.dao.entity.ProjectEntity">
+    SELECT id, user_id, project_name, project_content, created_by, creation_date, last_updated_by, last_update_date
+    FROM  project_info
+    WHERE  id=#{id,jdbcType=VARCHAR}
   </select>
+
+
+  <!--根据项目id查询项目名称-->
+  <select id="queryProjectNameById2" parameterType="java.lang.String" resultType="java.lang.String">
+    SELECT  project_name
+    FROM  project_info
+    WHERE  id=#{id,jdbcType=VARCHAR}
+  </select>
+
+
+
+
 </mapper>
